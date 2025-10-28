@@ -171,7 +171,7 @@ Steps:
         --8<-- "docs/code/sgx_repo_setup.sh:opensuse_leap_15_5"
         ```
 
-3. Execute the following command to install the dependencies for the [Quote Verification Sample](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/master/SampleCode/QuoteVerificationSample) application, retrieve the application, build the application, and use the application to verify the TD Quote (i.e., `quote.dat`):
+3. Execute the following command to install the dependencies for the [Quote Verification Sample](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/SampleCode/QuoteVerificationSample) application, retrieve the application, build the application, and use the application to verify the TD Quote (i.e., `quote.dat`):
 
     === "CentOS Stream 9"
 
