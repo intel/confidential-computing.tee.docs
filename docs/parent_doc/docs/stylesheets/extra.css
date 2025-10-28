@@ -37,3 +37,29 @@ aside.md-banner {
     box-shadow: 0 0 .2rem #0000001a,0 .2rem .4rem #0003;
     transition: transform .25s cubic-bezier(.1,.7,.1,1),box-shadow .25s;
 }
+
+.tabbed-block {
+    /* Apply left padding to all tabbed blocks, except for the overrides below */
+    padding-left: 10px;
+}
+
+.tabbed-block:has( > ul > li > .tabbed-set),
+.tabbed-block:has( > ol > li > .tabbed-set) {
+    /* Do not apply padding in case the nested tab is inside a list, as it's indented already */
+    padding-left: 0;
+}
+
+.tabbed-block:has(> .highlight):not(:has(> p)) {
+    /* If the tab contains only a code block, do not apply padding */
+    padding-left: 0;
+}
+
+
+.tabbed-block:has(.tabbed-set) {
+    /* Apply left margin to any .tabbed-set nested inside another .tabbed-set, regardless of intervening elements */
+    padding-left: 10px;
+}
+
+.tabbed-content {
+    border-left: .05rem dotted var(--md-default-fg-color--lightest);
+}
