@@ -281,10 +281,10 @@ Detailed steps to use this registration method:
             --8<-- "docs/code/sgx_repo_setup.sh:ubuntu_24_04"
             ```
 
-        === "openSUSE Leap 15.5 or SUSE Linux Enterprise Server 15-SP5"
+        === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
 
             ``` { .text }
-            --8<-- "docs/code/sgx_repo_setup.sh:opensuse_leap_15_5"
+            --8<-- "docs/code/sgx_repo_setup.sh:opensuse_leap_15_6"
             ```
 
     - Install MPA:
@@ -300,10 +300,10 @@ Detailed steps to use this registration method:
             sudo apt install -y sgx-ra-service
             ```
 
-        === "openSUSE Leap 15.5 or SUSE Linux Enterprise Server 15-SP5"
+        === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
 
             ``` { .bash }
-            sudo zypper --no-gpg-checks install -y sgx-ra-service
+            sudo zypper install -y sgx-ra-service
             ```
 
 3. Reboot host OS to trigger registration.
@@ -337,7 +337,7 @@ Detailed steps to use this registration method:
         ``` { .bash }
         sudo journalctl -u mpa_registration_tool
         ```
-    === "openSUSE Leap 15.5 or SUSE Linux Enterprise Server 15-SP5"
+    === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
 
         ``` { .bash }
         sudo journalctl -u mpa_registration_tool
@@ -398,10 +398,10 @@ Detailed steps to use this registration method:
                 --8<-- "docs/code/sgx_repo_setup.sh:ubuntu_24_04"
                 ```
 
-            === "openSUSE Leap 15.5 or SUSE Linux Enterprise Server 15-SP5"
+            === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
 
                 ``` { .text }
-                --8<-- "docs/code/sgx_repo_setup.sh:opensuse_leap_15_5"
+                --8<-- "docs/code/sgx_repo_setup.sh:opensuse_leap_15_6"
                 ```
 
         - Install PCKCIDRT:
@@ -418,11 +418,10 @@ Detailed steps to use this registration method:
                 sudo apt install -y sgx-pck-id-retrieval-tool
                 ```
 
-            === "openSUSE Leap 15.5 or SUSE Linux Enterprise Server 15-SP5"
+            === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
 
                 ``` { .text }
-                sudo zypper --no-gpg-checks install -y sgx-pck-id-retrieval-tool
-                sudo ./PCKIDRetrievalTool
+                sudo zypper install -y sgx-pck-id-retrieval-tool
                 ```
 
     2. From a standalone package [available for various distributions](https://download.01.org/intel-sgx/latest/dcap-latest/linux/distro/):
@@ -453,7 +452,7 @@ Detailed steps to use this registration method:
                 -C PCKIDRetrievalTool
             ```
 
-        === "openSUSE Leap 15.5 or SUSE Linux Enterprise Server 15-SP5"
+        === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
 
             ``` { .text }
             wget -O PCKIDRetrievalTool.tar.gz \
@@ -484,7 +483,7 @@ Detailed steps to use this registration method:
             sudo ./PCKIDRetrievalTool -f host_$(hostnamectl --static).csv
             ```
 
-        === "openSUSE Leap 15.5 or SUSE Linux Enterprise Server 15-SP5"
+        === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
 
             ``` { .text }
             cd /opt/intel/sgx-pck-id-retrieval-tool
@@ -507,7 +506,7 @@ Detailed steps to use this registration method:
             sudo LD_LIBRARY_PATH=. ./PCKIDRetrievalTool -f host_$(hostnamectl --static).csv
             ```
 
-        === "openSUSE Leap 15.5 or SUSE Linux Enterprise Server 15-SP5"
+        === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
 
             ``` { .text }
             cd PCKIDRetrievalTool
@@ -551,7 +550,7 @@ Detailed steps to use this registration method:
         sudo apt-get install -y csvtool
         sudo bash -c "csvtool col 6 host_$(hostnamectl --static).csv | xxd -r -p > host_$(hostnamectl --static)_pm.bin"
         ```
-    === "openSUSE Leap 15.5 or SUSE Linux Enterprise Server 15-SP5"
+    === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
 
         ``` { .text }
         sudo zypper install -y ocaml-csv
@@ -585,7 +584,7 @@ Detailed steps to use this registration method:
         -X POST "https://api.trustedservices.intel.com/sgx/registration/v1/platform" \
         -H "Content-Type: application/octet-stream"
         ```
-    === "openSUSE Leap 15.5 or SUSE Linux Enterprise Server 15-SP5"
+    === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
 
         ``` { .text }
         curl -i \
@@ -676,7 +675,7 @@ Detailed steps to use this registration method:
             -proxy_type YOUR_PROXY_TYPE \
             -use_secure_cert true
         ```
-    === "openSUSE Leap 15.5 or SUSE Linux Enterprise Server 15-SP5"
+    === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
 
         ``` { .text }
         sudo ./PCKIDRetrievalTool \

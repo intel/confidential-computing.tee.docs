@@ -67,10 +67,10 @@ Steps:
         --8<-- "docs/code/sgx_repo_setup.sh:ubuntu_24_04"
         ```
 
-    === "openSUSE Leap 15.5 or SUSE Linux Enterprise Server 15-SP5"
+    === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
 
         ```
-        --8<-- "docs/code/sgx_repo_setup.sh:opensuse_leap_15_5"
+        --8<-- "docs/code/sgx_repo_setup.sh:opensuse_leap_15_6"
         ```
 
 2. Execute the following commands to install and run the sample application generating a TD Quote:
@@ -94,7 +94,7 @@ Steps:
         ./test_tdx_attest
         ```
 
-    === "openSUSE Leap 15.5 or SUSE Linux Enterprise Server 15-SP5"
+    === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
 
         ``` { .bash }
         sudo zypper --no-gpg-checks install -y libtdx-attest libtdx-attest-devel
@@ -165,10 +165,10 @@ Steps:
         --8<-- "docs/code/sgx_repo_setup.sh:ubuntu_24_04"
         ```
 
-    === "openSUSE Leap 15.5 or SUSE Linux Enterprise Server 15-SP5"
+    === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
 
         ```
-        --8<-- "docs/code/sgx_repo_setup.sh:opensuse_leap_15_5"
+        --8<-- "docs/code/sgx_repo_setup.sh:opensuse_leap_15_6"
         ```
 
 3. Execute the following command to install the dependencies for the [Quote Verification Sample](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/SampleCode/QuoteVerificationSample) application, retrieve the application, build the application, and use the application to verify the TD Quote (i.e., `quote.dat`):
@@ -195,7 +195,7 @@ Steps:
         ./app -quote ~/quote.dat
         ```
 
-    === "openSUSE Leap 15.5 or SUSE Linux Enterprise Server 15-SP5"
+    === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
 
         ``` { .bash }
         sudo zypper --no-gpg-checks install -y libsgx-enclave-common-devel libsgx-dcap-quote-verify-devel libsgx-dcap-default-qpl-devel

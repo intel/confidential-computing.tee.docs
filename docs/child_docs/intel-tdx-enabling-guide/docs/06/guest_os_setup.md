@@ -22,7 +22,7 @@ Currently, the following Intel TDX-enabled guest OSes are supported by TDX Early
 
 - CentOS Stream 9
 - Ubuntu 24.04
-- openSUSE Leap 15.5 or SUSE Linux Enterprise Server 15-SP5
+- openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6
 
 To prepare a guest image for these OSes, refer to the instructions provided by the individual TDX Early Preview distributions:
 
@@ -41,7 +41,7 @@ To prepare a guest image for these OSes, refer to the instructions provided by t
         - Keep the default setting of `TDX_SETUP_ATTESTATION=0` during the execution of `create-td-image.sh`.
         - Do not manually execute `setup-attestation-guest.sh`, which is described in Section 9.3 of the Canonical guide.
 
-=== "openSUSE Leap 15.5 or SUSE Linux Enterprise Server 15-SP5"
+=== "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
 
     Follow instruction from the ["Preparing the Guest Image" section](https://github.com/SUSE/tdx-demo/blob/1da7994045d7d1cf1192f5316e1a22c262376611/INSTALL-SLES-15-SP5.md#preparing-the-guest-image) in the SUSE guide.
 
@@ -58,6 +58,6 @@ To launch a TD, refer to the instructions provided by the individual TDX Early P
 
     Follow instruction from the ["Boot TD" section](https://github.com/canonical/tdx/blob/3.3/README.md#6-boot-td) in the Canonical guide.
 
-=== "openSUSE Leap 15.5 or SUSE Linux Enterprise Server 15-SP5"
+=== "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
 
     Follow instruction from the ["Launching a TDX guest" section](https://github.com/SUSE/tdx-demo/blob/1da7994045d7d1cf1192f5316e1a22c262376611/INSTALL-SLES-15-SP5.md#launching-a-tdx-guest) in the SUSE guide.

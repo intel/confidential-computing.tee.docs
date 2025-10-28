@@ -24,10 +24,11 @@ cat intel-sgx-deb.key | sudo tee /etc/apt/keyrings/intel-sgx-keyring.asc > /dev/
 sudo apt-get update
 # --8<-- [end:ubuntu_24_04]
 
-# --8<-- [start:opensuse_leap_15_5]
+# --8<-- [start:opensuse_leap_15_6]
 sudo mkdir /opt/intel
 cd /opt/intel
-sudo wget https://download.01.org/intel-sgx/latest/dcap-latest/linux/distro/suse15.4-server/sgx_rpm_local_repo.tgz
+sudo rpm --import https://download.01.org/intel-sgx/sgx_repo/ubuntu/intel-sgx-deb.key
+sudo wget https://download.01.org/intel-sgx/latest/dcap-latest/linux/distro/suse15.6-server/sgx_rpm_local_repo.tgz
 sudo tar xvf sgx_rpm_local_repo.tgz
 sudo zypper addrepo /opt/intel/sgx_rpm_local_repo sgx_rpm_local_repo
-# --8<-- [end:opensuse_leap_15_5]
+# --8<-- [end:opensuse_leap_15_6]

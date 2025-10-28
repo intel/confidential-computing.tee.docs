@@ -21,7 +21,7 @@ Currently, the following Intel TDX-enabled host OSes are supported by TDX Early 
 
 - CentOS Stream 9
 - Ubuntu 24.04
-- openSUSE Leap 15.5 or SUSE Linux Enterprise Server 15-SP5
+- openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6
 
 To install the Intel TDX host OS kernel with KVM support, as well as the QEMU and libvirt packages required to create and manage the launch of TDs, refer to the instructions provided by the individual TDX Early Preview distributions:
 
@@ -43,7 +43,7 @@ To install the Intel TDX host OS kernel with KVM support, as well as the QEMU an
         - Keep the default setting of `TDX_SETUP_ATTESTATION=0` during the execution of `setup-tdx-host.sh`.
         - Do not manually execute `setup-attestation-host.sh`, which is described in Section 9.2 of the Canonical guide.
 
-=== "openSUSE Leap 15.5 or SUSE Linux Enterprise Server 15-SP5"
+=== "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
 
     Follow instruction from the "Quickstart Scripts" or and "Manual instructions" sections in the [SUSE guide](https://github.com/SUSE/tdx-demo/blob/1da7994045d7d1cf1192f5316e1a22c262376611/INSTALL-SLES-15-SP5.md).
 
@@ -80,7 +80,7 @@ To check the status of your Intel TDX configuration, you can manually execute th
         sudo modprobe msr
         ```
 
-    === "openSUSE Leap 15.5 or SUSE Linux Enterprise Server 15-SP5"
+    === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
 
         ``` { .bash }
         sudo zypper addrepo https://download.opensuse.org/repositories/openSUSE:Backports:SLE-15-SP5/standard/openSUSE:Backports:SLE-15-SP5.repo
@@ -161,10 +161,10 @@ Note that the QGS cannot run on another machine, because the verification of the
         --8<-- "docs/code/sgx_repo_setup.sh:ubuntu_24_04"
         ```
 
-    === "openSUSE Leap 15.5 or SUSE Linux Enterprise Server 15-SP5"
+    === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
 
         ``` { .bash }
-        --8<-- "docs/code/sgx_repo_setup.sh:opensuse_leap_15_5"
+        --8<-- "docs/code/sgx_repo_setup.sh:opensuse_leap_15_6"
         ```
 
 2. Install the QGS with the following command, which will also install the necessary prerequisites (the Quote Provider Library (QPL) and the Quoting Library (QL)).
@@ -187,7 +187,7 @@ Note that the QGS cannot run on another machine, because the verification of the
             libsgx-dcap-ql
         ```
 
-    === "openSUSE Leap 15.5 or SUSE Linux Enterprise Server 15-SP5"
+    === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
 
         ``` { .bash }
         sudo zypper --no-gpg-checks install -y \
@@ -213,7 +213,7 @@ Note that the QGS cannot run on another machine, because the verification of the
         sudo journalctl -u qgsd -f
         ```
 
-    === "openSUSE Leap 15.5 or SUSE Linux Enterprise Server 15-SP5"
+    === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
 
         ``` { .bash }
         sudo journalctl -u qgsd -f
@@ -249,7 +249,7 @@ After changing settings in the file `/etc/sgx_default_qcnl.conf`, you have to re
     sudo systemctl restart qgsd.service
     ```
 
-=== "openSUSE Leap 15.5 or SUSE Linux Enterprise Server 15-SP5"
+=== "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
 
     ``` { .bash }
     sudo systemctl restart qgsd.service
