@@ -98,17 +98,10 @@ In the following, we provide details of the first alternative.
 
 2. If not done during another component installation, set up the appropriate Intel SGX package repository for your distribution of choice:
 
-    === "CentOS Stream 9"
+    [](){ #package-repo-setup }<!-- markdownlint-disable-line MD042 -->
 
-        ``` { .bash }
-        --8<-- "docs/code/sgx_repo_setup.sh:cent-os-stream-9"
-        ```
-
-    === "Ubuntu 24.04"
-
-        ``` { .bash }
-        --8<-- "docs/code/sgx_repo_setup.sh:ubuntu_24_04"
-        ```
+    --8<-- "includes/package_repo_setup.md:sgx-repo_cent-os-stream-9"
+    --8<-- "includes/package_repo_setup.md:sgx-repo_ubuntu_24_04"
 
 3. Install PCCS with following commands.
     During installation, answer `Y` when asked if the PCCS should be installed now, `Y` when asked if PCCS should be configured now, and enter subscription key generated in step 1 when asked for `Intel PCS API key`.
@@ -123,8 +116,8 @@ In the following, we provide details of the first alternative.
 
         ``` { .bash }
         curl -fsSL https://rpm.nodesource.com/setup_20.x | sudo -E bash -
-        sudo yum install -y nodejs-20.11.1-1nodesource
-        sudo yum install -y --nogpgcheck sgx-dcap-pccs
+        sudo dnf install -y nodejs-20.11.1-1nodesource
+        sudo dnf install -y sgx-dcap-pccs
         sudo -u pccs /opt/intel/sgx-dcap-pccs/install.sh
         sudo systemctl start pccs
         ```
@@ -270,28 +263,15 @@ Detailed steps to use this registration method:
 
     - If not done during another component installation, set up the appropriate Intel SGX package repository for your distribution of choice:
 
-        === "CentOS Stream 9"
-            ``` { .text }
-            --8<-- "docs/code/sgx_repo_setup.sh:cent-os-stream-9"
-            ```
-
-        === "Ubuntu 24.04"
-
-            ``` { .text }
-            --8<-- "docs/code/sgx_repo_setup.sh:ubuntu_24_04"
-            ```
-
-        === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
-
-            ``` { .text }
-            --8<-- "docs/code/sgx_repo_setup.sh:opensuse_leap_15_6"
-            ```
+        --8<-- "includes/package_repo_setup.md:sgx-repo_cent-os-stream-9"
+        --8<-- "includes/package_repo_setup.md:sgx-repo_ubuntu_24_04"
+        --8<-- "includes/package_repo_setup.md:sgx-repo_opensuse_leap_15_6"
 
     - Install MPA:
 
         === "CentOS Stream 9"
             ``` { .bash }
-            sudo dnf --nogpgcheck install -y sgx-ra-service
+            sudo dnf install -y sgx-ra-service
             ```
 
         === "Ubuntu 24.04"
@@ -382,34 +362,20 @@ Detailed steps to use this registration method:
 1. <a id="PCKCIDRT-deployment"></a>
     On the host OS of platform to register, retrieve the PCKCIDRT with one of the following two alternatives:
 
-    1. From the package repository of your distribution of choice:
+    === "*Option 1:* From package repository"
 
         - If not done during another component installation, set up the appropriate Intel SGX package repository:
 
-            === "CentOS Stream 9"
-
-                ``` { .bash }
-                --8<-- "docs/code/sgx_repo_setup.sh:cent-os-stream-9"
-                ```
-
-            === "Ubuntu 24.04"
-
-                ``` { .bash }
-                --8<-- "docs/code/sgx_repo_setup.sh:ubuntu_24_04"
-                ```
-
-            === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
-
-                ``` { .text }
-                --8<-- "docs/code/sgx_repo_setup.sh:opensuse_leap_15_6"
-                ```
+            --8<-- "includes/package_repo_setup.md:sgx-repo_cent-os-stream-9"
+            --8<-- "includes/package_repo_setup.md:sgx-repo_ubuntu_24_04"
+            --8<-- "includes/package_repo_setup.md:sgx-repo_opensuse_leap_15_6"
 
         - Install PCKCIDRT:
 
             === "CentOS Stream 9"
 
                 ``` { .text }
-                sudo dnf --nogpgcheck install -y sgx-pck-id-retrieval-tool
+                sudo dnf install -y sgx-pck-id-retrieval-tool
                 ```
 
             === "Ubuntu 24.04"
@@ -424,7 +390,7 @@ Detailed steps to use this registration method:
                 sudo zypper install -y sgx-pck-id-retrieval-tool
                 ```
 
-    2. From a standalone package [available for various distributions](https://download.01.org/intel-sgx/latest/dcap-latest/linux/distro/):
+    === "*Option 2:* From standalone (portable) package"
 
         !!! Note
             The version/filename of the PCKCIDRT standalone package may change over time, so [browsing for the latest version/filename](https://download.01.org/intel-sgx/latest/dcap-latest/linux/distro/) may be required.
@@ -467,30 +433,27 @@ Detailed steps to use this registration method:
     On the host OS of platform to register, execute the PCKCIDRT.
     This step depends on the method used for PCKCIDRT retrieval in step 1:
 
-    1. If retrieved from a package repository:
+    === "*Option 1:* From package repository"
 
         === "CentOS Stream 9"
 
             ``` { .text }
-            cd /opt/intel/sgx-pck-id-retrieval-tool
-            sudo ./PCKIDRetrievalTool -f host_$(hostnamectl --static).csv
+            sudo PCKIDRetrievalTool -f host_$(hostnamectl --static).csv
             ```
 
         === "Ubuntu 24.04"
 
             ``` { .text }
-            cd /opt/intel/sgx-pck-id-retrieval-tool
-            sudo ./PCKIDRetrievalTool -f host_$(hostnamectl --static).csv
+            sudo PCKIDRetrievalTool -f host_$(hostnamectl --static).csv
             ```
 
         === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
 
             ``` { .text }
-            cd /opt/intel/sgx-pck-id-retrieval-tool
-            sudo ./PCKIDRetrievalTool -f host_$(hostnamectl --static).csv
+            sudo PCKIDRetrievalTool -f host_$(hostnamectl --static).csv
             ```
 
-    2. If retrieved from a standalone package:
+    === "*Option 2:* From standalone (portable) package"
 
         === "CentOS Stream 9"
 
@@ -656,34 +619,64 @@ Detailed steps to use this registration method:
 2. On the host OS of platform to register, deploy the PCKCIDRT following the PCKCIDRT retrieval instructions provided as step 1 in the [On-/offline, manual, single platform Direct Registration](#PCKCIDRT-deployment).
 3. On the host OS of platform to register, trigger the Indirect Registration with the PCKCIDRT using the following command (after adjusting the command line options to your environment):
 
-    === "CentOS Stream 9"
+    === "*Option 1:* From package repository"
+        === "CentOS Stream 9"
 
-        ``` { .text }
-        sudo ./PCKIDRetrievalTool \
-            -url https://YOUR_PCCS_URL:YOUR_PCCS_PORT \
-            -user_token YOUR_USER_TOKEN \
-            -proxy_type YOUR_PROXY_TYPE \
-            -use_secure_cert true
-        ```
+            ``` { .text }
+            sudo PCKIDRetrievalTool \
+                -url https://YOUR_PCCS_URL:YOUR_PCCS_PORT \
+                -user_token YOUR_USER_TOKEN \
+                -proxy_type YOUR_PROXY_TYPE \
+                -use_secure_cert true
+            ```
 
-    === "Ubuntu 24.04"
+        === "Ubuntu 24.04"
 
-        ``` { .text }
-        sudo ./PCKIDRetrievalTool \
-            -url https://YOUR_PCCS_URL:YOUR_PCCS_PORT \
-            -user_token YOUR_USER_TOKEN \
-            -proxy_type YOUR_PROXY_TYPE \
-            -use_secure_cert true
-        ```
-    === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
+            ``` { .text }
+            sudo PCKIDRetrievalTool \
+                -url https://YOUR_PCCS_URL:YOUR_PCCS_PORT \
+                -user_token YOUR_USER_TOKEN \
+                -proxy_type YOUR_PROXY_TYPE \
+                -use_secure_cert true
+            ```
+        === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
 
-        ``` { .text }
-        sudo ./PCKIDRetrievalTool \
-            -url https://YOUR_PCCS_URL:YOUR_PCCS_PORT \
-            -user_token YOUR_USER_TOKEN \
-            -proxy_type YOUR_PROXY_TYPE \
-            -use_secure_cert true
-        ```
+            ``` { .text }
+            sudo PCKIDRetrievalTool \
+                -url https://YOUR_PCCS_URL:YOUR_PCCS_PORT \
+                -user_token YOUR_USER_TOKEN \
+                -proxy_type YOUR_PROXY_TYPE \
+                -use_secure_cert true
+            ```
+    === "*Option 2:* From standalone (portable) package"
+        === "CentOS Stream 9"
+
+            ``` { .text }
+            sudo ./PCKIDRetrievalTool \
+                -url https://YOUR_PCCS_URL:YOUR_PCCS_PORT \
+                -user_token YOUR_USER_TOKEN \
+                -proxy_type YOUR_PROXY_TYPE \
+                -use_secure_cert true
+            ```
+
+        === "Ubuntu 24.04"
+
+            ``` { .text }
+            sudo ./PCKIDRetrievalTool \
+                -url https://YOUR_PCCS_URL:YOUR_PCCS_PORT \
+                -user_token YOUR_USER_TOKEN \
+                -proxy_type YOUR_PROXY_TYPE \
+                -use_secure_cert true
+            ```
+        === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
+
+            ``` { .text }
+            sudo ./PCKIDRetrievalTool \
+                -url https://YOUR_PCCS_URL:YOUR_PCCS_PORT \
+                -user_token YOUR_USER_TOKEN \
+                -proxy_type YOUR_PROXY_TYPE \
+                -use_secure_cert true
+            ```
 
     !!! Note
         If you have configured the PCCS to use a self-signed SSL certificate, you have to set the `use_secure_cert` flag in the presented command to `false`.
@@ -707,7 +700,9 @@ Requirements of this method:
 
 - A subscription key for the [Intel PCS](https://api.portal.trustedservices.intel.com/provisioning-certification)
 - The [PCK Cert ID Retrieval Tool](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/tools/PCKRetrievalTool) (PCKCIDRT) — a tool to support the retrieval of the PM and other platform information.
-- The [PCCS Admin Tool](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/master/tools/PccsAdminTool) — a tool to facilitate Indirect Registration, PCK Certificate retrieval, and verification collateral retrieval especially in multi-platform environments.
+- The [PCCS Admin Tool](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/tools/PccsAdminTool) — a tool to facilitate manual retrieval of platform information from PCCS (if PCK Cert ID Retrieval Tool inserted it there) and insertion of registration collateral into PCCS.
+- The [PCS Client Tool](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/tools/PcsClientTool) — a tool to facilitate registration collateral parsing and manual REST API communication with `Intel® SGX and Intel® TDX Provisioning Certification Service` for flows where PCCS is not present (or does not have a direct Internet connectivity).
+    The tool provides helper functionality for Indirect Registration, PCK Certificate retrieval, and verification collateral retrieval especially in multi-platform environments.
 
 The basic flow of this registration method:
 
@@ -723,13 +718,13 @@ The basic flow of this registration method:
 
     Independent of the used option, we call the platform with Internet access *Registration Platform* in the following.
 
-6. On the Registration Platform, deploy the PCCS Admin Tool.
-7. On the Registration Platform, use the PCCS Admin Tool to merge the files from the individual platforms into a single file.
-8. On the Registration Platform, use the PCCS Admin Tool to send the collected platform information to the PCS.
+6. On the Registration Platform, deploy the PCS Client Tool.
+7. On the Registration Platform, use the PCS Client Tool to merge the files from the individual platforms into a single file.
+8. On the Registration Platform, use the PCS Client Tool to send the collected platform information to the PCS.
     - The PCS forwards the information to the IRS, which generates PCK Certificates, and returns them to the PCS.
-    - The PCS returns the PCK Certificates to the PCCS Admin Tool.
-    - The PCCS Admin Tool writes all platform PCK Certificates to result file.
-    - The PCCS Admin Tool also requests all corresponding verification collateral from PCS and writes this information to the same result file.
+    - The PCS returns the PCK Certificates to the PCS Client Tool.
+    - The PCS Client Tool writes all platform PCK Certificates to result file.
+    - The PCS Client Tool also requests all corresponding verification collateral from PCS and writes this information to the same result file.
 9. Copy the result file to any platform with access to the PCCS — called *PCCS Insertion Platform* in the following.
 10. On the PCCS Insertion Platform, deploy the PCCS Admin Tool.
 11. On the PCCS Insertion Platform, use the PCCS Admin Tool to insert the data from the result file to the PCCS.
@@ -758,82 +753,111 @@ Detailed steps to use this registration method:
     Independent of the used option, we call the platform with Internet access *Registration Platform* in the following.
     We also assume that all `.csv` files are stored at the path `<platforms_to_register_path>` on this platform.
 
-6. On the Registration Platform, execute the following commands to install prerequisites for the PCCS Admin Tool and download the tool:
+6. On the Registration Platform, use one of the following options to install prerequisites for the PCS Client Tool and setup/install the tool:
 
-    === "CentOS Stream 9"
+    --8<-- "includes/tool_installation.md:pcs-client-tool-install"
 
-        ``` { .bash }
-        sudo dnf install git python3 python3-pip
-        git clone https://github.com/intel/SGXDataCenterAttestationPrimitives.git
-        cd SGXDataCenterAttestationPrimitives/tools/PccsAdminTool
-        pip3 install -r requirements.txt
-        ```
-
-    === "Ubuntu 24.04"
-
-        ``` { .bash }
-        sudo apt install -y python3 python3-pip python3-venv
-        git clone https://github.com/intel/SGXDataCenterAttestationPrimitives.git
-        cd SGXDataCenterAttestationPrimitives/tools/PccsAdminTool
-        python3 -m venv venv
-        source ./venv/bin/activate
-        pip install -r requirements.txt
-        ```
-
-        !!! Note
-            When no longer needed, the virtual Python environment can be deactivated by executing `deactivate`.
-
-7. On the Registration Platform, execute the following command to trigger the merge of all individual `.csv` files to a single *platform list file* using the PCCS Admin Tool (after adjusting the command line options to your environment).
+7. On the Registration Platform, execute the following command to trigger the merge of all individual `.csv` files to a single *platform list file* using the PCS Client Tool (after adjusting the command line options to your environment).
     By default, the result file is called `platform_list.json`.
 
-    === "CentOS Stream 9"
+    === "*Option 1:* Tool from package"
 
-        ``` { .bash }
-        python3 ./pccsadmin.py collect -d <platforms_to_register_path>
-        ```
+        === "CentOS Stream 9"
 
-    === "Ubuntu 24.04"
+            ``` { .bash }
+            pcs-client-tool collect -d <platforms_to_register_path>
+            ```
 
-        ``` { .bash }
-        venv/bin/python ./pccsadmin.py collect -d <platforms_to_register_path>
-        ```
+        === "Ubuntu 24.04"
 
-8. On the Registration Platform, execute the following command to trigger the transmission of the data contained in the platform list file to the PCS using the PCCS Admin Tool.
+            ``` { .bash }
+            pcs-client-tool collect -d <platforms_to_register_path>
+            ```
+
+    === "*Option 2:* Tool from source"
+        === "CentOS Stream 9"
+
+            ``` { .bash }
+            python ./pcsclient.py collect -d <platforms_to_register_path>
+            ```
+
+        === "Ubuntu 24.04"
+
+            ``` { .bash }
+            python ./pcsclient.py collect -d <platforms_to_register_path>
+            ```
+
+8. On the Registration Platform, execute the following command to trigger the transmission of the data contained in the platform list file to the PCS using the PCS Client Tool.
     During execution, enter the PCCS subscription key retrieved in step 1 when asked for `ApiKey for Intel PCS` and answer `n` when asked to remember Intel PCS ApiKey in OS keyring.
     All returned PCK Certificates are stored in the file `platform_collaterals.json`.
 
-    === "CentOS Stream 9"
+    === "*Option 1:* Tool from package"
 
-        ``` { .bash }
-        python3 ./pccsadmin.py fetch
-        ```
+        === "CentOS Stream 9"
 
-    === "Ubuntu 24.04"
+            ``` { .bash }
+            pcs-client-tool fetch
+            ```
 
-        ``` { .bash }
-        venv/bin/python ./pccsadmin.py fetch
-        ```
+        === "Ubuntu 24.04"
 
-    By executing this command, the PCCS Admin Tool will also request the verification collateral for all platforms contained in the platform list file.
+            ``` { .bash }
+            pcs-client-tool fetch
+            ```
+
+    === "*Option 2:* Tool from source"
+        === "CentOS Stream 9"
+
+            ``` { .bash }
+            python ./pcsclient.py fetch
+            ```
+
+        === "Ubuntu 24.04"
+
+            ``` { .bash }
+            python ./pcsclient.py fetch
+            ```
+
+    By executing this command, the PCS Client Tool will also request the verification collateral for all platforms contained in the platform list file.
     The result is also written into the file `platform_collaterals.json`.
 
 9. Use any out-of-band mechanism to copy the `platform_collaterals.json` file to any platform with access to the PCCS — called PCCS Insertion Platform in the following.
-10. If the PCCS Admin Tool is not already installed on the PCCS Insertion Platform, execute the commands described in step 5 to install prerequisites for the PCCS Admin Tool and to download the tool.
+10. On the PCCS Insertion Platform,  use one of the following options to install prerequisites for the PCCS Admin Tool and setup/install the tool.
+
+    --8<-- "includes/tool_installation.md:pccs-admin-tool-install"
+
 11. On the PCCS Insertion Platform, execute the following command to insert the data from the `platform_collaterals.json` file into the PCCS (after adjusting the command line options to your environment):
 
-    === "CentOS Stream 9"
+    === "*Option 1:* Tool from package"
 
-        ``` { .bash }
-        python3 ./pccsadmin.py put -u \
-            https://YOUR_PCCS_URL:YOUR_PCCS_PORT/sgx/certification/v4/platformcollateral
-        ```
+        === "CentOS Stream 9"
 
-    === "Ubuntu 24.04"
+            ``` { .bash }
+            pccs-admin-tool put -u \
+                https://YOUR_PCCS_URL:YOUR_PCCS_PORT/sgx/certification/v4/platformcollateral
+            ```
 
-        ``` { .bash }
-        venv/bin/python ./pccsadmin.py put -u \
-            https://YOUR_PCCS_URL:YOUR_PCCS_PORT/sgx/certification/v4/platformcollateral
-        ```
+        === "Ubuntu 24.04"
+
+            ``` { .bash }
+            pccs-admin-tool put -u \
+                https://YOUR_PCCS_URL:YOUR_PCCS_PORT/sgx/certification/v4/platformcollateral
+            ```
+
+    === "*Option 2:* Tool from source"
+        === "CentOS Stream 9"
+
+            ``` { .bash }
+            python ./pccsadmin.py put -u \
+                https://YOUR_PCCS_URL:YOUR_PCCS_PORT/sgx/certification/v4/platformcollateral
+            ```
+
+        === "Ubuntu 24.04"
+
+            ``` { .bash }
+            python ./pccsadmin.py put -u \
+                https://YOUR_PCCS_URL:YOUR_PCCS_PORT/sgx/certification/v4/platformcollateral
+            ```
 
 
 ##### On-/offline, manual, multi platform, local cache-based Indirect Registration
@@ -849,7 +873,8 @@ Requirements of this method:
         The platform with Internet access does not need to support Intel TDX.
 
 - The [PCK Cert ID Retrieval Tool](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/tools/PCKRetrievalTool) (PCKCIDRT) — a tool to support the retrieval of the PM and other platform information.
-- The [PCCS Admin Tool](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/master/tools/PccsAdminTool) — a tool to facilitate Indirect Registration, PCK Certificate retrieval, and verification collateral retrieval especially in multi-platform environments.
+- The [PCS Client Tool](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/tools/PcsClientTool) — a tool to facilitate registration collateral parsing and manual REST API communication with `Intel® SGX and Intel® TDX Provisioning Certification Service` for flows where PCCS is not present (or does not have a direct Internet connectivity).
+    The tool provides helper functionality for Indirect Registration, PCK Certificate retrieval, and verification collateral retrieval especially in multi-platform environments.
 
 The basic flow of this registration method:
 
@@ -863,9 +888,9 @@ The basic flow of this registration method:
 
     Independent of the used option, we call the platform with Internet access *Registration Platform* in the following.
 
-4. On the Registration Platform, deploy the PCCS Admin Tool.
-5. On the Registration Platform, use the PCCS Admin Tool to merge the files from the individual platforms into a single file.
-6. On the Registration Platform, use the PCCS Admin Tool to request PCK Certificates and TCB Infos from the PCS.
+4. On the Registration Platform, deploy the PCS Client Tool.
+5. On the Registration Platform, use the PCS Client Tool to merge the files from the individual platforms into a single file.
+6. On the Registration Platform, use the PCS Client Tool to request PCK Certificates and TCB Infos from the PCS.
 7. Distribute the individual cache files back to the corresponding registered platform.
 8. On each registered platform with a corresponding cache file, the cached data is used automatically during TD Quote Generation.
 
@@ -883,60 +908,70 @@ Detailed steps to use this registration method:
     Independent of the used option, we call the platform with Internet access *Registration Platform* in the following.
     We also assume that all `.csv` files are stored at the path `<platforms_to_register_path>` on this platform.
 
-4. On the Registration Platform, execute the following commands to install prerequisites for the PCCS Admin Tool and download the tool:
+4. On the Registration Platform, use one of the following options to install prerequisites for the PCS Client Tool and setup/install the tool:
 
-    === "CentOS Stream 9"
+    --8<-- "includes/tool_installation.md:pcs-client-tool-install"
 
-        ``` { .bash }
-        sudo dnf install git python3 python3-pip
-        git clone https://github.com/intel/SGXDataCenterAttestationPrimitives.git
-        cd SGXDataCenterAttestationPrimitives/tools/PccsAdminTool
-        pip3 install -r requirements.txt
-        ```
-
-    === "Ubuntu 24.04"
-
-        ``` { .bash }
-        sudo apt install -y python3 python3-pip
-        git clone https://github.com/intel/SGXDataCenterAttestationPrimitives.git
-        cd SGXDataCenterAttestationPrimitives/tools/PccsAdminTool
-        python3 -m venv venv
-        venv/bin/python -m pip install -r requirements.txt
-        ```
-
-        !!! Note
-            When no longer needed, the virtual Python environment can be deactivated by executing `deactivate`.
-
-5. On the Registration Platform, execute the following command to trigger the merge of all individual `.csv` files to a single *platform list file* using the PCCS Admin Tool (after adjusting the command line options to your environment).
+5. On the Registration Platform, execute the following command to trigger the merge of all individual `.csv` files to a single *platform list file* using the PCS Client Tool (after adjusting the command line options to your environment).
     By default, the result file is called `platform_list.json`.
 
-    === "CentOS Stream 9"
+    === "*Option 1:* Tool from package"
 
-        ``` { .bash }
-        python3 ./pccsadmin.py collect -d <platforms_to_register_path>
-        ```
+        === "CentOS Stream 9"
 
-    === "Ubuntu 24.04"
+            ``` { .bash }
+            pcs-client-tool collect -d <platforms_to_register_path>
+            ```
 
-        ``` { .bash }
-        venv/bin/python ./pccsadmin.py collect -d <platforms_to_register_path>
-        ```
+        === "Ubuntu 24.04"
+
+            ``` { .bash }
+            pcs-client-tool collect -d <platforms_to_register_path>
+            ```
+
+    === "*Option 2:* Tool from source"
+        === "CentOS Stream 9"
+
+            ``` { .bash }
+            python ./pcsclient.py collect -d <platforms_to_register_path>
+            ```
+
+        === "Ubuntu 24.04"
+
+            ``` { .bash }
+            python ./pcsclient.py collect -d <platforms_to_register_path>
+            ```
 
 6. On the Registration Platform, execute the following command:
 
-    === "CentOS Stream 9"
+    === "*Option 1:* Tool from package"
 
-        ``` { .bash }
-        python3 ./pccsadmin.py cache
-        ```
+        === "CentOS Stream 9"
 
-    === "Ubuntu 24.04"
+            ``` { .bash }
+            pcs-client-tool cache
+            ```
 
-        ``` { .bash }
-        venv/bin/python ./pccsadmin.py cache
-        ```
+        === "Ubuntu 24.04"
 
-    The PCCS Admin Tool uses the data contained in the platform list file to retrieve the corresponding PCK Certificates and TCB Infos from the PCS.
+            ``` { .bash }
+            pcs-client-tool cache
+            ```
+
+    === "*Option 2:* Tool from source"
+        === "CentOS Stream 9"
+
+            ``` { .bash }
+            python ./pcsclient.py cache
+            ```
+
+        === "Ubuntu 24.04"
+
+            ``` { .bash }
+            python ./pcsclient.py cache
+            ```
+
+    The PCS Client Tool uses the data contained in the platform list file to retrieve the corresponding PCK Certificates and TCB Infos from the PCS.
     For each entry in the platform list file, the tool generates a cache file at the path `./cache/<csv filename>/<qe_id>_<pce_id>` with `<csv filename>` being the name of the `.csv` file used as input to the platform list file.
 
 7. Use any out-of-band mechanism to copy the individual cache file of every registered platform back to the corresponding registered platform.
@@ -967,8 +1002,8 @@ This can be caused by a number of things and the following steps can be used for
 
     === "CentOS Stream 9"
         ``` { .bash }
-        sudo yum install epel-release
-        sudo yum install msr-tools
+        sudo dnf install epel-release
+        sudo dnf install msr-tools
         ```
 
     === "Ubuntu"

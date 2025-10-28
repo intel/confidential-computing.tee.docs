@@ -103,6 +103,7 @@
         "ocamlbuild",
         "PCCS",
         "pccsadmin",
+        "pcsclient",
         "PCEID",
         "pckcache",
         "PCKCIDRT",

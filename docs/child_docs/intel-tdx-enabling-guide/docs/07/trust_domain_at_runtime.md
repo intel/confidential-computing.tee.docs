@@ -53,25 +53,10 @@ In the following, we explore how TD Quote Generation can be tested using the *TD
 
 Steps:
 
-1. Setup the appropriate Intel SGX package repository for your distribution of choice (if not done during another component installation):
-
-    === "Red Hat Enterprise Linux 9.4 KVM"
-
-        ```
-        --8<-- "docs/code/sgx_repo_setup.sh:rhel_9_4_kvm"
-        ```
-
-    === "Ubuntu 24.04"
-
-        ```
-        --8<-- "docs/code/sgx_repo_setup.sh:ubuntu_24_04"
-        ```
-
-    === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
-
-        ```
-        --8<-- "docs/code/sgx_repo_setup.sh:opensuse_leap_15_6"
-        ```
+1. If not done during another component installation, setup the appropriate Intel SGX package repository for your distribution of choice:
+    --8<-- "includes/package_repo_setup.md:sgx-repo_rhel_9_4_kvm"
+    --8<-- "includes/package_repo_setup.md:sgx-repo_ubuntu_24_04"
+    --8<-- "includes/package_repo_setup.md:sgx-repo_opensuse_leap_15_6"
 
 2. Execute the following commands to install and run the sample application generating a TD Quote:
 
@@ -151,25 +136,11 @@ Steps:
         virt-copy-out -a ~/tdx/guest-tools/image/tdx-guest-ubuntu-24.04.qcow2 /opt/intel/tdx-quote-generation-sample/quote.dat ~
         ```
 
-2. Setup the appropriate Intel SGX package repository for your distribution of choice (if not done during another component installation):
+2. If not done during another component installation, setup the appropriate Intel SGX package repository for your distribution of choice:
 
-    === "CentOS Stream 9"
-
-        ```
-        --8<-- "docs/code/sgx_repo_setup.sh:cent-os-stream-9"
-        ```
-
-    === "Ubuntu 24.04"
-
-        ```
-        --8<-- "docs/code/sgx_repo_setup.sh:ubuntu_24_04"
-        ```
-
-    === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
-
-        ```
-        --8<-- "docs/code/sgx_repo_setup.sh:opensuse_leap_15_6"
-        ```
+    --8<-- "includes/package_repo_setup.md:sgx-repo_cent-os-stream-9"
+    --8<-- "includes/package_repo_setup.md:sgx-repo_ubuntu_24_04"
+    --8<-- "includes/package_repo_setup.md:sgx-repo_opensuse_leap_15_6"
 
 3. Execute the following command to install the dependencies for the [Quote Verification Sample](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/SampleCode/QuoteVerificationSample) application, retrieve the application, build the application, and use the application to verify the TD Quote (i.e., `quote.dat`):
 

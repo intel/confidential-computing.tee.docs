@@ -148,24 +148,9 @@ Note that the QGS cannot run on another machine, because the verification of the
 ### Install QGS
 
 1. If not done during another component installation, set up the appropriate Intel SGX package repository for your distribution of choice:
-
-    === "CentOS Stream 9"
-
-        ``` { .bash }
-        --8<-- "docs/code/sgx_repo_setup.sh:cent-os-stream-9"
-        ```
-
-    === "Ubuntu 24.04"
-
-        ``` { .bash }
-        --8<-- "docs/code/sgx_repo_setup.sh:ubuntu_24_04"
-        ```
-
-    === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
-
-        ``` { .bash }
-        --8<-- "docs/code/sgx_repo_setup.sh:opensuse_leap_15_6"
-        ```
+    --8<-- "includes/package_repo_setup.md:sgx-repo_cent-os-stream-9"
+    --8<-- "includes/package_repo_setup.md:sgx-repo_ubuntu_24_04"
+    --8<-- "includes/package_repo_setup.md:sgx-repo_opensuse_leap_15_6"
 
 2. Install the QGS with the following command, which will also install the necessary prerequisites (the Quote Provider Library (QPL) and the Quoting Library (QL)).
 
