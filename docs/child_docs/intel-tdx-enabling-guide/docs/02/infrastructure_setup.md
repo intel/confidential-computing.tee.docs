@@ -81,7 +81,7 @@ Currently, the expiration date is set to 30 days from the time of download, whic
 
 #### Provisioning Certificate Caching Service (PCCS)
 
-Intel provides a reference, open-source implementation of a collateral caching service called Provisioning Certificate Caching Service (PCCS) [via GitHub](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/QuoteGeneration/pccs).
+Intel provides a reference, open-source implementation of a collateral caching service called Provisioning Certificate Caching Service (PCCS) [via GitHub](https://github.com/intel/confidential-computing.tee.dcap.pccs/tree/main/service).
 There is also a [design guide](https://download.01.org/intel-sgx/latest/dcap-latest/linux/docs/SGX_DCAP_Caching_Service_Design_Guide.pdf) available for parties who want to know more about how Intel's PCCS works or those wanting to write their own collateral caching service.
 
 The PCCS can be installed in multiple ways, among others, as a system service from a distribution repository, as a Docker container somewhere in your network, or even as a Kubernetes pod.
@@ -700,7 +700,7 @@ Requirements of this method:
 
 - A subscription key for the [Intel PCS](https://api.portal.trustedservices.intel.com/provisioning-certification)
 - The [PCK Cert ID Retrieval Tool](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/tools/PCKRetrievalTool) (PCKCIDRT) — a tool to support the retrieval of the PM and other platform information.
-- The [PCCS Admin Tool](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/tools/PccsAdminTool) — a tool to facilitate manual retrieval of platform information from PCCS (if PCK Cert ID Retrieval Tool inserted it there) and insertion of registration collateral into PCCS.
+- The [PCCS Admin Tool](https://github.com/intel/confidential-computing.tee.dcap.pccs/tree/main/PccsAdminTool) — a tool to facilitate manual retrieval of platform information from PCCS (if PCK Cert ID Retrieval Tool inserted it there) and insertion of registration collateral into PCCS.
 - The [PCS Client Tool](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/tools/PcsClientTool) — a tool to facilitate registration collateral parsing and manual REST API communication with `Intel® SGX and Intel® TDX Provisioning Certification Service` for flows where PCCS is not present (or does not have a direct Internet connectivity).
     The tool provides helper functionality for Indirect Registration, PCK Certificate retrieval, and verification collateral retrieval especially in multi-platform environments.
 
