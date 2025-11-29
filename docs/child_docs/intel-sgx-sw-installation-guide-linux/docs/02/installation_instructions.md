@@ -824,13 +824,13 @@ Additionally, you have to install the Intel® SGX Software Development Kit (Inte
         === "CentOS Stream 9"
             ```bash
             curl -fsSLo sgx_linux_x64_sdk.bin \
-                https://download.01.org/intel-sgx/latest/linux-latest/distro/centos-stream9/sgx_linux_x64_sdk_2.26.100.0.bin
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/centos-stream9/sgx_linux_x64_sdk_2.27.100.1.bin
             ```
 
         === "Red Hat Enterprise Linux 9.4"
             ```bash
             curl -fsSLo sgx_linux_x64_sdk.bin \
-                https://download.01.org/intel-sgx/latest/linux-latest/distro/rhel9.4-server/sgx_linux_x64_sdk_2.26.100.0.bin
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/rhel9.4-server/sgx_linux_x64_sdk_2.27.100.1.bin
             ```
 
     3. Adjust the permissions of the Intel® SGX SDK binary:
@@ -910,7 +910,7 @@ Additionally, you have to install the Intel® SGX Software Development Kit (Inte
         === "SUSE Linux Enterprise Server 15 SP6"
             ```bash
             curl -fsSLo sgx_linux_x64_sdk.bin \
-                https://download.01.org/intel-sgx/latest/linux-latest/distro/suse15.6-server/sgx_linux_x64_sdk_2.26.100.0.bin
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/suse15.6-server/sgx_linux_x64_sdk_2.27.100.1.bin
             ```
 
     3. Adjust the permissions of the Intel® SGX SDK binary:
@@ -983,25 +983,25 @@ Additionally, you have to install the Intel® SGX Software Development Kit (Inte
         === "Debian 12"
             ```bash
             curl -fsSLo sgx_linux_x64_sdk.bin \
-                https://download.01.org/intel-sgx/latest/linux-latest/distro/Debian12/sgx_linux_x64_sdk_2.26.100.0.bin
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/Debian12/sgx_linux_x64_sdk_2.27.100.1.bin
             ```
 
         === "Debian 10"
             ```bash
             curl -fsSLo sgx_linux_x64_sdk.bin \
-                https://download.01.org/intel-sgx/latest/linux-latest/distro/Debian10/sgx_linux_x64_sdk_2.26.100.0.bin
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/Debian10/sgx_linux_x64_sdk_2.27.100.1.bin
             ```
 
         === "Ubuntu 24.04"
             ```bash
             curl -fsSLo sgx_linux_x64_sdk.bin \
-                https://download.01.org/intel-sgx/latest/linux-latest/distro/ubuntu24.04-server/sgx_linux_x64_sdk_2.26.100.0.bin
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/ubuntu24.04-server/sgx_linux_x64_sdk_2.27.100.1.bin
             ```
 
         === "Ubuntu 22.04"
             ```bash
             curl -fsSLo sgx_linux_x64_sdk.bin \
-                https://download.01.org/intel-sgx/latest/linux-latest/distro/ubuntu22.04-server/sgx_linux_x64_sdk_2.26.100.0.bin
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/ubuntu22.04-server/sgx_linux_x64_sdk_2.27.100.1.bin
             ```
 
     3. Adjust the permissions of the Intel® SGX SDK binary:
