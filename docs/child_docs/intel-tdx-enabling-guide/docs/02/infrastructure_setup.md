@@ -297,7 +297,7 @@ Detailed steps to use this registration method:
     The following shows a sample log for a successful registration:
 
     ``` { .text }
-    [date time] INFO: SGX Registration Agent version: 1.23.100.0
+    [date time] INFO: SGX Registration Agent version: 1.24.100.2
     [date time] INFO: Starts Registration Agent Flow.
     [date time] INFO: Registration Flow - PLATFORM_ESTABLISHMENT or TCB_RECOVERY passed successfully.
     [date time] INFO: Finished Registration Agent Flow.
@@ -400,7 +400,7 @@ Detailed steps to use this registration method:
             ``` { .text }
             sudo dnf install -y wget
             wget -O PCKIDRetrievalTool.tar.gz \
-                https://download.01.org/intel-sgx/latest/dcap-latest/linux/distro/centos-stream9/PCKIDRetrievalTool_v1.23.100.0.tar.gz
+                https://download.01.org/intel-sgx/latest/dcap-latest/linux/distro/centos-stream9/PCKIDRetrievalTool_v1.24.100.2.tar.gz
             mkdir -p PCKIDRetrievalTool
             tar xvzf PCKIDRetrievalTool.tar.gz \
                 --strip-components=1 \
@@ -411,7 +411,7 @@ Detailed steps to use this registration method:
 
             ``` { .text }
             wget -O PCKIDRetrievalTool.tar.gz \
-                https://download.01.org/intel-sgx/latest/dcap-latest/linux/distro/ubuntu24.04-server/PCKIDRetrievalTool_v1.23.100.0.tar.gz
+                https://download.01.org/intel-sgx/latest/dcap-latest/linux/distro/ubuntu24.04-server/PCKIDRetrievalTool_v1.24.100.2.tar.gz
             mkdir -p PCKIDRetrievalTool
             tar xvzf PCKIDRetrievalTool.tar.gz \
                 --strip-components=1 \
@@ -422,7 +422,7 @@ Detailed steps to use this registration method:
 
             ``` { .text }
             wget -O PCKIDRetrievalTool.tar.gz \
-                https://download.01.org/intel-sgx/latest/dcap-latest/linux/distro/suse15.6-server/PCKIDRetrievalTool_v1.23.100.0.tar.gz
+                https://download.01.org/intel-sgx/latest/dcap-latest/linux/distro/suse15.6-server/PCKIDRetrievalTool_v1.24.100.2.tar.gz
             mkdir -p PCKIDRetrievalTool
             tar xvzf PCKIDRetrievalTool.tar.gz \
                 --strip-components=1 \
@@ -479,7 +479,7 @@ Detailed steps to use this registration method:
     On successful execution of the PCKCIDRT, you'll see output similar to the following:
 
     ``` { .text }
-    Intel(R) Software Guard Extensions PCK Cert ID Retrieval Tool Version 1.23.100.0
+    Intel(R) Software Guard Extensions PCK Cert ID Retrieval Tool Version 1.24.100.2
 
     Registration status has been set to completed status.
     <hostname>.csv has been generated successfully!

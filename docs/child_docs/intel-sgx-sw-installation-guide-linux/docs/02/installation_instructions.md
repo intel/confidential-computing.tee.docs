@@ -82,14 +82,14 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
         === "Debian 12"
             ```bash
             local_sum=$(sha256sum sgx_debian_local_repo.tgz | awk '{print $1}')
-            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.23.cfg | grep 'distro/Debian12/sgx_debian_local_repo.tgz' | awk '{print $1}')
+            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.24.cfg | grep 'distro/Debian12/sgx_debian_local_repo.tgz' | awk '{print $1}')
             if [[ "$local_sum" == "$remote_sum" ]]; then echo "Checksum matches"; else echo "Checksum mismatch!"; fi
             ```
 
         === "Debian 10"
             ```bash
             local_sum=$(sha256sum sgx_debian_local_repo.tgz | awk '{print $1}')
-            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.23.cfg | grep 'distro/Debian10/sgx_debian_local_repo.tgz' | awk '{print $1}')
+            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.24.cfg | grep 'distro/Debian10/sgx_debian_local_repo.tgz' | awk '{print $1}')
             if [[ "$local_sum" == "$remote_sum" ]]; then echo "Checksum matches"; else echo "Checksum mismatch!"; fi
             ```
 
@@ -257,14 +257,14 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
         === "CentOS Stream 9"
             ```bash
             local_sum=$(sha256sum sgx_rpm_local_repo.tgz | awk '{print $1}')
-            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.23.cfg | grep 'distro/centos-stream9/sgx_rpm_local_repo.tgz' | awk '{print $1}')
+            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.24.cfg | grep 'distro/centos-stream9/sgx_rpm_local_repo.tgz' | awk '{print $1}')
             if [[ "$local_sum" == "$remote_sum" ]]; then echo "Checksum matches"; else echo "Checksum mismatch!"; fi
             ```
 
         === "Red Hat Enterprise Linux 9.4"
             ```bash
             local_sum=$(sha256sum sgx_rpm_local_repo.tgz | awk '{print $1}')
-            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.23.cfg | grep 'distro/rhel9.4-server/sgx_rpm_local_repo.tgz' | awk '{print $1}')
+            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.24.cfg | grep 'distro/rhel9.4-server/sgx_rpm_local_repo.tgz' | awk '{print $1}')
             if [[ "$local_sum" == "$remote_sum" ]]; then echo "Checksum matches"; else echo "Checksum mismatch!"; fi
             ```
 
@@ -435,7 +435,7 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
         === "SUSE Linux Enterprise Server 15 SP6"
             ```bash
             local_sum=$(sha256sum sgx_rpm_local_repo.tgz | awk '{print $1}')
-            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.23.cfg | grep 'distro/suse15.6-server/sgx_rpm_local_repo.tgz' | awk '{print $1}')
+            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.24.cfg | grep 'distro/suse15.6-server/sgx_rpm_local_repo.tgz' | awk '{print $1}')
             if [[ "$local_sum" == "$remote_sum" ]]; then echo "Checksum matches"; else echo "Checksum mismatch!"; fi
             ```
 
@@ -669,14 +669,14 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
             === "Ubuntu 24.04"
                 ```bash
                 local_sum=$(sha256sum sgx_debian_local_repo.tgz | awk '{print $1}')
-                remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.23.cfg | grep 'distro/ubuntu24.04-server/sgx_debian_local_repo.tgz' | awk '{print $1}')
+                remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.24.cfg | grep 'distro/ubuntu24.04-server/sgx_debian_local_repo.tgz' | awk '{print $1}')
                 if [[ "$local_sum" == "$remote_sum" ]]; then echo "Checksum matches"; else echo "Checksum mismatch!"; fi
                 ```
 
             === "Ubuntu 22.04"
                 ```bash
                 local_sum=$(sha256sum sgx_debian_local_repo.tgz | awk '{print $1}')
-                remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.23.cfg | grep 'distro/ubuntu22.04-server/sgx_debian_local_repo.tgz' | awk '{print $1}')
+                remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.24.cfg | grep 'distro/ubuntu22.04-server/sgx_debian_local_repo.tgz' | awk '{print $1}')
                 if [[ "$local_sum" == "$remote_sum" ]]; then echo "Checksum matches"; else echo "Checksum mismatch!"; fi
                 ```
 
