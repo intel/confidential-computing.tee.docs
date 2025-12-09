@@ -49,7 +49,7 @@ The PCCS can be configured using a configuration file, `default.json`, located i
 `UserTokenHash`
 
 :   Sha512 hash of the user token for the PCCS client user to register a platform.
-    For example, [PCK Cert ID Retrieval Tool](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/master/tools/PCKRetrievalTool) uses the user token to send platform information to PCCS.
+    For example, [PCK Cert ID Retrieval Tool](https://github.com/intel/confidential-computing.tee.dcap/tree/master/tools/PCKRetrievalTool) uses the user token to send platform information to PCCS.
     Required by the [Post Platforms IDs](../03/api_specification_for_pccs.md#post-platforms-ids).
 
 `AdminTokenHash`

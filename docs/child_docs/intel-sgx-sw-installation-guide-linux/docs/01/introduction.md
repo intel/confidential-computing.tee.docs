@@ -26,9 +26,9 @@ This document focuses on the installation process for the following Linux distri
 The source code for Intel® SGX software components is available on GitHub\* at at the following locations:
 
 - Intel SGX SDK and Intel SGX PSW:
-<https://github.com/intel/linux-sgx>
+<https://github.com/intel/confidential-computing.sgx>
 - Intel SGX/TDX DCAP:
-<https://github.com/intel/SGXDataCenterAttestationPrimitives>
+<https://github.com/intel/confidential-computing.tee.dcap>
 
 An overview of the all releases can be found at <https://download.01.org/intel-sgx/Releases/>.
 Additionally, installation repositories for Intel SGX PSW and Intel SGX/TDX DCAP are provided for multiple OSes:

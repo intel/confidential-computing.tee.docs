@@ -20,7 +20,7 @@ Key offerings such as Intel® Software Guard Extensions (Intel® SGX) and Intel�
 
 We welcome contributions to our documentation from the community to help improve and expand it for Intel's Confidential Computing offerings.
 Whether you're an experienced user or new to the technology, your feedback, corrections, and additional content can help enhance the overall quality and usability of this resource.
-Detailed instructions on how to contribute, including guidelines for submitting changes or adding new content, can be found on our GitHub repository at [github.com/intel/confidential-computing-documentation/](https://github.com/intel/confidential-computing-documentation/).
+Detailed instructions on how to contribute, including guidelines for submitting changes or adding new content, can be found on our GitHub repository at [github.com/intel/confidential-computing.tee.docs/](https://github.com/intel/confidential-computing.tee.docs/).
 
 
 ## Intel® Trust Domain Extensions (Intel® TDX)

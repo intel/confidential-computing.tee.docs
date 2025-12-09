@@ -30,7 +30,7 @@ If the collateral is not present in the cache or it is invalid, PCCS contacts th
 ## `REQ` Cache Fill Mode
 
 In this cache fill mode, the PCCS creates a platform database entry when the PCCS receives a platform registration requests during platform deployment/provisioning using the [Post Platforms IDs](../03/api_specification_for_pccs.md#post-platforms-ids) API.
-The [PCK Cert ID Retrieval Tool](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/tools/PCKRetrievalTool) can be used to send platform registration information to the PCCS.
+The [PCK Cert ID Retrieval Tool](https://github.com/intel/confidential-computing.tee.dcap/tree/main/tools/PCKRetrievalTool) can be used to send platform registration information to the PCCS.
 
 Even if the collateral is present in the cache, nothing will be returned to the caller.
 If the collateral is not present in the cache, PCCS retrieves the collateral from PCS.
@@ -48,7 +48,7 @@ In this cache fill mode, the PCCS does not have access to the PCS on the Interne
 Instead, the PCCS has to be filled manually.
 
 At first, platform registration information must be retrieved from the target platforms and must be sent to PCCS using the [Post Platforms IDs](../03/api_specification_for_pccs.md#post-platforms-ids) API.
-The [PCK Cert ID Retrieval Tool](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/tools/PCKRetrievalTool) can be used for these tasks.
+The [PCK Cert ID Retrieval Tool](https://github.com/intel/confidential-computing.tee.dcap/tree/main/tools/PCKRetrievalTool) can be used for these tasks.
 
 Later, the registration information can be collected from the PCCS using the [Get Platforms IDs](../03/api_specification_for_pccs.md#get-platform-ids).
 The [`get` operation](../07/pccs_admin_tool.md#get) of the [PCCS Admin Tool](../07/pccs_admin_tool.md) can be used for this request.

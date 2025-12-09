@@ -142,7 +142,7 @@ Steps:
     --8<-- "includes/package_repo_setup.md:sgx-repo_ubuntu_24_04"
     --8<-- "includes/package_repo_setup.md:sgx-repo_opensuse_leap_15_6"
 
-3. Execute the following command to install the dependencies for the [Quote Verification Sample](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/SampleCode/QuoteVerificationSample) application, retrieve the application, build the application, and use the application to verify the TD Quote (i.e., `quote.dat`):
+3. Execute the following command to install the dependencies for the [Quote Verification Sample](https://github.com/intel/confidential-computing.tee.dcap/tree/main/SampleCode/QuoteVerificationSample) application, retrieve the application, build the application, and use the application to verify the TD Quote (i.e., `quote.dat`):
 
     === "CentOS Stream 9"
 
@@ -150,8 +150,8 @@ Steps:
         sudo dnf install -y gcc make
         sudo dnf --nogpgcheck install -y libsgx-enclave-common-devel libsgx-dcap-quote-verify-devel libsgx-dcap-default-qpl-devel
         cd ~
-        git clone https://github.com/intel/SGXDataCenterAttestationPrimitives.git
-        cd SGXDataCenterAttestationPrimitives/SampleCode/QuoteVerificationSample
+        git clone https://github.com/intel/confidential-computing.tee.dcap.git
+        cd confidential-computing.tee.dcap/SampleCode/QuoteVerificationSample
         make QVL_ONLY=1
         ./app -quote ~/quote.dat
         ```
@@ -160,8 +160,8 @@ Steps:
 
         ``` { .bash }
         sudo apt install -y libsgx-enclave-common-dev libsgx-dcap-quote-verify-dev libsgx-dcap-default-qpl-dev
-        git clone https://github.com/intel/SGXDataCenterAttestationPrimitives.git
-        cd SGXDataCenterAttestationPrimitives/SampleCode/QuoteVerificationSample
+        git clone https://github.com/intel/confidential-computing.tee.dcap.git
+        cd confidential-computing.tee.dcap/SampleCode/QuoteVerificationSample
         make QVL_ONLY=1
         ./app -quote ~/quote.dat
         ```
@@ -171,8 +171,8 @@ Steps:
         ``` { .bash }
         sudo zypper --no-gpg-checks install -y libsgx-enclave-common-devel libsgx-dcap-quote-verify-devel libsgx-dcap-default-qpl-devel
         cd ~
-        git clone https://github.com/intel/SGXDataCenterAttestationPrimitives.git
-        cd SGXDataCenterAttestationPrimitives/SampleCode/QuoteVerificationSample
+        git clone https://github.com/intel/confidential-computing.tee.dcap.git
+        cd confidential-computing.tee.dcap/SampleCode/QuoteVerificationSample
         make QVL_ONLY=1
         ./app -quote ~/quote.dat
         ```

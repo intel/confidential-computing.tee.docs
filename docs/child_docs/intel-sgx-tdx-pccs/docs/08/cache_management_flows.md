@@ -68,7 +68,7 @@ This requires that the PCCS have access to the Internet during runtime workloads
 In this cache fill mode, the following steps make up the registration flow:
 
 1. Registration information (i.e., the Platform Manifest and other platform-related information) must be retrieved from the target platforms and this registration information must be sent to PCCS using the [Post Platforms IDs](../03/api_specification_for_pccs.md#post-platforms-ids) API.
-The [PCK Cert ID Retrieval Tool](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/tools/PCKRetrievalTool) can be used for these tasks.
+The [PCK Cert ID Retrieval Tool](https://github.com/intel/confidential-computing.tee.dcap/tree/main/tools/PCKRetrievalTool) can be used for these tasks.
 2. The platform registration information enqueued in the PCCS must be retrieved using the [Get Platform IDs](../03/api_specification_for_pccs.md#get-platform-ids) API.
     The enqueued registration information can be collected from the PCCS using the [Get Platforms IDs](../03/api_specification_for_pccs.md#get-platform-ids).
     The [`get` operation](../07/pccs_admin_tool.md#get) of the [PCCS Admin Tool](../07/pccs_admin_tool.md) can be used for this request.
@@ -102,7 +102,7 @@ An administrator can request an update in two ways:
 
         ??? info "(Re-)registration: Tool information"
 
-            [PCK Cert ID Retrieval Tool](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/master/tools/PCKRetrievalTool) tool may be used for registration data collateral retrieval and direct upload into the PCCS using the [Post Platforms IDs](../03/api_specification_for_pccs.md#post-platforms-ids) API.<br/>
+            [PCK Cert ID Retrieval Tool](https://github.com/intel/confidential-computing.tee.dcap/tree/master/tools/PCKRetrievalTool) tool may be used for registration data collateral retrieval and direct upload into the PCCS using the [Post Platforms IDs](../03/api_specification_for_pccs.md#post-platforms-ids) API.<br/>
             By default, the PCKCIDRT attempts automated upload of collected registration data to the PCCS set in its configuration file, but PCCS invocation can also be triggered explicitly by providing the URL in the CLI, for example via:
 
             - `sudo PCKIDRetrievalTool -defaulturl`

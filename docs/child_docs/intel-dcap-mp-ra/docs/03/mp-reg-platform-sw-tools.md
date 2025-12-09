@@ -14,7 +14,7 @@ These tools use the [Multi-Package Registration Libraries][mp-reg-lib] described
 These tools were created to quickly support multi-package platform registration in their datacenter or cloud service provider environments.
 Customers can modify or design their own tools using the multi-package libraries.
 These DCAP tools and libraries are released in binary format for Linux\* [https://download.01.org/intel-sgx/latest/dcap-latest/linux/distro/&lt;distro&gt;][linuxtools] and for Windows\* [https://download.01.org/intel-sgx/latest/dcap-latest/windows/tools/][windowstools].
-For the open source for these tools, see [https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/master/tools/SGXPlatformRegistration][githubtools] .
+For the open source for these tools, see [https://github.com/intel/confidential-computing.tee.dcap/tree/main/tools/SGXPlatformRegistration][githubtools] .
 
 
 ## Multi-Package Registration Agent (MPA)
@@ -466,7 +466,7 @@ The possible values reported for SGX on multi-package platforms are:
 
 [linuxtools]:  https://download.01.org/intel-sgx/latest/dcap-latest/linux/distro/
 [windowstools]:  https://download.01.org/intel-sgx/latest/dcap-latest/windows/tools/
-[githubtools]:  https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/master/tools/SGXPlatformRegistration
+[githubtools]:  https://github.com/intel/confidential-computing.tee.dcap/tree/main/tools/SGXPlatformRegistration
 [mp-reg-lib]:  ../04/mp-reg-lib.md
 [uefivar]:  ../06/index.md#bios-multi-package-uefi-variables
 [mp-net-lib]:  ../04/mp_network_library.md

@@ -29,7 +29,7 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
-repo_url: https://github.com/intel/confidential-computing-documentation/
+repo_url: https://github.com/intel/confidential-computing.tee.docs/
 repo_name: Docu Source
 plugins:
   git-revision-date-localized:

@@ -817,7 +817,7 @@ Additionally, you have to install the Intel® SGX Software Development Kit (Inte
             sudo yum install python3
             ```
 
-        For more information about dependencies, see the "Prerequisites" section in the corresponding [README](https://github.com/intel/linux-sgx/blob/main/README.md#build-the-intelr-sgx-sdk-and-intelr-sgx-psw-package).
+        For more information about dependencies, see the "Prerequisites" section in the corresponding [README](https://github.com/intel/confidential-computing.sgx/blob/main/README.md#build-the-intelr-sgx-sdk-and-intelr-sgx-psw-package).
 
     2. Download the Intel® SGX SDK binary:
 
@@ -903,7 +903,7 @@ Additionally, you have to install the Intel® SGX Software Development Kit (Inte
                 /usr/bin/python3 1
             ```
 
-        For more information about dependencies, see the "Prerequisites" section in the corresponding [README](https://github.com/intel/linux-sgx/blob/main/README.md#build-the-intelr-sgx-sdk-and-intelr-sgx-psw-package).
+        For more information about dependencies, see the "Prerequisites" section in the corresponding [README](https://github.com/intel/confidential-computing.sgx/blob/main/README.md#build-the-intelr-sgx-sdk-and-intelr-sgx-psw-package).
 
     2. Download the Intel® SGX SDK binary:
 
@@ -975,7 +975,7 @@ Additionally, you have to install the Intel® SGX Software Development Kit (Inte
             sudo apt-get install build-essential python-is-python3
             ```
 
-        For more information about dependencies, see the "Prerequisites" section in the corresponding [README](https://github.com/intel/linux-sgx/blob/main/README.md#build-the-intelr-sgx-sdk-and-intelr-sgx-psw-package).
+        For more information about dependencies, see the "Prerequisites" section in the corresponding [README](https://github.com/intel/confidential-computing.sgx/blob/main/README.md#build-the-intelr-sgx-sdk-and-intelr-sgx-psw-package).
 
 
     2. Download the Intel® SGX SDK binary:
@@ -1161,8 +1161,8 @@ In particular, this is necessary when you want to build/develop a version for a 
 
 #### Intel® SGX PSW and Intel® SGX SDK
 
-The source code for the Intel® SGX PSW and the Intel® SGX SDK is located in GitHub* repository [https://github.com/intel/linux-sgx](https://github.com/intel/linux-sgx).
-To build and deploy the packages, follow the instructions in <https://github.com/intel/linux-sgx/blob/master/README.md>.
+The source code for the Intel® SGX PSW and the Intel® SGX SDK is located in GitHub* repository [https://github.com/intel/confidential-computing.sgx](https://github.com/intel/confidential-computing.sgx).
+To build and deploy the packages, follow the instructions in <https://github.com/intel/confidential-computing.sgx/blob/main/README.md>.
 
 ##### Prebuilt Binaries
 
@@ -1178,8 +1178,8 @@ Check the SHA256 hash of downloaded libraries using `SHA256SUM_prebuilt_<version
 
 #### Intel® SGX/TDX DCAP
 
-The source code for Intel® SGX/TDX DCAP is located in GitHub* repository <https://github.com/intel/SGXDataCenterAttestationPrimitives>.
-To build and deploy the packages, follow the instructions in <https://github.com/intel/SGXDataCenterAttestationPrimitives/blob/master/README.md>.
+The source code for Intel® SGX/TDX DCAP is located in GitHub* repository <https://github.com/intel/confidential-computing.tee.dcap>.
+To build and deploy the packages, follow the instructions in <https://github.com/intel/confidential-computing.tee.dcap/blob/main/README.md>.
 For release notes and other details, see <https://download.01.org/intel-sgx/latest/dcap-latest/linux/docs/>
 
 ##### Prebuilt Binaries

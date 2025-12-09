@@ -123,11 +123,11 @@ Steps:
         Download an archive containing the binary of the latest Intel TDX Module version and a corresponding signature structure.
         ``` { .bash }
         wget -O intel_tdx_module.tar.gz \
-            https://github.com/intel/tdx-module/releases/latest/download/intel_tdx_module.tar.gz
+            https://github.com/intel/confidential-computing.tdx.tdx-module/releases/latest/download/intel_tdx_module.tar.gz
         ```
 
     === "Specific Version"
-        To download a specific version of an Intel TDX Module and a corresponding signature structure, navigate to the [releases page of the Intel TDX Module](https://github.com/intel/tdx-module/releases).
+        To download a specific version of an Intel TDX Module and a corresponding signature structure, navigate to the [releases page of the Intel TDX Module](https://github.com/intel/confidential-computing.tdx.tdx-module/releases).
         Download the archive `intel_tdx_module.tar.gz` from the release you want to use.
 
 2. Unpack the downloaded archive:
@@ -160,7 +160,7 @@ Steps:
 6. Reboot your machine.
 
 ??? info "How to reproduce an Intel TDX Module binary?"
-    Every [Intel TDX Module release](https://github.com/intel/tdx-module/releases) comes with corresponding build instructions.
+    Every [Intel TDX Module release](https://github.com/intel/confidential-computing.tdx.tdx-module/releases) comes with corresponding build instructions.
     Please follow these build instructions.
 
 ??? info "How to run an Intel TDX Module build from source?"

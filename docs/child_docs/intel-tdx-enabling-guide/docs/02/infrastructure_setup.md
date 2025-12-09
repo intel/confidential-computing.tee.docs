@@ -243,7 +243,7 @@ In the next subsections, we describe the following variants of direct registrati
 Requirements of this method:
 
 - Platform to be registered needs Internet access during the registration procedure.
-- The [*Multi-package Registration Agent (MPA)*](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/tools/SGXPlatformRegistration) — a tool to automatically perform registration on boot.
+- The [*Multi-package Registration Agent (MPA)*](https://github.com/intel/confidential-computing.tee.dcap/tree/main/tools/SGXPlatformRegistration) — a tool to automatically perform registration on boot.
 
 The basic flow of this registration method:
 
@@ -326,7 +326,7 @@ Detailed steps to use this registration method:
 ??? info "How to change the configuration of the MPA?"
 
     If you need to make changes to the MPA configuration (for example, increase log level or manually add a proxy), edit the configuration file located at `/etc/mpa_registration.conf`.
-    Information on settings in this MPA configuration file can be found in the MPA's [readme](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/tools/SGXPlatformRegistration#optional-configuration-file-in-linux) on GitHub.
+    Information on settings in this MPA configuration file can be found in the MPA's [readme](https://github.com/intel/confidential-computing.tee.dcap/tree/main/tools/SGXPlatformRegistration#optional-configuration-file-in-linux) on GitHub.
 
 
 ##### On-/offline, manual, single platform Direct Registration
@@ -340,7 +340,7 @@ Requirements of this method:
         This option is usable in an air-gapped environment.
         The platform with Internet access does not need to support Intel TDX.
 
-- The [PCK Cert ID Retrieval Tool](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/tools/PCKRetrievalTool) (PCKCIDRT) — a tool to support the retrieval of the PM and other platform information.
+- The [PCK Cert ID Retrieval Tool](https://github.com/intel/confidential-computing.tee.dcap/tree/main/tools/PCKRetrievalTool) (PCKCIDRT) — a tool to support the retrieval of the PM and other platform information.
 
 The basic flow of this registration method:
 
@@ -488,7 +488,7 @@ Detailed steps to use this registration method:
     If not explicitly defined via the `-f` flag, the output file is called `pckid_retrieval.csv`.
     We suggest to use the hostname as file name to later identify the machine to which the file belongs.
     The comma-delimited file content includes the PM and other platform data.
-    For more about the included data, see our [PCKCIDRT README on GitHub](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/tools/PCKRetrievalTool).
+    For more about the included data, see our [PCKCIDRT README on GitHub](https://github.com/intel/confidential-computing.tee.dcap/tree/main/tools/PCKRetrievalTool).
 
     !!! Note
         Once the PCKCIDRT successfully retrieved the PM, it (by design) sets a bit in a UEFI variable telling the BIOS to not present the PM on subsequent boots.
@@ -598,7 +598,7 @@ In the next subsections, we describe the following variants of indirect registra
 Requirements of this method:
 
 - Platform to register needs access to a [PCCS](#provisioning-certificate-caching-service-pccs), which has Internet access.
-- The [PCK Cert ID Retrieval Tool](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/tools/PCKRetrievalTool) (PCKCIDRT) — a tool to support the retrieval of the PM and other platform information.
+- The [PCK Cert ID Retrieval Tool](https://github.com/intel/confidential-computing.tee.dcap/tree/main/tools/PCKRetrievalTool) (PCKCIDRT) — a tool to support the retrieval of the PM and other platform information.
 
 The basic flow of this registration method:
 
@@ -683,7 +683,7 @@ Detailed steps to use this registration method:
         As mentioned in the PCCS setup instructions, a self-signed SSL certificate should only be used for testing.
         In a production environment, a trusted SSL certificate from a known certificate authority should be used.
 
-    For more information on this use and other command line options, see the PCKCIDRT help command (i.e., `-h`) or the [PCKCIDRT's GitHub page](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/tools/PCKRetrievalTool).
+    For more information on this use and other command line options, see the PCKCIDRT help command (i.e., `-h`) or the [PCKCIDRT's GitHub page](https://github.com/intel/confidential-computing.tee.dcap/tree/main/tools/PCKRetrievalTool).
 
 
 ##### On-/offline, manual, multi platform, PCCS-based Indirect Registration
@@ -699,9 +699,9 @@ Requirements of this method:
         The platform with Internet access does not need to support Intel TDX.
 
 - A subscription key for the [Intel PCS](https://api.portal.trustedservices.intel.com/provisioning-certification)
-- The [PCK Cert ID Retrieval Tool](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/tools/PCKRetrievalTool) (PCKCIDRT) — a tool to support the retrieval of the PM and other platform information.
+- The [PCK Cert ID Retrieval Tool](https://github.com/intel/confidential-computing.tee.dcap/tree/main/tools/PCKRetrievalTool) (PCKCIDRT) — a tool to support the retrieval of the PM and other platform information.
 - The [PCCS Admin Tool](https://github.com/intel/confidential-computing.tee.dcap.pccs/tree/main/PccsAdminTool) — a tool to facilitate manual retrieval of platform information from PCCS (if PCK Cert ID Retrieval Tool inserted it there) and insertion of registration collateral into PCCS.
-- The [PCS Client Tool](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/tools/PcsClientTool) — a tool to facilitate registration collateral parsing and manual REST API communication with `Intel® SGX and Intel® TDX Provisioning Certification Service` for flows where PCCS is not present (or does not have a direct Internet connectivity).
+- The [PCS Client Tool](https://github.com/intel/confidential-computing.tee.dcap/tree/main/tools/PcsClientTool) — a tool to facilitate registration collateral parsing and manual REST API communication with `Intel® SGX and Intel® TDX Provisioning Certification Service` for flows where PCCS is not present (or does not have a direct Internet connectivity).
     The tool provides helper functionality for Indirect Registration, PCK Certificate retrieval, and verification collateral retrieval especially in multi-platform environments.
 
 The basic flow of this registration method:
@@ -872,8 +872,8 @@ Requirements of this method:
         This option is usable in an air-gapped environment.
         The platform with Internet access does not need to support Intel TDX.
 
-- The [PCK Cert ID Retrieval Tool](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/tools/PCKRetrievalTool) (PCKCIDRT) — a tool to support the retrieval of the PM and other platform information.
-- The [PCS Client Tool](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/tools/PcsClientTool) — a tool to facilitate registration collateral parsing and manual REST API communication with `Intel® SGX and Intel® TDX Provisioning Certification Service` for flows where PCCS is not present (or does not have a direct Internet connectivity).
+- The [PCK Cert ID Retrieval Tool](https://github.com/intel/confidential-computing.tee.dcap/tree/main/tools/PCKRetrievalTool) (PCKCIDRT) — a tool to support the retrieval of the PM and other platform information.
+- The [PCS Client Tool](https://github.com/intel/confidential-computing.tee.dcap/tree/main/tools/PcsClientTool) — a tool to facilitate registration collateral parsing and manual REST API communication with `Intel® SGX and Intel® TDX Provisioning Certification Service` for flows where PCCS is not present (or does not have a direct Internet connectivity).
     The tool provides helper functionality for Indirect Registration, PCK Certificate retrieval, and verification collateral retrieval especially in multi-platform environments.
 
 The basic flow of this registration method:
@@ -986,7 +986,7 @@ Detailed steps to use this registration method:
     - `/tmp/`
 
     For example, to use the last location in the list, the cache file (`<qe_id>_<pce_id>`) must be present inside `/tmp/.dcap-qcnl`.
-    See the [sgx_default_qcnl.conf](https://github.com/intel/SGXDataCenterAttestationPrimitives/blob/727013d98b7ea9187fe4b8aee4750ec614d0942f/QuoteGeneration/qcnl/linux/sgx_default_qcnl.conf#L45) file for more information.
+    See the [sgx_default_qcnl.conf](https://github.com/intel/confidential-computing.tee.dcap/blob/727013d98b7ea9187fe4b8aee4750ec614d0942f/QuoteGeneration/qcnl/linux/sgx_default_qcnl.conf#L45) file for more information.
 
     !!! Note
         To use `$HOME`, you have to use the home directory of the user executing the QGS.
@@ -1069,7 +1069,7 @@ For TD Quote Verification, multiple alternatives exist:
 - [Intel® Trust Authority](https://www.intel.com/content/www/us/en/security/trust-authority.html) is a SaaS offering containing TD Quote Verification capabilities consistent across on-prem, hybrid, multi-cloud, and edge deployments.
 - Some CSPs offer a TD Quote Verification service, e.g., [Microsoft Azure Attestation](https://learn.microsoft.com/en-us/azure/attestation/overview).
 - Intel provides an open-source, Docker-based Quote Verification Service (QVS) with a minimal signing service [via GitHub](https://github.com/intel/SGX-TDX-DCAP-QuoteVerificationService).
-- Intel provides a Quote Verification library [via GitHub](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/main/QuoteVerification) along with [documentation](https://download.01.org/intel-sgx/latest/dcap-latest/linux/docs/SGX_DCAP_Caching_Service_Design_Guide.pdf) that can be used as a foundation to build your own TD Quote Verification service.
+- Intel provides a Quote Verification library [via GitHub](https://github.com/intel/confidential-computing.tee.dcap/tree/main/QuoteVerification) along with [documentation](https://download.01.org/intel-sgx/latest/dcap-latest/linux/docs/SGX_DCAP_Caching_Service_Design_Guide.pdf) that can be used as a foundation to build your own TD Quote Verification service.
 
 
 ### TCB-Recovery (TCB-R)

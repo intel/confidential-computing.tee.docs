@@ -188,7 +188,7 @@ In this section, we explore how to deploy attestation components that ensure tha
 As an example, we show how to integrate different attestation services into the KBS, specifically:
 
 - [Intel® Trust Authority](https://www.intel.com/content/www/us/en/security/trust-authority.html)
-- [Intel® DCAP-based attestation service](https://github.com/intel/SGXDataCenterAttestationPrimitives)
+- [Intel® DCAP-based attestation service](https://github.com/intel/confidential-computing.tee.dcap)
 
 Steps:
 
