@@ -57,4 +57,8 @@ Detailed instructions on how to contribute, including guidelines for submitting 
 
     This guide provides information on the DCAP platform software and tools that support multi-package registration and a brief overview of the multi-package boot flows and components.
 
+- [:octicons-arrow-right-24: **Design Guide for Intel® SGX and Intel® TDX Provisioning Certificate Caching Service (PCCS)**](intel-sgx-tdx-pccs/01/introduction/index.html)
+
+    This design guide provides the following details about the PCCS: software architecture, API specifications, database schema, and cache management flows necessary to support third-party attestation.
+
 </div>

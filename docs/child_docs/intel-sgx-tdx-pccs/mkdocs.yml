@@ -1,0 +1,19 @@
+INHERIT: ../../mkdocs_base.yml
+
+site_name: Design Guide for Intel® SGX and Intel® TDX Provisioning Certificate Caching Service (PCCS)
+
+edit_uri: edit/main/docs/child_docs/intel-sgx-tdx-pccs/docs/
+watch:
+  - includes
+nav:
+  - Introduction: 01/introduction.md
+  - Overview: 02/overview.md
+  - API Specification for PCCS: 03/api_specification_for_pccs.md
+  - Database: 04/database.md
+  - Cache Fill Modes: 05/cache_fill_modes.md
+  - Configuration File: 06/configuration_file.md
+  - PCCS Admin Tool: 07/pccs_admin_tool.md
+  - Cache Management Flows: 08/cache_management_flows.md
+  - "Appendix A: PCS Client Tool": 09/pcs_client_tool.md
+not_in_nav: |
+  misc/notices_and_disclaimers.md

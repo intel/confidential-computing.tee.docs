@@ -10,4 +10,4 @@ COPY requirements.txt /docs/requirements.txt
 # Install additional MkDocs plugins
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["/sbin/tini", "--", "mkdocs", "serve", "--dev-addr=0.0.0.0:8000"]
+ENTRYPOINT ["/sbin/tini", "--", "mkdocs", "serve", "--dev-addr=0.0.0.0:8000", "--livereload"]

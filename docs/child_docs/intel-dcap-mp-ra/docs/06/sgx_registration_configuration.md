@@ -103,5 +103,5 @@ This structure links the registration authority service URL with the signed `REG
 |---------------------------|-------|---------------|--------------------|
 | `Header`                  | 32    | Mix           | GUID: `212FE183-6B1A-42A1-A7A9-DA3AB6B7BD02` Version: 1 |
 | `URL_SIZE`                | 2     | LE Integer    | Number of bytes in the URL. |
-| `URL`                     | 256   | Byte Array    | ASCII representation of the URL name.  Does not contain `\0` ``NULL`` terminator. |
+| `URL`                     | 256   | Byte Array    | ASCII representation of the URL name. Does not contain `\0` ``NULL`` terminator. |
 | `SgxRegistrationServerID` | `sizeof (SgxRegistrationServerID)` | Mix | Registration authority services’s RSA public keys and RSNAME |

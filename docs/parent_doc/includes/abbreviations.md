@@ -8,9 +8,11 @@ SPDX-License-Identifier: CC-BY-4.0
 *[AESM]: Architectural Enclave Service Manager
 *[CA]: Certificate Authority
 *[CoCo]: Confidential Containers
+*[CLI]: Command-Line Interface
+*[CDP]: CRL Distribution Points - an extension in X.509 v3 certificate (OID `2.5.29.31`)
 *[CSP]: Cloud Service Provider
 *[CSPs]: Cloud Service Providers
-*[DCAP]: Datacenter Attestation Primitives
+*[DCAP]: Intel® SGX and Intel® TDX Data Center Attestation Primitives
 *[DIMM]: Dual Inline Memory Module
 *[DIMMs]: Dual Inline Memory Modules
 *[EPT]: Extended Page Table
@@ -22,7 +24,7 @@ SPDX-License-Identifier: CC-BY-4.0
 *[Intel TME-MK]: Intel® Total Memory Encryption – Multi-Key
 *[Intel TDX]: Intel® Trust Domain Extensions
 *[IPU]: Intel Platform Update
-*[IRS]: Intel® SGX and Intel® TDX Registration Service for Scalable Platforms
+*[IRS]: Intel® SGX and Intel® TDX Registration Service
 *[ISV]: Independent Software Vendor
 *[KBS]: Key Broker Service
 *[MPA]: Multi-package Registration Agent
@@ -31,7 +33,8 @@ SPDX-License-Identifier: CC-BY-4.0
 *[PCE]: Provisioning Certification Enclave
 *[PCK]: Provisioning Certification Key
 *[PCKCIDRT]: PCK Cert ID Retrieval Tool
-*[PCS]: Intel® Provisioning Certification Service for ECDSA Attestation
+*[PCS]: Intel® SGX and Intel® TDX Provisioning Certification Service
+*[PCCS]: Provisioning Certificate Caching Service
 *[PM]: Platform Manifest
 *[PPID]: Platform Provisioning ID
 *[PRID]: Provisioning Registration ID
