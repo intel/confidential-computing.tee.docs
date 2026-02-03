@@ -71,11 +71,13 @@ To resolve the issue, try the following procedure:
     sudo systemctl restart containerd
     ```
 
-5. Re-deploy Confidential Containers-related runtime classes using simplified commands based on [install Confidential Containers Operator](../02/infrastructure_setup.md#install-confidential-containers-operator):
+5. Re-deploy Confidential Containers-related runtime classes using simplified commands based on the [install Confidential Containers instruction](../02/infrastructure_setup.md#install-confidential-containers):
 
     ``` { .bash }
-    kubectl delete -k "github.com/confidential-containers/operator/config/samples/ccruntime/default?ref=$OPERATOR_RELEASE_VERSION"
-    kubectl apply -k "github.com/confidential-containers/operator/config/samples/ccruntime/default?ref=$OPERATOR_RELEASE_VERSION"
+    helm uninstall coco --namespace coco-system
+    helm install coco oci://ghcr.io/confidential-containers/charts/confidential-containers \
+       --namespace coco-system \
+       --create-namespace
     ```
 
 6. Re-deploy your pod:
