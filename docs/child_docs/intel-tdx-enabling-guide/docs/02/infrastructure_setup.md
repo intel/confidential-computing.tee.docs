@@ -534,7 +534,7 @@ Detailed steps to use this registration method:
 
         ``` { .text }
         curl -i \
-        --data-binary @<hostname>-pm.bin \
+        --data-binary @host_$(hostnamectl --static)_pm.bin \
         -X POST "https://api.trustedservices.intel.com/sgx/registration/v1/platform" \
         -H "Content-Type: application/octet-stream"
         ```
@@ -543,7 +543,7 @@ Detailed steps to use this registration method:
 
         ``` { .text }
         curl -i \
-        --data-binary @<hostname>-pm.bin \
+        --data-binary @host_$(hostnamectl --static)_pm.bin \
         -X POST "https://api.trustedservices.intel.com/sgx/registration/v1/platform" \
         -H "Content-Type: application/octet-stream"
         ```
@@ -551,7 +551,7 @@ Detailed steps to use this registration method:
 
         ``` { .text }
         curl -i \
-        --data-binary @<hostname>-pm.bin \
+        --data-binary @host_$(hostnamectl --static)_pm.bin \
         -X POST "https://api.trustedservices.intel.com/sgx/registration/v1/platform" \
         -H "Content-Type: application/octet-stream"
         ```
