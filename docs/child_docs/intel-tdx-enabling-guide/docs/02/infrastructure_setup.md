@@ -347,10 +347,15 @@ The basic flow of this registration method:
 1. On the host OS of platform to register, deploy the PCKCIDRT.
 2. On the host OS of platform to register, use the PCKCIDRT to gather the PM and other platform information into a single file.
 3. On the host OS of platform to register, extract the PM from the generated file.
-4. Dependent on the used option of this method:
+4. Step depends on whether the platform to register is online or offline:
 
-    1. Online option: nothing needs to be done.
-    2. Offline option: transfer the PM to the platform with Internet access.
+    === "Online option"
+
+        Nothing needs to be done.
+
+    === "Offline option"
+
+        Transfer the PM to the platform with Internet access.
 
     Independent of the used option, we call the platform with Internet access *Registration Platform* in the following.
 
@@ -520,41 +525,80 @@ Detailed steps to use this registration method:
         sudo bash -c "csvtool col 6 host_$(hostnamectl --static).csv | xxd -r -p > host_$(hostnamectl --static)_pm.bin"
         ```
 
-4. Dependent on the used option of this method:
+4. Step depends on whether the platform to register is online or offline:
 
-    1. Online option: nothing needs to be done.
-    2. Offline option: use any out-of-band mechanism to copy the `<hostname>-pm.bin` file from the platform to register to a platform with Internet access.
+    === "Online option"
+
+        Nothing needs to be done.
+
+    === "Offline option"
+
+        Use any out-of-band mechanism to copy the `host_<hostname>_pm.bin` file from the platform to register to a platform with Internet access.
 
     Independent of the used option, we call the platform with Internet access *Registration Platform* in the following.
 
 5. On the Registration Platform, send the PM to the [registration REST API endpoint of the IRS](https://api.portal.trustedservices.intel.com/content/documentation.html#register-platform).
-    As shown in the linked API documentation, this can be done with a simple `curl` command (after adjusting the hostname placeholder):
+    As shown in the linked API documentation, this can be done with a simple `curl` command:
 
-    === "CentOS Stream 9"
+    === "Online option"
 
-        ``` { .text }
-        curl -i \
-        --data-binary @<hostname>-pm.bin \
-        -X POST "https://api.trustedservices.intel.com/sgx/registration/v1/platform" \
-        -H "Content-Type: application/octet-stream"
-        ```
+        === "CentOS Stream 9"
 
-    === "Ubuntu 24.04"
+            ``` { .text }
+            curl -i \
+            --data-binary @host_$(hostnamectl --static)_pm.bin \
+            -X POST "https://api.trustedservices.intel.com/sgx/registration/v1/platform" \
+            -H "Content-Type: application/octet-stream"
+            ```
 
-        ``` { .text }
-        curl -i \
-        --data-binary @<hostname>-pm.bin \
-        -X POST "https://api.trustedservices.intel.com/sgx/registration/v1/platform" \
-        -H "Content-Type: application/octet-stream"
-        ```
-    === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
+        === "Ubuntu 24.04"
 
-        ``` { .text }
-        curl -i \
-        --data-binary @<hostname>-pm.bin \
-        -X POST "https://api.trustedservices.intel.com/sgx/registration/v1/platform" \
-        -H "Content-Type: application/octet-stream"
-        ```
+            ``` { .text }
+            curl -i \
+            --data-binary @host_$(hostnamectl --static)_pm.bin \
+            -X POST "https://api.trustedservices.intel.com/sgx/registration/v1/platform" \
+            -H "Content-Type: application/octet-stream"
+            ```
+        === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
+
+            ``` { .text }
+            curl -i \
+            --data-binary @host_$(hostnamectl --static)_pm.bin \
+            -X POST "https://api.trustedservices.intel.com/sgx/registration/v1/platform" \
+            -H "Content-Type: application/octet-stream"
+            ```
+
+    === "Offline option"
+
+        !!! Note
+
+            The following curl command contains the filename `host_<hostname>_pm.bin`, which has to be adjusted to the name of the file transferred in the former step.
+
+        === "CentOS Stream 9"
+
+            ``` { .text }
+            curl -i \
+            --data-binary @host_<hostname>_pm.bin \
+            -X POST "https://api.trustedservices.intel.com/sgx/registration/v1/platform" \
+            -H "Content-Type: application/octet-stream"
+            ```
+
+        === "Ubuntu 24.04"
+
+            ``` { .text }
+            curl -i \
+            --data-binary @host_<hostname>_pm.bin \
+            -X POST "https://api.trustedservices.intel.com/sgx/registration/v1/platform" \
+            -H "Content-Type: application/octet-stream"
+            ```
+        === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
+
+            ``` { .text }
+            curl -i \
+            --data-binary @host_<hostname>_pm.bin \
+            -X POST "https://api.trustedservices.intel.com/sgx/registration/v1/platform" \
+            -H "Content-Type: application/octet-stream"
+            ```
 
     If the registration is successful, the IRS will return a "HTTP/1.1 201 Created" reply, with the PPID of the registered platform as content.
     Sample response:
