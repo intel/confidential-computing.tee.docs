@@ -90,6 +90,102 @@
                     alert("Can't find disclaimer footer, please contact Intel")
                 }
             });
+
+            // Fix for IGHF + MkDocs Material navigation.instant compatibility
+            // Intercept same-page anchor clicks and handle them natively to avoid IGHF corruption
+            (function() {
+                // Intercept clicks on anchor links before MkDocs Material can handle them
+                document.addEventListener('click', function(e) {
+                    // Ignore non-primary clicks (middle-click, right-click)
+                    if (e.button !== 0) return;
+
+                    // Ignore modified clicks (Ctrl/Cmd/Alt/Shift) - let browser handle (new tab, etc.)
+                    if (e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return;
+
+                    // Find the closest anchor element
+                    const link = e.target.closest('a');
+                    if (!link) return;
+
+                    // Respect target="_blank" and download attributes - let browser handle normally
+                    if (link.target === '_blank' || link.hasAttribute('download')) return;
+
+                    const href = link.getAttribute('href');
+                    if (!href) return;
+
+                    // Check if this is a same-page anchor link using robust URL parsing
+                    const currentOrigin = window.location.origin;
+                    const currentPathname = window.location.pathname.replace(/\/+$/, '');
+                    let isSamePageAnchor = false;
+                    let anchorId = null;
+
+                    if (href.startsWith('#')) {
+                        // Pure fragment link always refers to the current page
+                        isSamePageAnchor = true;
+                        anchorId = decodeURIComponent(href.slice(1));
+                    } else {
+                        try {
+                            const url = new URL(href, window.location.href);
+                            const targetPathname = url.pathname.replace(/\/+$/, '');
+                            // Same-page if origin and (normalized) pathname match and a hash is present
+                            if (url.origin === currentOrigin && targetPathname === currentPathname && url.hash) {
+                                isSamePageAnchor = true;
+                                anchorId = decodeURIComponent(url.hash.slice(1));
+                            }
+                        } catch (err) {
+                            // If href is not a valid URL (e.g., mailto:), treat as not a same-page anchor
+                        }
+                    }
+
+                    if (isSamePageAnchor) {
+                        // If we somehow have no anchorId, fall back to default behavior
+                        if (anchorId == null) return;
+
+                        // Prevent MkDocs Material's instant navigation from handling this
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+
+                        // Scroll to the anchor element, accounting for sticky header
+                        const target = document.getElementById(anchorId);
+                        if (target) {
+                            // Get sticky header height (MkDocs Material uses .md-header)
+                            let headerOffset = 0;
+                            const header = document.querySelector('.md-header');
+                            if (header) {
+                                const headerStyle = getComputedStyle(header);
+                                if (headerStyle.position === 'sticky' || headerStyle.position === 'fixed') {
+                                    headerOffset = header.getBoundingClientRect().height;
+                                }
+                            }
+                            // Add small padding for visual comfort
+                            headerOffset += 16;
+
+                            // Calculate target position accounting for header
+                            const targetTop = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+
+                            // Use instant scroll to avoid race conditions with focus()
+                            window.scrollTo({
+                                top: targetTop,
+                                behavior: 'auto'
+                            });
+
+                            // Update URL after scroll completes
+                            history.pushState(null, '', '#' + anchorId);
+
+                            // Move focus to the target for keyboard/screen-reader users
+                            if (typeof target.focus === 'function') {
+                                if (!target.hasAttribute('tabindex')) {
+                                    target.setAttribute('tabindex', '-1');
+                                }
+                                // Use preventScroll to avoid double-scrolling from focus
+                                target.focus({ preventScroll: true });
+                            }
+                        } else {
+                            // Target not found, just update URL
+                            history.pushState(null, '', '#' + anchorId);
+                        }
+                    }
+                }, true);  // Use capture phase to intercept before MkDocs Material
+            })();
         </script>
     {% endif %}
 {% endblock %}
