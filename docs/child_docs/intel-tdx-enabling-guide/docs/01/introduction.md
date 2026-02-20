@@ -61,13 +61,13 @@ This guide encompasses the entire workflow of an Intel TDX deployment as illustr
 
 ``` mermaid
 graph LR
-    %%{init:{'flowchart':{'diagramPadding':0}}}%%
-    A("<p style='width:100px;color:#36464e'>Infrastructure\nSetup</p>")
-    B("<p style='width:100px;color:#36464e'>Hardware\nSelection</p>")
-    C("<p style='width:100px;color:#36464e'>Hardware\nSetup</p>")
-    D("<p style='width:100px;color:#36464e'>Host OS\nSetup</p>")
-    E("<p style='width:100px;color:#36464e'>Guest OS\nSetup</p>")
-    F("<p style='width:100px;color:#36464e'>Trust Domain\nat Runtime</p>")
+    %%{init:{'themeVariables':{'fontSize':'20px'},'flowchart':{'diagramPadding':0,'padding':0}}}%%
+    A("<p style='width:120px'>Infrastructure<br/>Setup</p>")
+    B("<p style='width:120px'>Hardware<br/>Selection</p>")
+    C("<p style='width:120px'>Hardware<br/>Setup</p>")
+    D("<p style='width:120px'>Host OS<br/>Setup</p>")
+    E("<p style='width:120px'>Guest OS<br/>Setup</p>")
+    F("<p style='width:120px'>Trust Domain<br/>at Runtime</p>")
     A:::boxes --> B
     B:::boxes --> C
     C:::boxes --> D
@@ -84,13 +84,13 @@ Note these examples are just for illustrative purposes and the situation might b
 
     ``` mermaid
     graph LR
-        %%{init:{'flowchart':{'diagramPadding':0}}}%%
-        A("<p style='width:100px;color:#36464e'>Infrastructure\nSetup</p>")
-        B("<p style='width:100px;color:#36464e'>Hardware\nSelection</p>")
-        C("<p style='width:100px;color:#36464e'>Hardware\nSetup</p>")
-        D("<p style='width:100px;color:#36464e'>Host OS\nSetup</p>")
-        E("<p style='width:100px;color:#36464e'>Guest OS\nSetup</p>")
-        F("<p style='width:100px;color:#36464e'>Trust Domain\nat Runtime</p>")
+        %%{init:{'themeVariables':{'fontSize':'20px'},'flowchart':{'diagramPadding':0,'padding':0}}}%%
+        A("<p style='width:120px'>Infrastructure<br/>Setup</p>")
+        B("<p style='width:120px'>Hardware<br/>Selection</p>")
+        C("<p style='width:120px'>Hardware<br/>Setup</p>")
+        D("<p style='width:120px'>Host OS<br/>Setup</p>")
+        E("<p style='width:120px'>Guest OS<br/>Setup</p>")
+        F("<p style='width:120px'>Trust Domain<br/>at Runtime</p>")
         A:::boxProv --> B
         B:::boxProv --> C
         C:::boxProv --> D
@@ -102,7 +102,7 @@ Note these examples are just for illustrative purposes and the situation might b
 
     ``` mermaid
     graph LR
-        %%{init:{'flowchart':{'diagramPadding':0}}}%%
+        %%{init:{'flowchart':{'diagramPadding':0,'padding':6}}}%%
         A(" "):::boxProv --- |Provider| B
         B(" "):::boxUser --- |User| C(" "):::hidden
 
@@ -117,13 +117,13 @@ Note these examples are just for illustrative purposes and the situation might b
 
     ``` mermaid
     graph LR
-        %%{init:{'flowchart':{'diagramPadding':0}}}%%
-        A("<p style='width:100px;color:#36464e'>Infrastructure\nSetup</p>")
-        B("<p style='width:100px;color:#36464e'>Hardware\nSelection</p>")
-        C("<p style='width:100px;color:#36464e'>Hardware\nSetup</p>")
-        D("<p style='width:100px;color:#36464e'>Host OS\nSetup</p>")
-        E("<p style='width:100px;color:#36464e'>Guest OS\nSetup</p>")
-        F("<p style='width:100px;color:#36464e'>Trust Domain\nat Runtime</p>")
+        %%{init:{'themeVariables':{'fontSize':'20px'},'flowchart':{'diagramPadding':0,'padding':0}}}%%
+        A("<p style='width:120px'>Infrastructure<br/>Setup</p>")
+        B("<p style='width:120px'>Hardware<br/>Selection</p>")
+        C("<p style='width:120px'>Hardware<br/>Setup</p>")
+        D("<p style='width:120px'>Host OS<br/>Setup</p>")
+        E("<p style='width:120px'>Guest OS<br/>Setup</p>")
+        F("<p style='width:120px'>Trust Domain<br/>at Runtime</p>")
         A:::boxProv --> B
         B:::boxProv --> C
         C:::boxProv --> D
@@ -135,7 +135,7 @@ Note these examples are just for illustrative purposes and the situation might b
 
     ``` mermaid
     graph LR
-        %%{init:{'flowchart':{'diagramPadding':0}}}%%
+        %%{init:{'flowchart':{'diagramPadding':0,'padding':6}}}%%
         A(" "):::boxProv --- |Provider| B
         B(" "):::boxUser --- |User| C(" "):::hidden
 
@@ -150,13 +150,13 @@ Note these examples are just for illustrative purposes and the situation might b
 
     ``` mermaid
     graph LR
-        %%{init:{'flowchart':{'diagramPadding':0}}}%%
-        A("<p style='width:100px;color:#36464e'>Infrastructure\nSetup</p>")
-        B("<p style='width:100px;color:#36464e'>Hardware\nSelection</p>")
-        C("<p style='width:100px;color:#36464e'>Hardware\nSetup</p>")
-        D("<p style='width:100px;color:#36464e'>Host OS\nSetup</p>")
-        E("<p style='width:100px;color:#36464e'>Guest OS\nSetup</p>")
-        F("<p style='width:100px;color:#36464e'>Trust Domain\nat Runtime</p>")
+        %%{init:{'themeVariables':{'fontSize':'20px'},'flowchart':{'diagramPadding':0,'padding':0}}}%%
+        A("<p style='width:120px'>Infrastructure<br/>Setup</p>")
+        B("<p style='width:120px'>Hardware<br/>Selection</p>")
+        C("<p style='width:120px'>Hardware<br/>Setup</p>")
+        D("<p style='width:120px'>Host OS<br/>Setup</p>")
+        E("<p style='width:120px'>Guest OS<br/>Setup</p>")
+        F("<p style='width:120px'>Trust Domain<br/>at Runtime</p>")
         A:::boxProv --> B
         B:::boxProv --> C
         C:::boxProv --> D
@@ -168,7 +168,7 @@ Note these examples are just for illustrative purposes and the situation might b
 
     ``` mermaid
     graph LR
-        %%{init:{'flowchart':{'diagramPadding':0}}}%%
+        %%{init:{'flowchart':{'diagramPadding':0,'padding':6}}}%%
         A(" "):::boxProv --- |Provider| B
         B(" "):::boxUser --- |User| C(" "):::hidden
 
