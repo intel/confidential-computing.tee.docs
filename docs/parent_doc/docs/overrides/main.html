@@ -94,6 +94,8 @@
             // Fix for IGHF + MkDocs Material navigation.instant compatibility
             // Intercept same-page anchor clicks and handle them natively to avoid IGHF corruption
             (function() {
+                const FORM_TAGS = new Set(['INPUT', 'SELECT', 'TEXTAREA', 'BUTTON']);
+
                 // Intercept clicks on anchor links before MkDocs Material can handle them
                 document.addEventListener('click', function(e) {
                     // Ignore non-primary clicks (middle-click, right-click)
@@ -140,12 +142,16 @@
                         // If we somehow have no anchorId, fall back to default behavior
                         if (anchorId == null) return;
 
+                        // Don't intercept links whose target is a form control (e.g. the radio inputs that back MkDocs Material tabbed content via content.tabs.link).
+                        // Those controls are activated by the browser's native label-click mechanism; stealing the click breaks tab switching.
+                        const target = document.getElementById(anchorId);
+                        if (target && FORM_TAGS.has(target.tagName)) return;
+
                         // Prevent MkDocs Material's instant navigation from handling this
                         e.preventDefault();
                         e.stopImmediatePropagation();
 
                         // Scroll to the anchor element, accounting for sticky header
-                        const target = document.getElementById(anchorId);
                         if (target) {
                             // Get sticky header height (MkDocs Material uses .md-header)
                             let headerOffset = 0;
