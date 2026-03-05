@@ -20,11 +20,6 @@ coreLibStyle {
     BorderColor Black
     FontSize 20
 }
-aesmPluginStyle {
-    BackgroundColor #F7E7B2
-    BorderColor Black
-    FontSize 20
-}
 aeLibStyle {
     BackgroundColor #D2ECD2
     BorderColor Black
@@ -35,12 +30,12 @@ aeLibStyle {
 ' === Top Layer ===
 together {
   rectangle "sgx-ra-service" as sgx_ra_service <<topToolStyle>>
+  rectangle "sgx-aesm-service" as sgx_aesm_service <<topToolStyle>>
   rectangle "tee-appraisal-tool" as tee_appraisal_tool <<topToolStyle>>
   rectangle "tdx-qgs" as tdx_qgs <<topToolStyle>>
   rectangle "sgx-pck-id-retrieval-tool" as sgx_pck_id_ret_tool <<topToolStyle>>
 
 }
-rectangle "tdx-guest-app" as tdx_app <<tdxAppStyle>>
 
 ' === Core Libraries Layer ===
 rectangle "libsgx-dcap-default-qpl" as lib_dcap_default_qpl <<coreLibStyle>>
@@ -49,36 +44,30 @@ rectangle "libsgx-headers" as lib_headers <<coreLibStyle>>
 rectangle "libsgx-pce-logic" as lib_pce_logic <<coreLibStyle>>
 rectangle "libsgx-urts" as lib_urts <<coreLibStyle>>
 rectangle "libsgx-enclave-common" as lib_enclave_common <<coreLibStyle>>
-rectangle "libsgx-launch" as lib_launch <<coreLibStyle>>
 rectangle "libsgx-ra-uefi" as lib_ra_uefi <<coreLibStyle>>
 rectangle "libsgx-ra-network" as lib_ra_network <<coreLibStyle>>
 rectangle "libtdx-attest" as libtdx_attest <<coreLibStyle>>
 rectangle "libsgx-tdx-logic" as libsgx_tdx_logic <<coreLibStyle>>
 
-' === AESM Plugins Layer ===
-rectangle "libsgx-aesm-launch-plugin" as plugin_launch <<aesmPluginStyle>>
-rectangle "sgx-aesm-service" as sgx_aesm_service <<aesmPluginStyle>>
-
 ' === AE Libraries Layer ===
-rectangle "libsgx-ae-pce" as ae_pce <<aeLibStyle>>
-rectangle "libsgx-ae-le" as ae_le <<aeLibStyle>>
-rectangle "libsgx-ae-id-enclave" as ae_id <<aeLibStyle>>
-rectangle "libsgx-ae-tdqe" as lib_ae_tdqe <<aeLibStyle>>
+together {
+  rectangle "libsgx-ae-pce" as ae_pce <<aeLibStyle>>
+  rectangle "libsgx-ae-id-enclave" as ae_id <<aeLibStyle>>
+  rectangle "libsgx-ae-tdqe" as lib_ae_tdqe <<aeLibStyle>>
+  rectangle "tdx-guest-app" as tdx_app <<tdxAppStyle>>
+}
 
 ' === Connections ===
 ' Hidden, just for style
-sgx_aesm_service --[hidden]> ae_le
-sgx_aesm_service --[hidden]> ae_pce
-sgx_aesm_service --[hidden]> lib_ae_tdqe
-sgx_aesm_service --[hidden]> ae_id
-ae_le --[hidden]> lib_dcap_default_qpl
-ae_le --[hidden]> sgx_dcap_pccs
-ae_le --[hidden]> lib_headers
+lib_enclave_common --[hidden]> ae_pce
+lib_enclave_common --[hidden]> lib_ae_tdqe
+lib_enclave_common --[hidden]> ae_id
 lib_ra_uefi --[hidden]> lib_ra_network
+ae_id --[hidden]> lib_dcap_default_qpl
+ae_id --[hidden]> sgx_dcap_pccs
+ae_id --[hidden]> lib_headers
 
 ' Recommended dependencies
-lib_enclave_common ..> lib_launch
-lib_launch ..> plugin_launch
 sgx_pck_id_ret_tool ..> lib_urts
 sgx_pck_id_ret_tool ..> lib_ra_uefi
 sgx_pck_id_ret_tool ..> ae_pce
@@ -89,8 +78,6 @@ tdx_app --> libtdx_attest
 lib_pce_logic --> lib_urts
 lib_pce_logic --> ae_pce
 lib_urts --> lib_enclave_common
-plugin_launch --> sgx_aesm_service
-plugin_launch --> ae_le
 sgx_ra_service --> lib_ra_uefi
 sgx_ra_service --> lib_ra_network
 tdx_qgs --> libsgx_tdx_logic
@@ -98,6 +85,7 @@ libsgx_tdx_logic --> lib_ae_tdqe
 libsgx_tdx_logic --> lib_pce_logic
 libsgx_tdx_logic --> ae_id
 libsgx_tdx_logic --> lib_urts
+libsgx_tdx_logic --> lib_dcap_default_qpl
 
 ' === Legend ===
 skinparam legendBackgroundColor #FFFFFF
@@ -106,7 +94,7 @@ skinparam legendFontSize 20
 legend bottom
 
 <#FFFFFF,#FFFFFF>|<#EEEEEE>   | Top-level tools/services | <#ffba53ff>   | SGX Application |<#D6E9F8>   | Core DCAP Libraries |
-<#FFFFFF,#FFFFFF>|<#F7E7B2>   | AESM Plugins | <#D2ECD2>   | AE  Libraries |
+<#FFFFFF,#FFFFFF>|<#FFFFFF>   | |<#D2ECD2>   | AE  Libraries |
 <#FFFFFF,#FFFFFF>|<size:55><U+2192></size> | \nHard dependency |<size:55><U+21E2></size> | \nRecommended dependency |<size:55><U+2911></size> | \nOptional usage |
 endlegend
 @enduml

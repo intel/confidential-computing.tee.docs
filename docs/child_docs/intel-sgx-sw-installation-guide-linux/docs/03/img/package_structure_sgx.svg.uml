@@ -44,46 +44,38 @@ together {
 rectangle "libsgx-dcap-default-qpl" as lib_dcap_default_qpl <<coreLibStyle>>
 rectangle "sgx-dcap-pccs" as sgx_dcap_pccs <<coreLibStyle>>
 rectangle "libsgx-headers" as lib_headers <<coreLibStyle>>
-together {
-  rectangle "libsgx-uae-service" as lib_uae_service <<coreLibStyle>>
-  rectangle "libsgx-dcap-ql" as lib_dcap_ql <<coreLibStyle>>
-  rectangle "libsgx-quote-ex" as lib_quote_ex <<coreLibStyle>>
-  rectangle "libsgx-dcap-quote-verify" as lib_dcap_quote_verify <<coreLibStyle>>
-}
+rectangle "libsgx-uae-service" as lib_uae_service <<coreLibStyle>>
+rectangle "libsgx-dcap-ql" as lib_dcap_ql <<coreLibStyle>>
+rectangle "libsgx-quote-ex" as lib_quote_ex <<coreLibStyle>>
+rectangle "libsgx-dcap-quote-verify" as lib_dcap_quote_verify <<coreLibStyle>>
 rectangle "libsgx-pce-logic" as lib_pce_logic <<coreLibStyle>>
 rectangle "libsgx-qe3-logic" as lib_qe3_logic <<coreLibStyle>>
-rectangle "   libsgx-urts   " as lib_urts <<coreLibStyle>>
+rectangle "libsgx-urts" as lib_urts <<coreLibStyle>>
 rectangle "libsgx-enclave-common" as lib_enclave_common <<coreLibStyle>>
-rectangle "libsgx-launch" as lib_launch <<coreLibStyle>>
-together {
-  rectangle "libsgx-ra-uefi" as lib_ra_uefi <<coreLibStyle>>
-  rectangle "libsgx-ra-network" as lib_ra_network <<coreLibStyle>>
-}
+rectangle "libsgx-ra-uefi" as lib_ra_uefi <<coreLibStyle>>
+rectangle "libsgx-ra-network" as lib_ra_network <<coreLibStyle>>
 
 ' === AESM Plugins Layer ===
 rectangle "libsgx-aesm-quote-ex-plugin" as plugin_quote_ex <<aesmPluginStyle>>
 rectangle "libsgx-aesm-ecdsa-plugin" as plugin_ecdsa <<aesmPluginStyle>>
 rectangle "libsgx-aesm-pce-plugin" as plugin_pce <<aesmPluginStyle>>
-rectangle "libsgx-aesm-launch-plugin" as plugin_launch <<aesmPluginStyle>>
 rectangle "sgx-aesm-service" as sgx_aesm_service <<aesmPluginStyle>>
 
 ' === AE Libraries Layer ===
 rectangle "libsgx-ae-pce" as ae_pce <<aeLibStyle>>
 rectangle "libsgx-ae-qe3" as ae_qe3 <<aeLibStyle>>
-rectangle "libsgx-ae-le" as ae_le <<aeLibStyle>>
 rectangle "libsgx-ae-id-enclave" as ae_id_enclave <<aeLibStyle>>
 rectangle "libsgx-ae-qve" as ae_qve <<aeLibStyle>>
 
 ' === Connections ===
 ' Hidden, just for style
-plugin_launch --[hidden]> ae_le
-plugin_launch --[hidden]> ae_qe3
-plugin_launch --[hidden]> ae_qve
-plugin_launch --[hidden]> ae_id_enclave
-plugin_launch --[hidden]> ae_pce
-ae_qve--[hidden]> lib_dcap_default_qpl
-ae_qve--[hidden]> sgx_dcap_pccs
-ae_qve--[hidden]> lib_headers
+lib_enclave_common --[hidden]> ae_qe3
+lib_enclave_common --[hidden]> ae_qve
+lib_enclave_common --[hidden]> ae_id_enclave
+lib_enclave_common --[hidden]> ae_pce
+ae_qve --[hidden]> lib_dcap_default_qpl
+ae_qve --[hidden]> sgx_dcap_pccs
+ae_qve --[hidden]> lib_headers
 
 ' May use
 sgx_app ~~> lib_dcap_ql
@@ -94,8 +86,6 @@ sgx_app ~~> lib_dcap_quote_verify
 lib_dcap_ql ..> lib_quote_ex
 lib_dcap_ql ..> lib_dcap_quote_verify
 lib_quote_ex ..> plugin_quote_ex
-lib_enclave_common ..> lib_launch
-lib_launch ..> plugin_launch
 lib_dcap_quote_verify ..> lib_urts
 lib_dcap_quote_verify ..> ae_qve
 sgx_pck_id_ret_tool ..> lib_urts
@@ -113,7 +103,6 @@ lib_qe3_logic --> lib_urts
 lib_qe3_logic --> ae_qe3
 lib_qe3_logic --> ae_id_enclave
 lib_urts --> lib_enclave_common
-lib_uae_service --> lib_launch
 lib_uae_service --> lib_quote_ex
 plugin_quote_ex --> plugin_ecdsa
 plugin_quote_ex --> sgx_aesm_service
@@ -122,8 +111,6 @@ plugin_ecdsa --> sgx_aesm_service
 plugin_pce --> sgx_aesm_service
 plugin_pce --> lib_pce_logic
 plugin_pce --> ae_pce
-plugin_launch --> sgx_aesm_service
-plugin_launch --> ae_le
 sgx_ra_service --> lib_ra_uefi
 sgx_ra_service --> lib_ra_network
 

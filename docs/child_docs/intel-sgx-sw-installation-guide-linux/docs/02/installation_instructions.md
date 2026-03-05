@@ -50,7 +50,6 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
     ??? info "Dependent packages automatically installed"
         Installing the primary Intel® SGX packages (`libsgx-quote-ex` and `libsgx-dcap-ql`) will also automatically install the following dependent packages required for SGX functionality:
 
-        - `libsgx-ae-le`
         - `libsgx-ae-pce`
         - `libsgx-ae-qe3`
         - `libsgx-ae-qve`
@@ -82,14 +81,14 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
         === "Debian 12"
             ```bash
             local_sum=$(sha256sum sgx_debian_local_repo.tgz | awk '{print $1}')
-            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.24.cfg | grep 'distro/Debian12/sgx_debian_local_repo.tgz' | awk '{print $1}')
+            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.25.cfg | grep 'distro/Debian12/sgx_debian_local_repo.tgz' | awk '{print $1}')
             if [[ "$local_sum" == "$remote_sum" ]]; then echo "Checksum matches"; else echo "Checksum mismatch!"; fi
             ```
 
         === "Debian 10"
             ```bash
             local_sum=$(sha256sum sgx_debian_local_repo.tgz | awk '{print $1}')
-            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.24.cfg | grep 'distro/Debian10/sgx_debian_local_repo.tgz' | awk '{print $1}')
+            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.25.cfg | grep 'distro/Debian10/sgx_debian_local_repo.tgz' | awk '{print $1}')
             if [[ "$local_sum" == "$remote_sum" ]]; then echo "Checksum matches"; else echo "Checksum mismatch!"; fi
             ```
 
@@ -153,14 +152,12 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
             ```bash
             sudo apt-get install \
                 libsgx-aesm-ecdsa-plugin-dbgsym \
-                libsgx-aesm-launch-plugin-dbgsym \
                 libsgx-aesm-pce-plugin-dbgsym \
                 libsgx-aesm-quote-ex-plugin-dbgsym \
                 libsgx-dcap-default-qpl-dbgsym \
                 libsgx-dcap-ql-dbgsym \
                 libsgx-dcap-quote-verify-dbgsym \
                 libsgx-enclave-common-dbgsym \
-                libsgx-launch-dbgsym \
                 libsgx-pce-logic-dbgsym \
                 libsgx-qe3-logic-dbgsym \
                 libsgx-quote-ex-dbgsym \
@@ -181,14 +178,12 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
             ```bash
             sudo apt-get install \
                 libsgx-aesm-ecdsa-plugin-dbgsym \
-                libsgx-aesm-launch-plugin-dbgsym \
                 libsgx-aesm-pce-plugin-dbgsym \
                 libsgx-aesm-quote-ex-plugin-dbgsym \
                 libsgx-dcap-default-qpl-dbgsym \
                 libsgx-dcap-ql-dbgsym \
                 libsgx-dcap-quote-verify-dbgsym \
                 libsgx-enclave-common-dbgsym \
-                libsgx-launch-dbgsym \
                 libsgx-pce-logic-dbgsym \
                 libsgx-qe3-logic-dbgsym \
                 libsgx-quote-ex-dbgsym \
@@ -226,7 +221,6 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
     ??? info "Dependent packages automatically installed"
         Installing the primary Intel® SGX packages (`libsgx-urts`, `libsgx-quote-ex`, and `libsgx-dcap-ql`) will also automatically install the following dependent packages required for SGX functionality:
 
-        - `libsgx-ae-le`
         - `libsgx-ae-pce`
         - `libsgx-ae-qe3`
         - `libsgx-ae-qve`
@@ -240,10 +234,22 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
 
     - Download the correct repository archive:
 
+        === "CentOS Stream 10"
+            ```bash
+            curl -fsSLO \
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/centos-stream10/sgx_rpm_local_repo.tgz
+            ```
+
         === "CentOS Stream 9"
             ```bash
             curl -fsSLO \
                 https://download.01.org/intel-sgx/latest/linux-latest/distro/centos-stream9/sgx_rpm_local_repo.tgz
+            ```
+
+        === "Red Hat Enterprise Linux 10.0"
+            ```bash
+            curl -fsSLO \
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/rhel10.0-server/sgx_rpm_local_repo.tgz
             ```
 
         === "Red Hat Enterprise Linux 9.4"
@@ -254,23 +260,49 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
 
     - Verify the downloaded repo file with the SHA value in this file:
 
+        === "CentOS Stream 10"
+            ```bash
+            local_sum=$(sha256sum sgx_rpm_local_repo.tgz | awk '{print $1}')
+            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.25.cfg | grep 'distro/centos-stream10/sgx_rpm_local_repo.tgz' | awk '{print $1}')
+            if [[ "$local_sum" == "$remote_sum" ]]; then echo "Checksum matches"; else echo "Checksum mismatch!"; fi
+            ```
+
         === "CentOS Stream 9"
             ```bash
             local_sum=$(sha256sum sgx_rpm_local_repo.tgz | awk '{print $1}')
-            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.24.cfg | grep 'distro/centos-stream9/sgx_rpm_local_repo.tgz' | awk '{print $1}')
+            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.25.cfg | grep 'distro/centos-stream9/sgx_rpm_local_repo.tgz' | awk '{print $1}')
+            if [[ "$local_sum" == "$remote_sum" ]]; then echo "Checksum matches"; else echo "Checksum mismatch!"; fi
+            ```
+
+        === "Red Hat Enterprise Linux 10.0"
+            ```bash
+            local_sum=$(sha256sum sgx_rpm_local_repo.tgz | awk '{print $1}')
+            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.25.cfg | grep 'distro/rhel10.0-server/sgx_rpm_local_repo.tgz' | awk '{print $1}')
             if [[ "$local_sum" == "$remote_sum" ]]; then echo "Checksum matches"; else echo "Checksum mismatch!"; fi
             ```
 
         === "Red Hat Enterprise Linux 9.4"
             ```bash
             local_sum=$(sha256sum sgx_rpm_local_repo.tgz | awk '{print $1}')
-            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.24.cfg | grep 'distro/rhel9.4-server/sgx_rpm_local_repo.tgz' | awk '{print $1}')
+            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.25.cfg | grep 'distro/rhel9.4-server/sgx_rpm_local_repo.tgz' | awk '{print $1}')
             if [[ "$local_sum" == "$remote_sum" ]]; then echo "Checksum matches"; else echo "Checksum mismatch!"; fi
             ```
 
     - Extract the repository archive to an appropriate folder, e.g., `/opt/intel`:
 
+        === "CentOS Stream 10"
+            ```bash
+            sudo mkdir -p /opt/intel
+            sudo tar xzf sgx_rpm_local_repo.tgz -C /opt/intel
+            ```
+
         === "CentOS Stream 9"
+            ```bash
+            sudo mkdir -p /opt/intel
+            sudo tar xzf sgx_rpm_local_repo.tgz -C /opt/intel
+            ```
+
+        === "Red Hat Enterprise Linux 10.0"
             ```bash
             sudo mkdir -p /opt/intel
             sudo tar xzf sgx_rpm_local_repo.tgz -C /opt/intel
@@ -284,7 +316,17 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
 
     - Add local repository to your system's list of package sources:
 
+        === "CentOS Stream 10"
+            ```bash
+            sudo dnf config-manager --add-repo file:///opt/intel/sgx_rpm_local_repo
+            ```
+
         === "CentOS Stream 9"
+            ```bash
+            sudo dnf config-manager --add-repo file:///opt/intel/sgx_rpm_local_repo
+            ```
+
+        === "Red Hat Enterprise Linux 10.0"
             ```bash
             sudo dnf config-manager --add-repo file:///opt/intel/sgx_rpm_local_repo
             ```
@@ -296,7 +338,19 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
 
     - Add the public key of the package repository to the list of trusted keys that are used by `dnf` to authenticate packages:
 
+        === "CentOS Stream 10"
+            ```bash
+            sudo rpm --import /opt/intel/sgx_rpm_local_repo/keys/intel-sgx.key
+            sudo dnf config-manager --save --setopt=*sgx_rpm_local_repo.gpgkey=file:///opt/intel/sgx_rpm_local_repo/keys/intel-sgx.key
+            ```
+
         === "CentOS Stream 9"
+            ```bash
+            sudo rpm --import /opt/intel/sgx_rpm_local_repo/keys/intel-sgx.key
+            sudo dnf config-manager --save --setopt=*sgx_rpm_local_repo.gpgkey=file:///opt/intel/sgx_rpm_local_repo/keys/intel-sgx.key
+            ```
+
+        === "Red Hat Enterprise Linux 10.0"
             ```bash
             sudo rpm --import /opt/intel/sgx_rpm_local_repo/keys/intel-sgx.key
             sudo dnf config-manager --save --setopt=*sgx_rpm_local_repo.gpgkey=file:///opt/intel/sgx_rpm_local_repo/keys/intel-sgx.key
@@ -310,7 +364,17 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
 
     - Install the required packages with:
 
+        === "CentOS Stream 10"
+            ```bash
+            sudo dnf install <package names>
+            ```
+
         === "CentOS Stream 9"
+            ```bash
+            sudo dnf install <package names>
+            ```
+
+        === "Red Hat Enterprise Linux 10.0"
             ```bash
             sudo dnf install <package names>
             ```
@@ -322,7 +386,17 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
 
         For example, use:
 
+        === "CentOS Stream 10"
+            ```bash
+            sudo dnf install libsgx-urts libsgx-quote-ex libsgx-dcap-ql
+            ```
+
         === "CentOS Stream 9"
+            ```bash
+            sudo dnf install libsgx-urts libsgx-quote-ex libsgx-dcap-ql
+            ```
+
+        === "Red Hat Enterprise Linux 10.0"
             ```bash
             sudo dnf install libsgx-urts libsgx-quote-ex libsgx-dcap-ql
             ```
@@ -335,18 +409,66 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
     - **(Optional)** To debug with `sgx-gdb`, install the debug symbol packages.
         For example:
 
-        === "CentOS Stream 9"
+        === "CentOS Stream 10"
             ```bash
             sudo dnf install \
                 libsgx-aesm-ecdsa-plugin-debuginfo \
-                libsgx-aesm-launch-plugin-debuginfo \
                 libsgx-aesm-pce-plugin-debuginfo \
                 libsgx-aesm-quote-ex-plugin-debuginfo \
                 libsgx-dcap-default-qpl-debuginfo \
                 libsgx-dcap-ql-debuginfo \
                 libsgx-dcap-quote-verify-debuginfo \
                 libsgx-enclave-common-debuginfo \
-                libsgx-launch-debuginfo \
+                libsgx-pce-logic-debuginfo \
+                libsgx-qe3-logic-debuginfo \
+                libsgx-quote-ex-debuginfo \
+                libsgx-ra-network-debuginfo \
+                libsgx-ra-uefi-debuginfo \
+                libsgx-tdx-logic-debuginfo \
+                libsgx-uae-service-debuginfo \
+                libsgx-urts-debuginfo \
+                libtdx-attest-debuginfo \
+                sgx-aesm-service-debuginfo \
+                sgx-pck-id-retrieval-tool-debuginfo \
+                sgx-ra-service-debuginfo \
+                tdx-qgs-debuginfo
+            ```
+
+        === "CentOS Stream 9"
+            ```bash
+            sudo dnf install \
+                libsgx-aesm-ecdsa-plugin-debuginfo \
+                libsgx-aesm-pce-plugin-debuginfo \
+                libsgx-aesm-quote-ex-plugin-debuginfo \
+                libsgx-dcap-default-qpl-debuginfo \
+                libsgx-dcap-ql-debuginfo \
+                libsgx-dcap-quote-verify-debuginfo \
+                libsgx-enclave-common-debuginfo \
+                libsgx-pce-logic-debuginfo \
+                libsgx-qe3-logic-debuginfo \
+                libsgx-quote-ex-debuginfo \
+                libsgx-ra-network-debuginfo \
+                libsgx-ra-uefi-debuginfo \
+                libsgx-tdx-logic-debuginfo \
+                libsgx-uae-service-debuginfo \
+                libsgx-urts-debuginfo \
+                libtdx-attest-debuginfo \
+                sgx-aesm-service-debuginfo \
+                sgx-pck-id-retrieval-tool-debuginfo \
+                sgx-ra-service-debuginfo \
+                tdx-qgs-debuginfo
+            ```
+
+        === "Red Hat Enterprise Linux 10.0"
+            ```bash
+            sudo dnf install \
+                libsgx-aesm-ecdsa-plugin-debuginfo \
+                libsgx-aesm-pce-plugin-debuginfo \
+                libsgx-aesm-quote-ex-plugin-debuginfo \
+                libsgx-dcap-default-qpl-debuginfo \
+                libsgx-dcap-ql-debuginfo \
+                libsgx-dcap-quote-verify-debuginfo \
+                libsgx-enclave-common-debuginfo \
                 libsgx-pce-logic-debuginfo \
                 libsgx-qe3-logic-debuginfo \
                 libsgx-quote-ex-debuginfo \
@@ -366,14 +488,12 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
             ```bash
             sudo dnf install \
                 libsgx-aesm-ecdsa-plugin-debuginfo \
-                libsgx-aesm-launch-plugin-debuginfo \
                 libsgx-aesm-pce-plugin-debuginfo \
                 libsgx-aesm-quote-ex-plugin-debuginfo \
                 libsgx-dcap-default-qpl-debuginfo \
                 libsgx-dcap-ql-debuginfo \
                 libsgx-dcap-quote-verify-debuginfo \
                 libsgx-enclave-common-debuginfo \
-                libsgx-launch-debuginfo \
                 libsgx-pce-logic-debuginfo \
                 libsgx-qe3-logic-debuginfo \
                 libsgx-quote-ex-debuginfo \
@@ -393,7 +513,17 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
         Note that any enclave obtaining an SGX Quote using the DCAP Quote Generation Library requires this access.
         A user `<username>` can be added to the group with the following command:
 
+        === "CentOS Stream 10"
+            ```bash
+            sudo usermod -aG sgx_prv <username>
+            ```
+
         === "CentOS Stream 9"
+            ```bash
+            sudo usermod -aG sgx_prv <username>
+            ```
+
+        === "Red Hat Enterprise Linux 10.0"
             ```bash
             sudo usermod -aG sgx_prv <username>
             ```
@@ -410,7 +540,6 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
     ??? info "Dependent packages automatically installed"
         Installing the primary Intel® SGX packages (`libsgx-urts`, `libsgx-quote-ex`, and `libsgx-dcap-ql`) will also automatically install the following dependent packages required for SGX functionality:
 
-        - `libsgx-ae-le`
         - `libsgx-ae-pce`
         - `libsgx-ae-qe3`
         - `libsgx-ae-qve`
@@ -435,7 +564,7 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
         === "SUSE Linux Enterprise Server 15 SP6"
             ```bash
             local_sum=$(sha256sum sgx_rpm_local_repo.tgz | awk '{print $1}')
-            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.24.cfg | grep 'distro/suse15.6-server/sgx_rpm_local_repo.tgz' | awk '{print $1}')
+            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.25.cfg | grep 'distro/suse15.6-server/sgx_rpm_local_repo.tgz' | awk '{print $1}')
             if [[ "$local_sum" == "$remote_sum" ]]; then echo "Checksum matches"; else echo "Checksum mismatch!"; fi
             ```
 
@@ -482,14 +611,12 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
             ```bash
             sudo zypper install \
                 libsgx-aesm-ecdsa-plugin-debuginfo \
-                libsgx-aesm-launch-plugin-debuginfo \
                 libsgx-aesm-pce-plugin-debuginfo \
                 libsgx-aesm-quote-ex-plugin-debuginfo \
                 libsgx-dcap-default-qpl-debuginfo \
                 libsgx-dcap-ql-debuginfo \
                 libsgx-dcap-quote-verify-debuginfo \
                 libsgx-enclave-common-debuginfo \
-                libsgx-launch-debuginfo \
                 libsgx-pce-logic-debuginfo \
                 libsgx-qe3-logic-debuginfo \
                 libsgx-quote-ex-debuginfo \
@@ -518,7 +645,6 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
     ??? info "Dependent packages automatically installed"
         Installing the primary Intel® SGX packages (`libsgx-quote-ex` and `libsgx-dcap-ql`) will also automatically install the following dependent packages required for SGX functionality:
 
-        - `libsgx-ae-le`
         - `libsgx-ae-pce`
         - `libsgx-ae-qe3`
         - `libsgx-ae-qve`
@@ -582,14 +708,12 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
             ```bash
             sudo apt-get install \
                 libsgx-aesm-ecdsa-plugin-dbgsym \
-                libsgx-aesm-launch-plugin-dbgsym \
                 libsgx-aesm-pce-plugin-dbgsym \
                 libsgx-aesm-quote-ex-plugin-dbgsym \
                 libsgx-dcap-default-qpl-dbgsym \
                 libsgx-dcap-ql-dbgsym \
                 libsgx-dcap-quote-verify-dbgsym \
                 libsgx-enclave-common-dbgsym \
-                libsgx-launch-dbgsym \
                 libsgx-pce-logic-dbgsym \
                 libsgx-qe3-logic-dbgsym \
                 libsgx-quote-ex-dbgsym \
@@ -610,14 +734,12 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
             ```bash
             sudo apt-get install \
                 libsgx-aesm-ecdsa-plugin-dbgsym \
-                libsgx-aesm-launch-plugin-dbgsym \
                 libsgx-aesm-pce-plugin-dbgsym \
                 libsgx-aesm-quote-ex-plugin-dbgsym \
                 libsgx-dcap-default-qpl-dbgsym \
                 libsgx-dcap-ql-dbgsym \
                 libsgx-dcap-quote-verify-dbgsym \
                 libsgx-enclave-common-dbgsym \
-                libsgx-launch-dbgsym \
                 libsgx-pce-logic-dbgsym \
                 libsgx-qe3-logic-dbgsym \
                 libsgx-quote-ex-dbgsym \
@@ -669,14 +791,14 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
             === "Ubuntu 24.04"
                 ```bash
                 local_sum=$(sha256sum sgx_debian_local_repo.tgz | awk '{print $1}')
-                remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.24.cfg | grep 'distro/ubuntu24.04-server/sgx_debian_local_repo.tgz' | awk '{print $1}')
+                remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.25.cfg | grep 'distro/ubuntu24.04-server/sgx_debian_local_repo.tgz' | awk '{print $1}')
                 if [[ "$local_sum" == "$remote_sum" ]]; then echo "Checksum matches"; else echo "Checksum mismatch!"; fi
                 ```
 
             === "Ubuntu 22.04"
                 ```bash
                 local_sum=$(sha256sum sgx_debian_local_repo.tgz | awk '{print $1}')
-                remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.24.cfg | grep 'distro/ubuntu22.04-server/sgx_debian_local_repo.tgz' | awk '{print $1}')
+                remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.25.cfg | grep 'distro/ubuntu22.04-server/sgx_debian_local_repo.tgz' | awk '{print $1}')
                 if [[ "$local_sum" == "$remote_sum" ]]; then echo "Checksum matches"; else echo "Checksum mismatch!"; fi
                 ```
 
@@ -805,7 +927,19 @@ Additionally, you have to install the Intel® SGX Software Development Kit (Inte
 
     1. Install dependencies:
 
+        === "CentOS Stream 10"
+            ```bash
+            sudo yum groupinstall 'Development Tools'
+            sudo yum install python3
+            ```
+
         === "CentOS Stream 9"
+            ```bash
+            sudo yum groupinstall 'Development Tools'
+            sudo yum install python3
+            ```
+
+        === "Red Hat Enterprise Linux 10.0"
             ```bash
             sudo yum groupinstall 'Development Tools'
             sudo yum install python3
@@ -821,21 +955,43 @@ Additionally, you have to install the Intel® SGX Software Development Kit (Inte
 
     2. Download the Intel® SGX SDK binary:
 
+        === "CentOS Stream 10"
+            ```bash
+            curl -fsSLo sgx_linux_x64_sdk.bin \
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/centos-stream10/sgx_linux_x64_sdk_2.28.100.1.bin
+            ```
+
         === "CentOS Stream 9"
             ```bash
             curl -fsSLo sgx_linux_x64_sdk.bin \
-                https://download.01.org/intel-sgx/latest/linux-latest/distro/centos-stream9/sgx_linux_x64_sdk_2.27.100.1.bin
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/centos-stream9/sgx_linux_x64_sdk_2.28.100.1.bin
+            ```
+
+        === "Red Hat Enterprise Linux 10.0"
+            ```bash
+            curl -fsSLo sgx_linux_x64_sdk.bin \
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/rhel10.0-server/sgx_linux_x64_sdk_2.28.100.1.bin
             ```
 
         === "Red Hat Enterprise Linux 9.4"
             ```bash
             curl -fsSLo sgx_linux_x64_sdk.bin \
-                https://download.01.org/intel-sgx/latest/linux-latest/distro/rhel9.4-server/sgx_linux_x64_sdk_2.27.100.1.bin
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/rhel9.4-server/sgx_linux_x64_sdk_2.28.100.1.bin
             ```
 
     3. Adjust the permissions of the Intel® SGX SDK binary:
 
+        === "CentOS Stream 10"
+            ```bash
+            chmod +x sgx_linux_x64_sdk.bin
+            ```
+
         === "CentOS Stream 9"
+            ```bash
+            chmod +x sgx_linux_x64_sdk.bin
+            ```
+
+        === "Red Hat Enterprise Linux 10.0"
             ```bash
             chmod +x sgx_linux_x64_sdk.bin
             ```
@@ -847,7 +1003,17 @@ Additionally, you have to install the Intel® SGX Software Development Kit (Inte
 
     4. Start interactive setup of the Intel® SGX SDK (with `sudo` privileges if necessary):
 
+        === "CentOS Stream 10"
+            ```bash
+            ./sgx_linux_x64_sdk.bin
+            ```
+
         === "CentOS Stream 9"
+            ```bash
+            ./sgx_linux_x64_sdk.bin
+            ```
+
+        === "Red Hat Enterprise Linux 10.0"
             ```bash
             ./sgx_linux_x64_sdk.bin
             ```
@@ -868,7 +1034,17 @@ Additionally, you have to install the Intel® SGX Software Development Kit (Inte
         !!! Note
             A non-interactive installation (with `sudo` privileges if necessary) can be started with:
 
+            === "CentOS Stream 10"
+                ```bash
+                ./sgx_linux_x64_sdk.bin --prefix {SDK_INSTALL_PATH_PREFIX}
+                ```
+
             === "CentOS Stream 9"
+                ```bash
+                ./sgx_linux_x64_sdk.bin --prefix {SDK_INSTALL_PATH_PREFIX}
+                ```
+
+            === "Red Hat Enterprise Linux 10.0"
                 ```bash
                 ./sgx_linux_x64_sdk.bin --prefix {SDK_INSTALL_PATH_PREFIX}
                 ```
@@ -880,7 +1056,17 @@ Additionally, you have to install the Intel® SGX Software Development Kit (Inte
 
     5. Run the following command to set all environment variables of the Intel® SGX SDK:
 
+        === "CentOS Stream 10"
+            ```bash
+            source <Intel SGX SDK Installation Path>/sgxsdk/environment
+            ```
+
         === "CentOS Stream 9"
+            ```bash
+            source <Intel SGX SDK Installation Path>/sgxsdk/environment
+            ```
+
+        === "Red Hat Enterprise Linux 10.0"
             ```bash
             source <Intel SGX SDK Installation Path>/sgxsdk/environment
             ```
@@ -910,7 +1096,7 @@ Additionally, you have to install the Intel® SGX Software Development Kit (Inte
         === "SUSE Linux Enterprise Server 15 SP6"
             ```bash
             curl -fsSLo sgx_linux_x64_sdk.bin \
-                https://download.01.org/intel-sgx/latest/linux-latest/distro/suse15.6-server/sgx_linux_x64_sdk_2.27.100.1.bin
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/suse15.6-server/sgx_linux_x64_sdk_2.28.100.1.bin
             ```
 
     3. Adjust the permissions of the Intel® SGX SDK binary:
@@ -983,25 +1169,25 @@ Additionally, you have to install the Intel® SGX Software Development Kit (Inte
         === "Debian 12"
             ```bash
             curl -fsSLo sgx_linux_x64_sdk.bin \
-                https://download.01.org/intel-sgx/latest/linux-latest/distro/Debian12/sgx_linux_x64_sdk_2.27.100.1.bin
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/Debian12/sgx_linux_x64_sdk_2.28.100.1.bin
             ```
 
         === "Debian 10"
             ```bash
             curl -fsSLo sgx_linux_x64_sdk.bin \
-                https://download.01.org/intel-sgx/latest/linux-latest/distro/Debian10/sgx_linux_x64_sdk_2.27.100.1.bin
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/Debian10/sgx_linux_x64_sdk_2.28.100.1.bin
             ```
 
         === "Ubuntu 24.04"
             ```bash
             curl -fsSLo sgx_linux_x64_sdk.bin \
-                https://download.01.org/intel-sgx/latest/linux-latest/distro/ubuntu24.04-server/sgx_linux_x64_sdk_2.27.100.1.bin
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/ubuntu24.04-server/sgx_linux_x64_sdk_2.28.100.1.bin
             ```
 
         === "Ubuntu 22.04"
             ```bash
             curl -fsSLo sgx_linux_x64_sdk.bin \
-                https://download.01.org/intel-sgx/latest/linux-latest/distro/ubuntu22.04-server/sgx_linux_x64_sdk_2.27.100.1.bin
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/ubuntu22.04-server/sgx_linux_x64_sdk_2.28.100.1.bin
             ```
 
     3. Adjust the permissions of the Intel® SGX SDK binary:
