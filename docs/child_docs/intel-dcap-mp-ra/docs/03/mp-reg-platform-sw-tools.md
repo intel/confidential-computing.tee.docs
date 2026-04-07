@@ -151,9 +151,10 @@ Provided by the Intel® SGX Registration Service upon subscribing.
         | Logging Level              | Linux Value        | Windows Value |
         | ---------------------------| -------------------| ----------------------- |
         | None                       | none               | 0 |
-        | Functional                 | func               | 1 |
-        | Error (default value)  | error              | 2 |
-        | Verbose                    | info               | 3 |
+        | Error   | error              | 1 |
+        | Warning                    | warn               | 2 |
+        | Info (default value) | info               | 3 |
+        | Debug                    | debug               | 4 |
 
     - Config Location:
         - Linux: `/etc/mpa_registration.conf`
