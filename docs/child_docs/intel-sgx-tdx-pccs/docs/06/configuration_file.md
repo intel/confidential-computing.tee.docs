@@ -106,12 +106,12 @@ The PCCS can be configured using a configuration file, `default.json`, located i
     "LogLevel": "info",
     "DB_CONFIG": "sqlite",
     "sqlite": {
-        "database": "database",
-        "username": "<Your sqlite username>",
-        "password": "<Your sqlite password>",
         "options": {
-            "host": "localhost",
             "dialect": "sqlite",
+            "define": {
+                "freezeTableName": true
+            },
+            "logging": false,
             "storage": "pckcache.db"
         }
     }
