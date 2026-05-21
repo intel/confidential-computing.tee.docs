@@ -81,14 +81,14 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
         === "Debian 12"
             ```bash
             local_sum=$(sha256sum sgx_debian_local_repo.tgz | awk '{print $1}')
-            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.25.cfg | grep 'distro/Debian12/sgx_debian_local_repo.tgz' | awk '{print $1}')
+            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.26.cfg | grep 'distro/Debian12/sgx_debian_local_repo.tgz' | awk '{print $1}')
             if [[ "$local_sum" == "$remote_sum" ]]; then echo "Checksum matches"; else echo "Checksum mismatch!"; fi
             ```
 
         === "Debian 10"
             ```bash
             local_sum=$(sha256sum sgx_debian_local_repo.tgz | awk '{print $1}')
-            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.25.cfg | grep 'distro/Debian10/sgx_debian_local_repo.tgz' | awk '{print $1}')
+            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.26.cfg | grep 'distro/Debian10/sgx_debian_local_repo.tgz' | awk '{print $1}')
             if [[ "$local_sum" == "$remote_sum" ]]; then echo "Checksum matches"; else echo "Checksum mismatch!"; fi
             ```
 
@@ -263,28 +263,28 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
         === "CentOS Stream 10"
             ```bash
             local_sum=$(sha256sum sgx_rpm_local_repo.tgz | awk '{print $1}')
-            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.25.cfg | grep 'distro/centos-stream10/sgx_rpm_local_repo.tgz' | awk '{print $1}')
+            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.26.cfg | grep 'distro/centos-stream10/sgx_rpm_local_repo.tgz' | awk '{print $1}')
             if [[ "$local_sum" == "$remote_sum" ]]; then echo "Checksum matches"; else echo "Checksum mismatch!"; fi
             ```
 
         === "CentOS Stream 9"
             ```bash
             local_sum=$(sha256sum sgx_rpm_local_repo.tgz | awk '{print $1}')
-            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.25.cfg | grep 'distro/centos-stream9/sgx_rpm_local_repo.tgz' | awk '{print $1}')
+            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.26.cfg | grep 'distro/centos-stream9/sgx_rpm_local_repo.tgz' | awk '{print $1}')
             if [[ "$local_sum" == "$remote_sum" ]]; then echo "Checksum matches"; else echo "Checksum mismatch!"; fi
             ```
 
         === "Red Hat Enterprise Linux 10.0"
             ```bash
             local_sum=$(sha256sum sgx_rpm_local_repo.tgz | awk '{print $1}')
-            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.25.cfg | grep 'distro/rhel10.0-server/sgx_rpm_local_repo.tgz' | awk '{print $1}')
+            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.26.cfg | grep 'distro/rhel10.0-server/sgx_rpm_local_repo.tgz' | awk '{print $1}')
             if [[ "$local_sum" == "$remote_sum" ]]; then echo "Checksum matches"; else echo "Checksum mismatch!"; fi
             ```
 
         === "Red Hat Enterprise Linux 9.4"
             ```bash
             local_sum=$(sha256sum sgx_rpm_local_repo.tgz | awk '{print $1}')
-            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.25.cfg | grep 'distro/rhel9.4-server/sgx_rpm_local_repo.tgz' | awk '{print $1}')
+            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.26.cfg | grep 'distro/rhel9.4-server/sgx_rpm_local_repo.tgz' | awk '{print $1}')
             if [[ "$local_sum" == "$remote_sum" ]]; then echo "Checksum matches"; else echo "Checksum mismatch!"; fi
             ```
 
@@ -564,7 +564,7 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
         === "SUSE Linux Enterprise Server 15 SP6"
             ```bash
             local_sum=$(sha256sum sgx_rpm_local_repo.tgz | awk '{print $1}')
-            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.25.cfg | grep 'distro/suse15.6-server/sgx_rpm_local_repo.tgz' | awk '{print $1}')
+            remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.26.cfg | grep 'distro/suse15.6-server/sgx_rpm_local_repo.tgz' | awk '{print $1}')
             if [[ "$local_sum" == "$remote_sum" ]]; then echo "Checksum matches"; else echo "Checksum mismatch!"; fi
             ```
 
@@ -791,14 +791,14 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
             === "Ubuntu 24.04"
                 ```bash
                 local_sum=$(sha256sum sgx_debian_local_repo.tgz | awk '{print $1}')
-                remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.25.cfg | grep 'distro/ubuntu24.04-server/sgx_debian_local_repo.tgz' | awk '{print $1}')
+                remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.26.cfg | grep 'distro/ubuntu24.04-server/sgx_debian_local_repo.tgz' | awk '{print $1}')
                 if [[ "$local_sum" == "$remote_sum" ]]; then echo "Checksum matches"; else echo "Checksum mismatch!"; fi
                 ```
 
             === "Ubuntu 22.04"
                 ```bash
                 local_sum=$(sha256sum sgx_debian_local_repo.tgz | awk '{print $1}')
-                remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.25.cfg | grep 'distro/ubuntu22.04-server/sgx_debian_local_repo.tgz' | awk '{print $1}')
+                remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.26.cfg | grep 'distro/ubuntu22.04-server/sgx_debian_local_repo.tgz' | awk '{print $1}')
                 if [[ "$local_sum" == "$remote_sum" ]]; then echo "Checksum matches"; else echo "Checksum mismatch!"; fi
                 ```
 
@@ -958,25 +958,25 @@ Additionally, you have to install the Intel® SGX Software Development Kit (Inte
         === "CentOS Stream 10"
             ```bash
             curl -fsSLo sgx_linux_x64_sdk.bin \
-                https://download.01.org/intel-sgx/latest/linux-latest/distro/centos-stream10/sgx_linux_x64_sdk_2.28.100.1.bin
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/centos-stream10/sgx_linux_x64_sdk_2.29.100.1.bin
             ```
 
         === "CentOS Stream 9"
             ```bash
             curl -fsSLo sgx_linux_x64_sdk.bin \
-                https://download.01.org/intel-sgx/latest/linux-latest/distro/centos-stream9/sgx_linux_x64_sdk_2.28.100.1.bin
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/centos-stream9/sgx_linux_x64_sdk_2.29.100.1.bin
             ```
 
         === "Red Hat Enterprise Linux 10.0"
             ```bash
             curl -fsSLo sgx_linux_x64_sdk.bin \
-                https://download.01.org/intel-sgx/latest/linux-latest/distro/rhel10.0-server/sgx_linux_x64_sdk_2.28.100.1.bin
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/rhel10.0-server/sgx_linux_x64_sdk_2.29.100.1.bin
             ```
 
         === "Red Hat Enterprise Linux 9.4"
             ```bash
             curl -fsSLo sgx_linux_x64_sdk.bin \
-                https://download.01.org/intel-sgx/latest/linux-latest/distro/rhel9.4-server/sgx_linux_x64_sdk_2.28.100.1.bin
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/rhel9.4-server/sgx_linux_x64_sdk_2.29.100.1.bin
             ```
 
     3. Adjust the permissions of the Intel® SGX SDK binary:
@@ -1096,7 +1096,7 @@ Additionally, you have to install the Intel® SGX Software Development Kit (Inte
         === "SUSE Linux Enterprise Server 15 SP6"
             ```bash
             curl -fsSLo sgx_linux_x64_sdk.bin \
-                https://download.01.org/intel-sgx/latest/linux-latest/distro/suse15.6-server/sgx_linux_x64_sdk_2.28.100.1.bin
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/suse15.6-server/sgx_linux_x64_sdk_2.29.100.1.bin
             ```
 
     3. Adjust the permissions of the Intel® SGX SDK binary:
@@ -1169,25 +1169,25 @@ Additionally, you have to install the Intel® SGX Software Development Kit (Inte
         === "Debian 12"
             ```bash
             curl -fsSLo sgx_linux_x64_sdk.bin \
-                https://download.01.org/intel-sgx/latest/linux-latest/distro/Debian12/sgx_linux_x64_sdk_2.28.100.1.bin
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/Debian12/sgx_linux_x64_sdk_2.29.100.1.bin
             ```
 
         === "Debian 10"
             ```bash
             curl -fsSLo sgx_linux_x64_sdk.bin \
-                https://download.01.org/intel-sgx/latest/linux-latest/distro/Debian10/sgx_linux_x64_sdk_2.28.100.1.bin
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/Debian10/sgx_linux_x64_sdk_2.29.100.1.bin
             ```
 
         === "Ubuntu 24.04"
             ```bash
             curl -fsSLo sgx_linux_x64_sdk.bin \
-                https://download.01.org/intel-sgx/latest/linux-latest/distro/ubuntu24.04-server/sgx_linux_x64_sdk_2.28.100.1.bin
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/ubuntu24.04-server/sgx_linux_x64_sdk_2.29.100.1.bin
             ```
 
         === "Ubuntu 22.04"
             ```bash
             curl -fsSLo sgx_linux_x64_sdk.bin \
-                https://download.01.org/intel-sgx/latest/linux-latest/distro/ubuntu22.04-server/sgx_linux_x64_sdk_2.28.100.1.bin
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/ubuntu22.04-server/sgx_linux_x64_sdk_2.29.100.1.bin
             ```
 
     3. Adjust the permissions of the Intel® SGX SDK binary:
