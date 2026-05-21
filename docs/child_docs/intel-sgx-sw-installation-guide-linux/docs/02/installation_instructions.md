@@ -659,6 +659,13 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
 
     - Setup the necessary package repository, which requires an active Internet connection:
 
+        === "Ubuntu 26.04"
+            ```bash
+            sudo tee /etc/apt/sources.list.d/intel-sgx.list > /dev/null <<EOF
+            deb [signed-by=/etc/apt/keyrings/intel-sgx-keyring.asc arch=amd64] https://download.01.org/intel-sgx/sgx_repo/ubuntu resolute main
+            EOF
+            ```
+
         === "Ubuntu 24.04"
             ```bash
             sudo tee /etc/apt/sources.list.d/intel-sgx.list > /dev/null <<EOF
@@ -676,6 +683,12 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
 
     - Download the public key of the package repository and add it to the list of trusted keys that are used by `apt` to authenticate packages:
 
+        === "Ubuntu 26.04"
+            ```bash
+            curl -fsSLO https://download.01.org/intel-sgx/sgx_repo/ubuntu/intel-sgx-deb.key
+            sudo mv intel-sgx-deb.key /etc/apt/keyrings/intel-sgx-keyring.asc
+            ```
+
         === "Ubuntu 24.04"
             ```bash
             curl -fsSLO https://download.01.org/intel-sgx/sgx_repo/ubuntu/intel-sgx-deb.key
@@ -690,6 +703,12 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
 
     - Update the package index and install the required packages:
 
+        === "Ubuntu 26.04"
+            ```bash
+            sudo apt-get update
+            sudo apt-get install libsgx-quote-ex libsgx-dcap-ql
+            ```
+
         === "Ubuntu 24.04"
             ```bash
             sudo apt-get update
@@ -703,6 +722,32 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
             ```
 
     - **(Optional)** To debug with `sgx-gdb`, install the debug symbol packages:
+
+        === "Ubuntu 26.04"
+            ```bash
+            sudo apt-get install \
+                libsgx-aesm-ecdsa-plugin-dbgsym \
+                libsgx-aesm-pce-plugin-dbgsym \
+                libsgx-aesm-quote-ex-plugin-dbgsym \
+                libsgx-dcap-default-qpl-dbgsym \
+                libsgx-dcap-ql-dbgsym \
+                libsgx-dcap-quote-verify-dbgsym \
+                libsgx-enclave-common-dbgsym \
+                libsgx-pce-logic-dbgsym \
+                libsgx-qe3-logic-dbgsym \
+                libsgx-quote-ex-dbgsym \
+                libsgx-ra-network-dbgsym \
+                libsgx-ra-uefi-dbgsym \
+                libsgx-tdx-logic-dbgsym \
+                libsgx-uae-service-dbgsym \
+                libsgx-urts-dbgsym \
+                libtdx-attest-dbgsym \
+                sgx-aesm-service-dbgsym \
+                sgx-pck-id-retrieval-tool-dbgsym \
+                sgx-ra-service-dbgsym \
+                tdx-qgs-dbgsym \
+                tee-appraisal-tool-dbgsym
+            ```
 
         === "Ubuntu 24.04"
             ```bash
@@ -760,6 +805,11 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
         Note that any enclave obtaining an SGX Quote using the DCAP Quote Generation Library requires this access.
         A user `<username>` can be added to the group with the following command:
 
+        === "Ubuntu 26.04"
+            ```bash
+            sudo usermod -aG sgx_prv <username>
+            ```
+
         === "Ubuntu 24.04"
             ```bash
             sudo usermod -aG sgx_prv <username>
@@ -774,6 +824,12 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
 
         - Download the correct repository archive:
 
+            === "Ubuntu 26.04"
+                ```bash
+                curl -fsSLO \
+                    https://download.01.org/intel-sgx/latest/linux-latest/distro/ubuntu26.04-server/sgx_debian_local_repo.tgz
+                ```
+
             === "Ubuntu 24.04"
                 ```bash
                 curl -fsSLO \
@@ -787,6 +843,13 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
                 ```
 
         - Verify that the repository archive has the expected, publicly-available checksum:
+
+            === "Ubuntu 26.04"
+                ```bash
+                local_sum=$(sha256sum sgx_debian_local_repo.tgz | awk '{print $1}')
+                remote_sum=$(curl -s https://download.01.org/intel-sgx/latest/dcap-latest/linux/SHA256SUM_dcap_1.26.cfg | grep 'distro/ubuntu26.04-server/sgx_debian_local_repo.tgz' | awk '{print $1}')
+                if [[ "$local_sum" == "$remote_sum" ]]; then echo "Checksum matches"; else echo "Checksum mismatch!"; fi
+                ```
 
             === "Ubuntu 24.04"
                 ```bash
@@ -804,6 +867,12 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
 
         - Extract the repository archive to an appropriate folder, e.g., `/opt/intel`:
 
+            === "Ubuntu 26.04"
+                ```bash
+                sudo mkdir -p /opt/intel
+                sudo tar xzf sgx_debian_local_repo.tgz -C /opt/intel
+                ```
+
             === "Ubuntu 24.04"
                 ```bash
                 sudo mkdir -p /opt/intel
@@ -817,6 +886,12 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
                 ```
 
         - Add local repository to your system's list of package sources
+
+            === "Ubuntu 26.04"
+                ```bash
+                echo 'deb [signed-by=/etc/apt/keyrings/intel-sgx-keyring.asc arch=amd64] file:///opt/intel/sgx_debian_local_repo resolute main' | \
+                    sudo tee /etc/apt/sources.list.d/sgx-repo.list
+                ```
 
             === "Ubuntu 24.04"
                 ```bash
@@ -832,6 +907,11 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
 
         - Add the public key of the package repository to the list of trusted keys that are used by `apt` to authenticate packages:
 
+            === "Ubuntu 26.04"
+                ```bash
+                sudo cp /opt/intel/sgx_debian_local_repo/keys/intel-sgx.key /etc/apt/keyrings/intel-sgx-keyring.asc
+                ```
+
             === "Ubuntu 24.04"
                 ```bash
                 sudo cp /opt/intel/sgx_debian_local_repo/keys/intel-sgx.key /etc/apt/keyrings/intel-sgx-keyring.asc
@@ -843,6 +923,12 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
                 ```
 
         - Update the package index and install the required packages:
+
+            === "Ubuntu 26.04"
+                ```bash
+                sudo apt-get update
+                sudo apt-get install libsgx-quote-ex libsgx-dcap-ql
+                ```
 
             === "Ubuntu 24.04"
                 ```bash
@@ -1151,6 +1237,11 @@ Additionally, you have to install the Intel® SGX Software Development Kit (Inte
             sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
             ```
 
+        === "Ubuntu 26.04"
+            ```bash
+            sudo apt-get install build-essential python-is-python3
+            ```
+
         === "Ubuntu 24.04"
             ```bash
             sudo apt-get install build-essential python-is-python3
@@ -1178,6 +1269,12 @@ Additionally, you have to install the Intel® SGX Software Development Kit (Inte
                 https://download.01.org/intel-sgx/latest/linux-latest/distro/Debian10/sgx_linux_x64_sdk_2.29.100.1.bin
             ```
 
+        === "Ubuntu 26.04"
+            ```bash
+            curl -fsSLo sgx_linux_x64_sdk.bin \
+                https://download.01.org/intel-sgx/latest/linux-latest/distro/ubuntu26.04-server/sgx_linux_x64_sdk_2.29.100.1.bin
+            ```
+
         === "Ubuntu 24.04"
             ```bash
             curl -fsSLo sgx_linux_x64_sdk.bin \
@@ -1202,6 +1299,11 @@ Additionally, you have to install the Intel® SGX Software Development Kit (Inte
             chmod +x sgx_linux_x64_sdk.bin
             ```
 
+        === "Ubuntu 26.04"
+            ```bash
+            chmod +x sgx_linux_x64_sdk.bin
+            ```
+
         === "Ubuntu 24.04"
             ```bash
             chmod +x sgx_linux_x64_sdk.bin
@@ -1220,6 +1322,11 @@ Additionally, you have to install the Intel® SGX Software Development Kit (Inte
             ```
 
         === "Debian 10"
+            ```bash
+            ./sgx_linux_x64_sdk.bin
+            ```
+
+        === "Ubuntu 26.04"
             ```bash
             ./sgx_linux_x64_sdk.bin
             ```
@@ -1255,6 +1362,11 @@ Additionally, you have to install the Intel® SGX Software Development Kit (Inte
                 ./sgx_linux_x64_sdk.bin --prefix {SDK_INSTALL_PATH_PREFIX}
                 ```
 
+            === "Ubuntu 26.04"
+                ```bash
+                ./sgx_linux_x64_sdk.bin --prefix {SDK_INSTALL_PATH_PREFIX}
+                ```
+
             === "Ubuntu 24.04"
                 ```bash
                 ./sgx_linux_x64_sdk.bin --prefix {SDK_INSTALL_PATH_PREFIX}
@@ -1273,6 +1385,11 @@ Additionally, you have to install the Intel® SGX Software Development Kit (Inte
             ```
 
         === "Debian 10"
+            ```bash
+            source <Intel SGX SDK Installation Path>/sgxsdk/environment
+            ```
+
+        === "Ubuntu 26.04"
             ```bash
             source <Intel SGX SDK Installation Path>/sgxsdk/environment
             ```
