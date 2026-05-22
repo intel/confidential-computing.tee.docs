@@ -415,6 +415,7 @@ Detailed steps to use this registration method:
         === "Ubuntu 24.04"
 
             ``` { .text }
+            sudo apt install -y wget
             wget -O PCKIDRetrievalTool.tar.gz \
                 https://download.01.org/intel-sgx/latest/dcap-latest/linux/distro/ubuntu24.04-server/PCKIDRetrievalTool_v1.26.100.1.tar.gz
             mkdir -p PCKIDRetrievalTool
@@ -426,6 +427,7 @@ Detailed steps to use this registration method:
         === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
 
             ``` { .text }
+            sudo zypper install -y wget
             wget -O PCKIDRetrievalTool.tar.gz \
                 https://download.01.org/intel-sgx/latest/dcap-latest/linux/distro/suse15.6-server/PCKIDRetrievalTool_v1.26.100.1.tar.gz
             mkdir -p PCKIDRetrievalTool
