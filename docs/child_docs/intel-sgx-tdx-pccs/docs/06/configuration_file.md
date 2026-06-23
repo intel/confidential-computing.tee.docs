@@ -69,6 +69,26 @@ The PCCS can be configured using a configuration file, `default.json`, located i
         ).Replace('-', '').ToLower()
         ```
 
+`MaxRequestBodySize`
+
+:   Maximum allowed size of the request body in KB, MB, or GB.
+    2MB by default.
+
+`HeadersTimeoutSeconds`
+
+:   Maximum time in seconds to wait for the client to send complete HTTP headers.
+    Default value is 10.
+
+`RequestTimeoutSeconds`
+
+:   Maximum time in seconds to wait for the client to send the entire request (headers + body).
+    Default value is 15.
+
+`KeepAliveTimeoutSeconds`
+
+:   Maximum idle time in seconds on a keep-alive connection before it is closed.
+    Default value is 60.
+
 `CachingFillMode`
 
 :   The method used to fill the cache DB.
@@ -102,6 +122,10 @@ The PCCS can be configured using a configuration file, `default.json`, located i
     "RefreshSchedule": "0 0 1 \* \* \*",
     "UserTokenHash": "",
     "AdminTokenHash": "",
+    "MaxRequestBodySize": "2MB",
+    "HeadersTimeoutSeconds": 10,
+    "RequestTimeoutSeconds": 15,
+    "KeepAliveTimeoutSeconds": 60,
     "CachingFillMode": "",
     "LogLevel": "info",
     "DB_CONFIG": "sqlite",
