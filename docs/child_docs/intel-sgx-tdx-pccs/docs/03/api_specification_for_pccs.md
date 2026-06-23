@@ -58,6 +58,7 @@ Retrieve the X.509 SGX Provisioning Certification Key (PCK) certificate for an S
 | 200 | `PckCert` | <ul><li>`SGX-PCK-Certificate-Issuer-Chain` (String): URL-encoded Issuer Certificate chain for SGX PCK Certificate in PEM format. It consists of SGX Intermediate CA Certificate (Processor CA) followed by SGX Root CA Certificate</li><li>`SGX-TCBm` (String): Hex-encoded string representation of concatenation of CPUSVN (16 bytes) and PCESVN (2 bytes) as returned in corresponding SGX PCK Certificate</li></ul> | Successfully completed |
 | 400 | - | - | Invalid request parameters |
 | 404 | - | - | No cache data for this platform |
+| 410 | - | - | The Intel PCS API version 3 reached planned EOL. Accordingly, collateral from this API version cannot be retrieved any longer. |
 | 461 | - | - | The platform was not found in the cache. |
 | 462 | - | - | Certificates are not available for certain TCBs. |
 | 500 | - | - | Internal server error occurred |
@@ -152,6 +153,7 @@ The CRL is issued either by Intel® SGX Platform CA or by Intel® SGX Processor 
 | 200 | `PckCrl` | `SGX-PCK-CRL-Issuer-Chain`: Issuer Certificate chain for SGX PCK CRL. It consists of SGX Intermediate CA Certificate (Processor CA) followed by SGX Root CA Certificate | Successfully completed |
 | 400 | - | - | Invalid request parameters |
 | 404 | - | - | PCK CRL cannot be found |
+| 410 | - | - | The Intel PCS API version 3 reached planned EOL. Accordingly, collateral from this API version cannot be retrieved any longer. |
 | 500 | - | - | Internal server error occurred |
 | 502 | - | - | Unable to retrieve the collateral from the PCS. |
 
@@ -228,6 +230,7 @@ Retrieve Intel® SGX or TDX TCB Information for the given FMSPC
 | 200 | `TcbInfo` | `SGX-TCB-Info-Issuer-Chain` (v3) or `TCB-Info-Issuer-Chain` (v4): Issuer Certificate chain for Intel® SGX TCB Info. It consists of Intel® TCB Signing Certificate followed by Root CA Certificate | Successfully completed |
 | 400 | - | - | Invalid request parameters |
 | 404 | - | - | TCB Information for provided `{fmspc}` cannot be found |
+| 410 | - | - | The Intel PCS API version 3 reached planned EOL. Accordingly, collateral from this API version cannot be retrieved any longer. |
 | 500 | - | - | Internal server error occurred |
 | 502 | - | - | Unable to retrieve the collateral from the PCS |
 <!-- markdownlint-enable MD033 -->
@@ -306,6 +309,7 @@ Retrieve the Quote Identity information for the Quoting Enclave issued by Intel.
 | --- | --- | --- | --- |
 | 200 | `QEIdentity` | `SGX-Enclave-Identity-Issuer-Chain`: Issuer Certificate chain for Intel® SGX QE Identity. It consists of Intel® SGX TCB Signing Certificate followed by Intel® SGX Root CA Certificate | Successfully completed |
 | 404 | - | - | QE identity information cannot be found |
+| 410 | - | - | The Intel PCS API version 3 reached planned EOL. Accordingly, collateral from this API version cannot be retrieved any longer. |
 | 500 | - | - | Internal server error occurred |
 | 502 | - | - | Unable to retrieve the collateral from the PCS |
 
@@ -378,6 +382,7 @@ Retrieve Identity information for Quote Verification Enclave issued by Intel.
 | --- | --- | --- | --- |
 | 200 | `QvEIdentity` | `SGX-Enclave-Identity-Issuer-Chain`: Issuer Certificate chain for Intel® SGX QvE Identity. It consists of Intel® SGX TCB Signing Certificate followed by Intel® SGX Root CA Certificate | Successfully completed |
 | 404 | - | - | QvE identity information cannot be found |
+| 410 | - | - | The Intel PCS API version 3 reached planned EOL. Accordingly, collateral from this API version cannot be retrieved any longer. |
 | 500 | - | - | Internal server error occurred |
 | 502 | - | - | Unable to retrieve the collateral from the PCS |
 
@@ -506,6 +511,7 @@ No parameters
 | --- | --- | --- | --- |
 | 200 | `RootCACRL` | - | Successfully completed |
 | 404 | - | - | Root CA CRL cannot be found |
+| 410 | - | - | The Intel PCS API version 3 reached planned EOL. Accordingly, collateral from this API version cannot be retrieved any longer. |
 | 500 | - | - | Internal server error occurred |
 | 502 | - | - | Unable to retrieve the collateral from the PCS |
 
@@ -595,6 +601,8 @@ This API is restricted to users with the access to the user-token.
 | 201 | - | - | Successfully completed (entry created) |
 | 400 | - | - | Invalid request parameters |
 | 401 | - | - | Authentication failed |
+| 410 | - | - | The Intel PCS API version 3 reached planned EOL. Accordingly, collateral from this API version cannot be retrieved any longer. |
+| 413 | - | - | Content too large. |
 | 500 | - | - | Internal server error occurred |
 | 502 | - | - | Unable to retrieve the collateral from the PCS |
 
@@ -701,6 +709,7 @@ Empty body otherwise.
 | 200 | See "response format" above | - | Successfully completed |
 | 400 | - | - | Invalid request parameters |
 | 401 | - | - | Authentication failed |
+| 410 | - | - | The Intel PCS API version 3 reached planned EOL. Accordingly, collateral from this API version cannot be retrieved any longer. |
 | 500 | - | - | Internal server error occurred |
 
 ::end-spantable::
@@ -824,6 +833,8 @@ Body format:
 | 200 | - | - | Successfully completed |
 | 400 | - | - | Invalid request parameters |
 | 401 | - | - | Authentication failed |
+| 410 | - | - | The Intel PCS API version 3 reached planned EOL. Accordingly, collateral from this API version cannot be retrieved any longer. |
+| 413 | - | - | Content too large. |
 | 500 | - | - | Internal server error occurred |
 
 ::end-spantable::
@@ -910,6 +921,7 @@ Based on the result, returns one of the following status codes.
 | --- | --- | --- | --- |
 | 200 | - | - | Successfully completed |
 | 401 | - | - | Operation failed |
+| 413 | - | - | Content too large. |
 | 500 | - | - | Internal server error occurred |
 | 502 | - | - | Unable to retrieve the collateral from the PCS |
 | 503 | - | - | Server is currently unable to process the request |
@@ -1156,6 +1168,7 @@ N/A
 | 200 | - | - | Successfully completed |
 | 400 | - | - | Invalid request parameters |
 | 401 | - | - | Authentication failed |
+| 413 | - | - | Content too large. |
 | 500 | - | - | Internal server error occurred |
 
 ::end-spantable::
