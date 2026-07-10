@@ -31,10 +31,6 @@ Afterwards, we briefly describe these BIOS settings.
     The necessary BIOS settings or the menus might differ based on the platform that is used.
     Please reach out to your OEM/ODM or independent BIOS vendor for instructions dedicated for your BIOS.
 
-!!! warning
-
-    It might be necessary to [enable Intel TDX on the host OS](../05/host_os_setup.md#enable-intel-tdx-in-the-host-os), before Intel TDX is enabled in the BIOS.
-
 !!! info "BIOS settings for a Quanta S6Q system with 5th Gen Intel® Xeon® Scalable processors"
 
     ``` mermaid
