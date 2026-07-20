@@ -1,7 +1,7 @@
-# Copyright (C) 2025 Intel Corporation
+# Copyright (C) 2025 - 2026 Intel Corporation
 # SPDX-License-Identifier: MIT
 
-FROM squidfunk/mkdocs-material:9.6.22
+FROM squidfunk/mkdocs-material:9.7.7
 
 WORKDIR /docs
 
