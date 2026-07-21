@@ -272,7 +272,7 @@ Applications inside a TD that use attestation should use the `libtdx-attest` lib
 
 - Package: `libtdx-attest`
 - Comments:
-    - The [TD Quote Generation](../../../intel-tdx-enabling-guide/07/trust_domain_at_runtime/#td-quote-generation) section of the [Intel TDX Enabling Guide](../../../intel-tdx-enabling-guide/01/introduction/) shows how the *TDX Quote Generation Sample* can be used to generate a TD Quote.
+    - The [TD Quote Generation](/intel-tdx-enabling-guide/07/trust_domain_at_runtime/#td-quote-generation) section of the [Intel TDX Enabling Guide](/intel-tdx-enabling-guide/01/introduction/) shows how the *TDX Quote Generation Sample* can be used to generate a TD Quote.
     This sample code uses the `libtdx-attest` package.
 
 
@@ -285,7 +285,7 @@ To provide a TD Quoting service on an Intel TDX-enabled host, you should use the
     - `tdx-qgs` requires `libsgx-tdx-logic` as a hard dependency.
     - It also requires a Quote Provider Library (QPL) at runtime to retrieve platform information.
     - It is up to the system administrator to install Intel's QPL `libsgx-dcap-default-qpl` or their own version.
-    - The [Setup Quote Generation Service (QGS)](../../../intel-tdx-enabling-guide/05/host_os_setup/#setup-quote-generation-service-qgs) section of the [Intel TDX Enabling Guide](../../../intel-tdx-enabling-guide/01/introduction/) shows how to setup the QGS in the host OS.
+    - The [Setup Quote Generation Service (QGS)](/intel-tdx-enabling-guide/05/host_os_setup/#setup-quote-generation-service-qgs) section of the [Intel TDX Enabling Guide](/intel-tdx-enabling-guide/01/introduction/) shows how to setup the QGS in the host OS.
 
 
 ### Platform uses PCCS-based Collateral Caching
@@ -298,4 +298,4 @@ Intel provides a reference Provisioning Certificate Caching Service (PCCS) in pa
 - Comments:
     - Infrastructure providers (e.g., CSPs) are likely to deploy their own QPL and collateral caching service.
     In this case, the platform should be provisioned with the infrastructure providers specific software.
-    - The [Provisioning Certificate Caching Service (PCCS)](../../../intel-tdx-enabling-guide/02/infrastructure_setup/#provisioning-certificate-caching-service-pccs) section of the [Intel TDX Enabling Guide](../../../intel-tdx-enabling-guide/01/introduction/) shows how to install the PCCS.
+    - The [Provisioning Certificate Caching Service (PCCS)](/intel-tdx-enabling-guide/02/infrastructure_setup/#provisioning-certificate-caching-service-pccs) section of the [Intel TDX Enabling Guide](/intel-tdx-enabling-guide/01/introduction/) shows how to install the PCCS.

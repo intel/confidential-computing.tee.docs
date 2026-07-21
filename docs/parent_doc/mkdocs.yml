@@ -3,8 +3,6 @@ INHERIT: ../mkdocs_base.yml
 site_name: Intel® Confidential Computing Documentation
 
 edit_uri: edit/main/docs/parent_doc/docs/
-watch:
-  - includes
 nav:
   - Home: index.md
 not_in_nav: |

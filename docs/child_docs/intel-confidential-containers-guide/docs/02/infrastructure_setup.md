@@ -46,7 +46,7 @@ Ensure that your infrastructure meets the following requirements:
 - Kubernetes cluster with at least one node - serving as master and worker node,
 - [containerd](https://containerd.io/) 1.7.29 or newer,
 - [Helm](https://helm.sh/docs/intro/install) - 3.8 or newer,
-- Worker nodes configured on [registered](../../../intel-tdx-enabling-guide/02/infrastructure_setup/#platform-registration) Intel platforms with Intel TDX Module.
+- Worker nodes configured on [registered](/intel-tdx-enabling-guide/02/infrastructure_setup/#platform-registration) Intel platforms with Intel TDX Module.
 
 !!! Note "Intel TDX Enabling"
     The registration of Intel platform referred above does not yet fully cover Ubuntu 24.04.

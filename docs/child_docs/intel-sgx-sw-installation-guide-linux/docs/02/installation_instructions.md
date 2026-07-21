@@ -954,7 +954,7 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
         For example, Azure provides the [Trusted Hardware Identity Management](https://learn.microsoft.com/en-us/azure/security/fundamentals/trusted-hardware-identity-management).
         Here, we assume that the Intel-provided packages are used.
 
-    1. **[Optional]** Setup the Provisioning Certificate Caching Service (PCCS) as explained in the [Provisioning Certificate Caching Service (PCCS)](../../../intel-tdx-enabling-guide/02/infrastructure_setup/#provisioning-certificate-caching-service-pccs) section of the Intel TDX Enabling Guide.
+    1. **[Optional]** Setup the Provisioning Certificate Caching Service (PCCS) as explained in the [Provisioning Certificate Caching Service (PCCS)](/intel-tdx-enabling-guide/02/infrastructure_setup/#provisioning-certificate-caching-service-pccs) section of the Intel TDX Enabling Guide.
         Note that Intel TDX and Intel SGX use the same PCCS.
 
     2. Install the DCAP QPL package:
@@ -973,7 +973,7 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
         For example, Azure provides the [Trusted Hardware Identity Management](https://learn.microsoft.com/en-us/azure/security/fundamentals/trusted-hardware-identity-management).
         Here, we assume that the Intel-provided packages are used.
 
-    1. **[Optional]** Setup the Provisioning Certificate Caching Service (PCCS) as explained in the [Provisioning Certificate Caching Service (PCCS)](../../../intel-tdx-enabling-guide/02/infrastructure_setup/#provisioning-certificate-caching-service-pccs) section of the Intel TDX Enabling Guide.
+    1. **[Optional]** Setup the Provisioning Certificate Caching Service (PCCS) as explained in the [Provisioning Certificate Caching Service (PCCS)](/intel-tdx-enabling-guide/02/infrastructure_setup/#provisioning-certificate-caching-service-pccs) section of the Intel TDX Enabling Guide.
         Note that Intel TDX and Intel SGX use the same PCCS.
 
     2. Install the DCAP QPL package:
@@ -992,7 +992,7 @@ To start an application that uses an Intel® SGX enclave, install the necessary 
         For example, Azure provides the [Trusted Hardware Identity Management](https://learn.microsoft.com/en-us/azure/security/fundamentals/trusted-hardware-identity-management).
         Here, we assume that the Intel-provided packages are used.
 
-    1. **[Optional]** Setup the Provisioning Certificate Caching Service (PCCS) as explained in the [Provisioning Certificate Caching Service (PCCS)](../../../intel-tdx-enabling-guide/02/infrastructure_setup/#provisioning-certificate-caching-service-pccs) section of the Intel TDX Enabling Guide.
+    1. **[Optional]** Setup the Provisioning Certificate Caching Service (PCCS) as explained in the [Provisioning Certificate Caching Service (PCCS)](/intel-tdx-enabling-guide/02/infrastructure_setup/#provisioning-certificate-caching-service-pccs) section of the Intel TDX Enabling Guide.
         Note that Intel TDX and Intel SGX use the same PCCS.
 
     2. Install the DCAP QPL package:

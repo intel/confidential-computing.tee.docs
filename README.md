@@ -2,10 +2,6 @@
 
 In this repository, you can find sources for Confidential Computing-related documentation.
 The parsed version of this documentation is reachable at [https://cc-enabling.trustedservices.intel.com/](https://cc-enabling.trustedservices.intel.com/).
-At the moment, sources for the following documentation is contained in this repository:
-
-- Intel® Trust Domain Extensions Enabling Guide
-- Intel Confidential Containers Guide
 
 In the following, we explore details about contributing to our documentation.
 
@@ -24,8 +20,7 @@ Depending on your goal, there are different recommended ways to contribute to th
 
 - [Minor Changes](#21-minor-changes)
 - [Major Changes](#22-major-changes)
-- [Build and Preview Entire Documentation](#23-build-and-preview-entire-documentation)
-- [Question and Remarks](#24-questions-and-remarks)
+- [Questions and Remarks](#23-questions-and-remarks)
 
 
 ### 2.1 Minor Changes
@@ -68,9 +63,10 @@ In the following subsection, we describe a recommended way to contribute major c
 - [Prerequisites](#221-prerequisites)
 - [Setup remote and local repository](#222-setup-remote-and-local-repository)
 - [Start and use local documentation server](#223-start-and-use-local-documentation-server)
-- [Edit documentation locally](#224-edit-documentation-locally)
-- [Push changes to your remote repository](#225-push-changes-to-your-remote-repository)
-- [Bring changes to this repository](#226-bring-changes-to-this-repository)
+- [Build documentation](#224-build-documentation)
+- [Edit documentation locally](#225-edit-documentation-locally)
+- [Push changes to your remote repository](#226-push-changes-to-your-remote-repository)
+- [Bring changes to this repository](#227-bring-changes-to-this-repository)
 
 
 #### 2.2.1 Prerequisites
@@ -107,91 +103,96 @@ Process:
 #### 2.2.3 Start and Use Local Documentation Server
 
 To conveniently see a live preview of your changes, we recommend starting a documentation server locally.
+This section explains how to serve the entire documentation and how to serve child documentations directly.
 
 Process:
 
 - With your favorite terminal, navigate to the folder containing the local clone of your fork (see step 2 of Section 2.2.2).
-- In your favorite terminal, execute the following to build the container of the local documentation server:
+- If not done before, build the Dockerfile used to create the documentation:
 
-    `docker build -t intel/cc-docu -f build/Dockerfile build`
-- Depending on the documentation you want to start, use one of the following commands in your favorite terminal:
-    - Parent documentation:
+    ``` {.bash}
+    docker build -t intel/cc-docu -f build/Dockerfile build
+    ```
+
+- Serve the entire documentation (parent + all children):
+    - Start Docker-based preview using the parent config:
 
         ``` {.bash}
         docker run --rm -i \
         --env LOCAL_DEPLOYMENT=true \
         -p 8000:8000 \
         --name cc-docu \
-        -v ${PWD}:/docs \
+        -v "${PWD}":/repo \
         intel/cc-docu \
-        -f docs/parent_doc/mkdocs.yml
+        -f /repo/docs/parent_doc/mkdocs.yml
         ```
 
-    - Intel® Trust Domain Extensions Enabling Guide:
+    - Open the preview of the entire documentation at [http://localhost:8000/](http://localhost:8000/).
+    - Whenever a file is changed for the parent or a child documentation, the related documentation is rebuild automatically and the browser is refreshed.
+
+- Serve one child documentation:
+    - Start Docker-based preview using the configuration of this child, e.g.:
 
         ``` {.bash}
         docker run --rm -i \
         --env LOCAL_DEPLOYMENT=true \
-        -p 8000:8000 \
-        --name cc-docu \
-        -v ${PWD}:/docs \
+        -p 8001:8000 \
+        --name cc-docu-child \
+        -v "${PWD}":/repo \
         intel/cc-docu \
-        -f docs/child_docs/intel-tdx-enabling-guide/mkdocs.yml
+        -f /repo/docs/child_docs/intel-tdx-enabling-guide/mkdocs.yml
         ```
 
-    - Intel Confidential Containers Guide:
-
-        ``` {.bash}
-        docker run --rm -i \
-        --env LOCAL_DEPLOYMENT=true \
-        -p 8000:8000 \
-        --name cc-docu \
-        -v ${PWD}:/docs \
-        intel/cc-docu \
-        -f docs/child_docs/intel-confidential-containers-guide/mkdocs.yml
-        ```
-
-    - Remote Attestation for Multi-Package Platforms using Intel® SGX Datacenter Attestation Primitives (DCAP):
-
-        ``` {.bash}
-        docker run --rm -i \
-        --env LOCAL_DEPLOYMENT=true \
-        -p 8000:8000 \
-        --name cc-docu \
-        -v ${PWD}:/docs \
-        intel/cc-docu \
-        -f docs/child_docs/intel-dcap-mp-ra/mkdocs.yml
-
-    - Intel SGX Software Installation Guide:
-
-        ``` {.bash}
-        docker run --rm -i \
-        --env LOCAL_DEPLOYMENT=true \
-        -p 8000:8000 \
-        --name cc-docu \
-        -v ${PWD}:/docs \
-        intel/cc-docu \
-        -f docs/child_docs/intel-sgx-sw-installation-guide-linux/mkdocs.yml
-        ```
-
-    - Design Guide for Intel® SGX/TDX Provisioning Certificate Caching Service (PCCS):
-
-        ``` {.bash}
-        docker run --rm -i \
-        --env LOCAL_DEPLOYMENT=true \
-        -p 8000:8000 \
-        --name cc-docu \
-        -v ${PWD}:/docs \
-        intel/cc-docu \
-        -f docs/child_docs/intel-sgx-tdx-pccs/mkdocs.yml
-        ```
-
-- Open the preview of the documentation in your browser.
-    The default URL is [http://localhost:8000/](http://localhost:8000/).
-    - Whenever you do a change to the documentation sources and save your change, the browser-based documentation will automatically reload without manual interaction
+    - Open the preview of the child documentation at [http://localhost:8001/](http://localhost:8001/).
+    - Whenever a file is changed for the child documentation, the documentation is rebuild automatically and the browser is refreshed.
 
 
-#### 2.2.4 Edit Documentation Locally
+#### 2.2.4 Build Documentation
+
+The recommended way to verify publication output is to build through the configuration of the parent documentation at `docs/parent_doc/mkdocs.yml`.
+This section also explains how to build child documentation directly for faster local checks.
+
+The parent documentation content lives under `docs/parent_doc/docs/`.
+The parent configuration lives under `docs/parent_doc/mkdocs.yml`.
+The shared base configuration for parent and child builds remains at `docs/mkdocs_base.yml`.
+Child documentations keep `includes`, `docs/assets`, `docs/misc`, `docs/overrides`, and `docs/stylesheets` as symlinks to shared parent content.
+
+Process:
+
+- With your favorite terminal, navigate to the folder containing the local clone of your fork (see step 2 of Section 2.2.2).
+- If not done before, build the Dockerfile used to create the documentation:
+
+    ``` {.bash}
+    docker build -t intel/cc-docu -f build/Dockerfile build
+    ```
+
+- Build the entire documentation via Docker (recommended default):
+
+    ``` {.bash}
+    docker run --rm -i \
+    --env LOCAL_DEPLOYMENT=true \
+    -v "${PWD}":/repo \
+    --entrypoint mkdocs \
+    intel/cc-docu \
+    build -f /repo/docs/parent_doc/mkdocs.yml
+    ```
+
+- Build one child documentation via Docker, e.g.:
+
+    ``` {.bash}
+    docker run --rm -i \
+    --env LOCAL_DEPLOYMENT=true \
+    -v "${PWD}":/repo \
+    --entrypoint mkdocs \
+    intel/cc-docu \
+    build -f /repo/docs/child_docs/intel-tdx-enabling-guide/mkdocs.yml
+    ```
+
+The rendered parent output is written to `docs/parent_doc/site/`, matching what we publish at [https://cc-enabling.trustedservices.intel.com/](https://cc-enabling.trustedservices.intel.com/).
+The rendered child output is written to `docs/child_docs/<child dir>/site/`.
+
+
+#### 2.2.5 Edit Documentation Locally
 
 To change the documentation, we recommend that you open the local clone of your fork with an IDE.
 In the following, we assume you are using [Visual Studio Code (VSCode)](https://code.visualstudio.com/) as this IDE brings some convenience features that improve the documentation modification experience.
@@ -231,7 +232,7 @@ In the following, we assume you are using [Visual Studio Code (VSCode)](https://
 - If you are using a local documentation server as described in [Section 2.2.3](#223-start-and-use-local-documentation-server), the website will automatically reload on every save of a Markdown file.
 
 
-#### 2.2.5 Push Changes to your Remote Repository
+#### 2.2.6 Push Changes to your Remote Repository
 
 For the following instructions, we assume you know how to use git with your IDE or with your favorite terminal.
 For VSCode's source control feature, you can find a lot of information in the [corresponding guide](https://code.visualstudio.com/docs/sourcecontrol/overview#_commit).
@@ -251,7 +252,7 @@ Process:
 - Push your branch to your fork at GitHub.
 
 
-#### 2.2.6 Bring Changes to this Repository
+#### 2.2.7 Bring Changes to this Repository
 
 At this point, your changes are contained in your fork of the documentation.
 The last step is to make your changes known to this repository allowing us to see your proposed changes.
@@ -267,40 +268,6 @@ Process:
     Potentially, you will receive requests for changes.
 
 
-### 2.3 Build and Preview Entire Documentation
-
-- Build necessary Docker images:
-
-    ``` {.bash}
-    docker build -f build/Dockerfile.buildAll -t intel/cc-docu-build-all build
-    docker build -f build/Dockerfile.serveAll -t intel/cc-docu-serve-all build
-    ```
-
-- For every change, run a build of the entire documentation:
-
-    ``` {.bash}
-    docker run --rm -i \
-    -v "$(pwd)":/build_env \
-    -v "$(pwd)"/site:/target \
-    --env LOCAL_DEPLOYMENT=true \
-    --name cc-docu-build-all \
-    intel/cc-docu-build-all
-    ```
-
-- Start preview of the entire documentation:
-
-    ``` {.bash}
-    docker run --rm -i \
-    -p 8001:80 \
-    -v "$(pwd)/site":/usr/share/nginx/html \
-    --name cc-docu-serve-all \
-    intel/cc-docu-serve-all
-    ```
-
-- Open the preview of the documentation in your browser.
-    The default URL is [http://localhost:8001/](http://localhost:8001/).
-
-
-### 2.4 Questions and Remarks
+### 2.3 Questions and Remarks
 
 For questions and remarks regarding the documentation, which you do not directly want to contribute as a change, please open a GitHub Issue in this repository.

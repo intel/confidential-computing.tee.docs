@@ -3,8 +3,6 @@ INHERIT: ../../mkdocs_base.yml
 site_name: Intel® TDX Enabling Guide
 
 edit_uri: edit/main/docs/child_docs/intel-tdx-enabling-guide/docs/
-watch:
-  - includes
 nav:
   - Introduction: 01/introduction.md
   - Infrastructure Setup: 02/infrastructure_setup.md

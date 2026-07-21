@@ -28,7 +28,7 @@ Refer to the [Kubernetes documentation](https://kubernetes.io/docs/setup/) for m
 We tested the guide on a single-node Kubernetes cluster.
 There might be some differences in the steps if you are using a multi-node cluster.
 
-This guide also assumes that you have already [enabled and configured Intel® TDX](../../../intel-tdx-enabling-guide/01/introduction) on each platform you wish to use as a worker node for your Kubernetes cluster.
+This guide also assumes that you have already [enabled and configured Intel® TDX](/intel-tdx-enabling-guide/01/introduction/) on each platform you wish to use as a worker node for your Kubernetes cluster.
 The master node (aka control plane) does not need to have Intel® TDX enabled.
 All provided steps should be executed on the master node if not specified otherwise.
 

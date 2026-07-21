@@ -157,7 +157,7 @@ In case of attestation failure, follow the steps below to troubleshoot the issue
     ```
 
     An `HTTP 400 Bad Request` error might suggest that platform is not registered correctly.
-    Refer to the [platform registration](../../../intel-tdx-enabling-guide/02/infrastructure_setup/#platform-registration) section of the Intel TDX Enabling Guide for details.
+    Refer to the [platform registration](/intel-tdx-enabling-guide/02/infrastructure_setup/#platform-registration) section of the Intel TDX Enabling Guide for details.
 
 - Check for errors in Intel PCCS service:
 
@@ -189,4 +189,4 @@ In case of attestation failure, follow the steps below to troubleshoot the issue
     [QPL] No certificate data for this platform.
     ```
 
-    Refer to the [platform registration](../../../intel-tdx-enabling-guide/02/infrastructure_setup/#platform-registration) section of the Intel TDX Enabling Guide for details.
+    Refer to the [platform registration](/intel-tdx-enabling-guide/02/infrastructure_setup/#platform-registration) section of the Intel TDX Enabling Guide for details.

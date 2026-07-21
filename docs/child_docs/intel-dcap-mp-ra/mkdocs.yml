@@ -3,8 +3,6 @@ INHERIT: ../../mkdocs_base.yml
 site_name: Remote Attestation for Multi-Package Platforms using Intel® SGX Datacenter Attestation Primitives (DCAP)
 
 edit_uri: edit/main/docs/child_docs/intel-dcap-mp-ra/docs/
-watch:
-  - includes
 nav:
   - Introduction: 01/introduction.md
   - Overview: 02/overview.md

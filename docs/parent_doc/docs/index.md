@@ -27,11 +27,11 @@ Detailed instructions on how to contribute, including guidelines for submitting 
 
 <div class="grid cards" markdown><!-- markdownlint-disable-line MD033 -->
 
-- [:octicons-arrow-right-24: **Intel® TDX Enabling Guide**](intel-tdx-enabling-guide/01/introduction/index.html)
+- [:octicons-arrow-right-24: **Intel® TDX Enabling Guide**](/intel-tdx-enabling-guide/01/introduction/)
 
     This guide provides a set of instructions for integrating, deploying, and using Intel TDX.
 
-- [:octicons-arrow-right-24: **Intel Confidential Containers Guide**](intel-confidential-containers-guide/01/introduction/index.html)
+- [:octicons-arrow-right-24: **Intel Confidential Containers Guide**](/intel-confidential-containers-guide/01/introduction/)
 
     This guide provides a set of instructions for configuring Confidential Containers operator to deploy applications with Kubernetes in Intel TDX-protected virtual machines, and how to attest these using the Confidential Containers Trustee project.
 
@@ -42,7 +42,7 @@ Detailed instructions on how to contribute, including guidelines for submitting 
 
 <div class="grid cards" markdown><!-- markdownlint-disable-line MD033 -->
 
-- [:octicons-arrow-right-24: **Intel® SGX Software Installation Guide for Linux OS**](intel-sgx-sw-installation-guide-linux/01/introduction/)
+- [:octicons-arrow-right-24: **Intel® SGX Software Installation Guide for Linux OS**](/intel-sgx-sw-installation-guide-linux/01/introduction/)
 
     This guide provides a set of instructions for installing Intel SGX software components.
 
@@ -53,11 +53,11 @@ Detailed instructions on how to contribute, including guidelines for submitting 
 
 <div class="grid cards" markdown><!-- markdownlint-disable-line MD033 -->
 
-- [:octicons-arrow-right-24: **Remote Attestation for Multi-Package Platforms using Intel® SGX Datacenter Attestation Primitives (DCAP)**](intel-dcap-mp-ra/01/introduction/index.html)
+- [:octicons-arrow-right-24: **Remote Attestation for Multi-Package Platforms using Intel® SGX Datacenter Attestation Primitives (DCAP)**](/intel-dcap-mp-ra/01/introduction/)
 
     This guide provides information on the DCAP platform software and tools that support multi-package registration and a brief overview of the multi-package boot flows and components.
 
-- [:octicons-arrow-right-24: **Design Guide for Intel® SGX and Intel® TDX Provisioning Certificate Caching Service (PCCS)**](intel-sgx-tdx-pccs/01/introduction/index.html)
+- [:octicons-arrow-right-24: **Design Guide for Intel® SGX and Intel® TDX Provisioning Certificate Caching Service (PCCS)**](/intel-sgx-tdx-pccs/01/introduction/)
 
     This design guide provides the following details about the PCCS: software architecture, API specifications, database schema, and cache management flows necessary to support third-party attestation.
 

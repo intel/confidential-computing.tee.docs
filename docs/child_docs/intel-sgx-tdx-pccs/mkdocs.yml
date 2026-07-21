@@ -3,8 +3,6 @@ INHERIT: ../../mkdocs_base.yml
 site_name: Design Guide for Intel® SGX and Intel® TDX Provisioning Certificate Caching Service (PCCS)
 
 edit_uri: edit/main/docs/child_docs/intel-sgx-tdx-pccs/docs/
-watch:
-  - includes
 nav:
   - Introduction: 01/introduction.md
   - Overview: 02/overview.md

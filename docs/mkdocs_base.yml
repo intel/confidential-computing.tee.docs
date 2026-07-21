@@ -32,15 +32,20 @@ theme:
 repo_url: https://github.com/intel/confidential-computing.tee.docs/
 repo_name: Docu Source
 plugins:
-  git-revision-date-localized:
-    enable_creation_date: true
-  search: {}
-  macros:
-    module_name: main
-    on_error_fail: false
-  print-site:
-    add_cover_page: true
-    cover_page_template: "docs/assets/templates/cover_page.tpl"
+  - projects:
+      hoisting: true
+      projects_dir: ../child_docs
+  - git-revision-date-localized:
+      enable_creation_date: true
+  - search: {}
+  - macros:
+      module_name: main
+      on_error_fail: false
+  - print-site:
+      add_cover_page: true
+      cover_page_template: "docs/assets/templates/cover_page.tpl"
+watch:
+  - includes
 markdown_extensions:
   toc:
     permalink: true
@@ -92,5 +97,7 @@ validation:
   links:
     not_found: warn
     anchors: warn
-    absolute_links: warn
+    # The projects plugin builds every child documentation project in isolation, so MkDocs cannot validate links that cross project boundaries.
+    # Run build/validate_links.py against the completed parent site after a build to check every cross-project target (and optionally external link) in the generated HTML.
+    absolute_links: ignore
     unrecognized_links: warn

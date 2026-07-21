@@ -3,8 +3,6 @@ INHERIT: ../../mkdocs_base.yml
 site_name: Intel® SGX Software Installation Guide for Linux OS
 
 edit_uri: edit/main/docs/child_docs/intel-sgx-sw-installation-guide-linux/docs/
-watch:
-  - includes
 nav:
   - Introduction: 01/introduction.md
   - Installation Instructions: 02/installation_instructions.md
