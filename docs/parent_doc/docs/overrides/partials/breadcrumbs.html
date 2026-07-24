@@ -9,7 +9,7 @@
       <li class="md-tabs__item md-tabs__item">
         <a href="/" class="md-tabs__link">Home</a>
       </li>
-      {% if "edit/main/docs/child_docs" in config.edit_uri %}
+      {% if config.extra.is_child %}
         <li class="md-tabs__link">
             >
         </li>

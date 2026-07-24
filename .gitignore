@@ -1,2 +1,3 @@
 site/
 /docs/**/.cache/
+/docs/**/__pycache__

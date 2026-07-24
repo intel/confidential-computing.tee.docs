@@ -39,7 +39,7 @@ plugins:
       enable_creation_date: true
   - search: {}
   - macros:
-      module_name: main
+      module_name: includes/macros
       on_error_fail: false
   - print-site:
       add_cover_page: true
@@ -83,6 +83,7 @@ extra_css:
   - stylesheets/extra.css
   - stylesheets/spantable.css
 extra:
+  is_child: true
   scope: /
   environment:
     local_deployment: !ENV [LOCAL_DEPLOYMENT, false]

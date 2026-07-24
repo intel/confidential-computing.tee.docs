@@ -64,9 +64,10 @@ In the following subsection, we describe a recommended way to contribute major c
 - [Setup remote and local repository](#222-setup-remote-and-local-repository)
 - [Start and use local documentation server](#223-start-and-use-local-documentation-server)
 - [Build documentation](#224-build-documentation)
-- [Edit documentation locally](#225-edit-documentation-locally)
-- [Push changes to your remote repository](#226-push-changes-to-your-remote-repository)
-- [Bring changes to this repository](#227-bring-changes-to-this-repository)
+- [Validate links](#225-validate-links)
+- [Edit documentation locally](#226-edit-documentation-locally)
+- [Push changes to your remote repository](#227-push-changes-to-your-remote-repository)
+- [Bring changes to this repository](#228-bring-changes-to-this-repository)
 
 
 #### 2.2.1 Prerequisites
@@ -191,8 +192,67 @@ Process:
 The rendered parent output is written to `docs/parent_doc/site/`, matching what we publish at [https://cc-enabling.trustedservices.intel.com/](https://cc-enabling.trustedservices.intel.com/).
 The rendered child output is written to `docs/child_docs/<child dir>/site/`.
 
+##### `LOCAL_DEPLOYMENT` and the "Edit / View source" buttons
 
-#### 2.2.5 Edit Documentation Locally
+Every documentation page has "Edit this page" and "View source" buttons generated from `repo_url` and `edit_uri` in the MkDocs config.
+In production, these point to the default branch of the public repository.
+
+When `LOCAL_DEPLOYMENT=true` is set (as in the commands above), the macros module at `docs/parent_doc/includes/macros.py` automatically rewrites `repo_url` and replaces the branch name in `edit_uri` so the buttons point to the correct repository and branch.
+
+- **On a developer machine:** reads the Git remote URL (default: `origin`) and the current checked-out branch.
+    In detached HEAD state, falls back to the remote's default branch (`refs/remotes/<remote>/HEAD`).
+    Set the `MKDOCS_REPO_REMOTE` environment variable to use a different remote (e.g., `upstream`).
+- **In GitHub Actions:** reads the `GITHUB_SERVER_URL`, `GITHUB_REPOSITORY`, and `GITHUB_REF_NAME` environment variables (always available in CI).
+
+To enable this in a CI workflow, pass the GitHub variables through to the Docker container:
+
+``` {.yaml}
+- name: Build docs
+  run: |
+    docker run --rm \
+      --env LOCAL_DEPLOYMENT=true \
+      --env GITHUB_SERVER_URL \
+      --env GITHUB_REPOSITORY \
+      --env GITHUB_REF_NAME \
+      -v "${{ github.workspace }}":/docs \
+      --entrypoint mkdocs \
+      intel/cc-docu \
+      build -f /docs/docs/mkdocs.yml
+```
+
+Without `LOCAL_DEPLOYMENT` this rewrite logic is a no-op and the production defaults are used unchanged.
+
+
+#### 2.2.5 Validate Links
+
+MkDocs validates links within one documentation automatically.
+Because the projects plugin builds each child project in isolation, MkDocs cannot validate links that cross project boundaries.
+A post-build validator script is included in this repository (`build/validate_links.py`) to close this gap.
+By default, the validator script scans all HTML files for cross-project links and verifies each target exists.
+Optionally, the validator script also checks external links.
+
+- After a successful build, run the validator script on cross-project links:
+
+    ``` {.bash}
+    docker run --rm \
+    -v "${PWD}":/repo \
+    --entrypoint python \
+    intel/cc-docu \
+    /repo/build/validate_links.py /repo/docs/parent_doc/site
+    ```
+
+- After a successful build, run the validator script on cross-project and external links using the `--check-external` flag:
+
+    ``` {.bash}
+    docker run --rm \
+    -v "${PWD}":/repo \
+    --entrypoint python \
+    intel/cc-docu \
+    /repo/build/validate_links.py /repo/docs/parent_doc/site --check-external
+    ```
+
+
+#### 2.2.6 Edit Documentation Locally
 
 To change the documentation, we recommend that you open the local clone of your fork with an IDE.
 In the following, we assume you are using [Visual Studio Code (VSCode)](https://code.visualstudio.com/) as this IDE brings some convenience features that improve the documentation modification experience.
@@ -232,7 +292,7 @@ In the following, we assume you are using [Visual Studio Code (VSCode)](https://
 - If you are using a local documentation server as described in [Section 2.2.3](#223-start-and-use-local-documentation-server), the website will automatically reload on every save of a Markdown file.
 
 
-#### 2.2.6 Push Changes to your Remote Repository
+#### 2.2.7 Push Changes to your Remote Repository
 
 For the following instructions, we assume you know how to use git with your IDE or with your favorite terminal.
 For VSCode's source control feature, you can find a lot of information in the [corresponding guide](https://code.visualstudio.com/docs/sourcecontrol/overview#_commit).
@@ -252,7 +312,7 @@ Process:
 - Push your branch to your fork at GitHub.
 
 
-#### 2.2.7 Bring Changes to this Repository
+#### 2.2.8 Bring Changes to this Repository
 
 At this point, your changes are contained in your fork of the documentation.
 The last step is to make your changes known to this repository allowing us to see your proposed changes.
