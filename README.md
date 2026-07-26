@@ -123,6 +123,7 @@ Process:
         --env LOCAL_DEPLOYMENT=true \
         -p 8000:8000 \
         --name cc-docu \
+        --user "$(id -u):$(id -g)" \
         -v "${PWD}":/repo \
         intel/cc-docu \
         -f /repo/docs/parent_doc/mkdocs.yml
@@ -139,6 +140,7 @@ Process:
         --env LOCAL_DEPLOYMENT=true \
         -p 8001:8000 \
         --name cc-docu-child \
+        --user "$(id -u):$(id -g)" \
         -v "${PWD}":/repo \
         intel/cc-docu \
         -f /repo/docs/child_docs/intel-tdx-enabling-guide/mkdocs.yml
@@ -172,6 +174,7 @@ Process:
     ``` {.bash}
     docker run --rm -i \
     --env LOCAL_DEPLOYMENT=true \
+    --user "$(id -u):$(id -g)" \
     -v "${PWD}":/repo \
     --entrypoint mkdocs \
     intel/cc-docu \
@@ -183,6 +186,7 @@ Process:
     ``` {.bash}
     docker run --rm -i \
     --env LOCAL_DEPLOYMENT=true \
+    --user "$(id -u):$(id -g)" \
     -v "${PWD}":/repo \
     --entrypoint mkdocs \
     intel/cc-docu \
@@ -236,6 +240,7 @@ Optionally, the validator script also checks external links.
     ``` {.bash}
     docker run --rm \
     -v "${PWD}":/repo \
+    --user "$(id -u):$(id -g)" \
     --entrypoint python \
     intel/cc-docu \
     /repo/build/validate_links.py /repo/docs/parent_doc/site
@@ -246,6 +251,7 @@ Optionally, the validator script also checks external links.
     ``` {.bash}
     docker run --rm \
     -v "${PWD}":/repo \
+    --user "$(id -u):$(id -g)" \
     --entrypoint python \
     intel/cc-docu \
     /repo/build/validate_links.py /repo/docs/parent_doc/site --check-external
