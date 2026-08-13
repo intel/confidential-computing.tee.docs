@@ -57,10 +57,22 @@
 
 --8<-- [start:sgx-repo_opensuse_leap_15_6]
 
-=== "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
+=== "SUSE Linux Enterprise Server 15 SP7"
 
     ``` { .text }
     --8<-- "includes/sgx_repo_setup.sh:opensuse_leap_15_6"
     ```
 
 --8<-- [end:sgx-repo_opensuse_leap_15_6]
+
+<!-- --- -->
+
+--8<-- [start:sgx-repo_suse_16_0]
+
+=== "SUSE Linux Enterprise Server 16.0"
+
+    ``` { .text }
+    --8<-- "includes/sgx_repo_setup.sh:suse_16_0"
+    ```
+
+--8<-- [end:sgx-repo_suse_16_0]

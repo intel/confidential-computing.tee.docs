@@ -265,6 +265,7 @@ Detailed steps to use this registration method:
 
         --8<-- "includes/package_repo_setup.md:sgx-repo_cent-os-stream-9"
         --8<-- "includes/package_repo_setup.md:sgx-repo_ubuntu_24_04"
+        --8<-- "includes/package_repo_setup.md:sgx-repo_suse_16_0"
         --8<-- "includes/package_repo_setup.md:sgx-repo_opensuse_leap_15_6"
 
     - Install MPA:
@@ -280,7 +281,13 @@ Detailed steps to use this registration method:
             sudo apt install -y sgx-ra-service
             ```
 
-        === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
+        === "SUSE Linux Enterprise Server 16.0"
+
+            ``` { .bash }
+            sudo zypper install -y sgx-ra-service
+            ```
+
+        === "SUSE Linux Enterprise Server 15 SP7"
 
             ``` { .bash }
             sudo zypper install -y sgx-ra-service
@@ -297,7 +304,7 @@ Detailed steps to use this registration method:
     The following shows a sample log for a successful registration:
 
     ``` { .text }
-    [date time] INFO: SGX Registration Agent version: 1.26.100.1
+    [date time] INFO: SGX Registration Agent version: 1.27.101.1
     [date time] INFO: Starts Registration Agent Flow.
     [date time] INFO: Registration Flow - PLATFORM_ESTABLISHMENT or TCB_RECOVERY passed successfully.
     [date time] INFO: Finished Registration Agent Flow.
@@ -317,7 +324,13 @@ Detailed steps to use this registration method:
         ``` { .bash }
         sudo journalctl -u mpa_registration_tool
         ```
-    === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
+    === "SUSE Linux Enterprise Server 16.0"
+
+        ``` { .bash }
+        sudo journalctl -u mpa_registration_tool
+        ```
+
+    === "SUSE Linux Enterprise Server 15 SP7"
 
         ``` { .bash }
         sudo journalctl -u mpa_registration_tool
@@ -373,6 +386,7 @@ Detailed steps to use this registration method:
 
             --8<-- "includes/package_repo_setup.md:sgx-repo_cent-os-stream-9"
             --8<-- "includes/package_repo_setup.md:sgx-repo_ubuntu_24_04"
+            --8<-- "includes/package_repo_setup.md:sgx-repo_suse_16_0"
             --8<-- "includes/package_repo_setup.md:sgx-repo_opensuse_leap_15_6"
 
         - Install PCKCIDRT:
@@ -389,7 +403,13 @@ Detailed steps to use this registration method:
                 sudo apt install -y sgx-pck-id-retrieval-tool
                 ```
 
-            === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
+            === "SUSE Linux Enterprise Server 16.0"
+
+                ``` { .text }
+                sudo zypper install -y sgx-pck-id-retrieval-tool
+                ```
+
+            === "SUSE Linux Enterprise Server 15 SP7"
 
                 ``` { .text }
                 sudo zypper install -y sgx-pck-id-retrieval-tool
@@ -405,7 +425,7 @@ Detailed steps to use this registration method:
             ``` { .text }
             sudo dnf install -y wget
             wget -O PCKIDRetrievalTool.tar.gz \
-                https://download.01.org/intel-sgx/latest/dcap-latest/linux/distro/centos-stream9/PCKIDRetrievalTool_v1.26.100.1.tar.gz
+                https://download.01.org/intel-sgx/latest/dcap-latest/linux/distro/centos-stream9/PCKIDRetrievalTool_v1.27.101.1.tar.gz
             mkdir -p PCKIDRetrievalTool
             tar xvzf PCKIDRetrievalTool.tar.gz \
                 --strip-components=1 \
@@ -417,19 +437,31 @@ Detailed steps to use this registration method:
             ``` { .text }
             sudo apt install -y wget
             wget -O PCKIDRetrievalTool.tar.gz \
-                https://download.01.org/intel-sgx/latest/dcap-latest/linux/distro/ubuntu24.04-server/PCKIDRetrievalTool_v1.26.100.1.tar.gz
+                https://download.01.org/intel-sgx/latest/dcap-latest/linux/distro/ubuntu24.04-server/PCKIDRetrievalTool_v1.27.101.1.tar.gz
             mkdir -p PCKIDRetrievalTool
             tar xvzf PCKIDRetrievalTool.tar.gz \
                 --strip-components=1 \
                 -C PCKIDRetrievalTool
             ```
 
-        === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
+        === "SUSE Linux Enterprise Server 16.0"
 
             ``` { .text }
             sudo zypper install -y wget
             wget -O PCKIDRetrievalTool.tar.gz \
-                https://download.01.org/intel-sgx/latest/dcap-latest/linux/distro/suse15.6-server/PCKIDRetrievalTool_v1.26.100.1.tar.gz
+                https://download.01.org/intel-sgx/latest/dcap-latest/linux/distro/suse16-server/PCKIDRetrievalTool_v1.27.101.1.tar.gz
+            mkdir -p PCKIDRetrievalTool
+            tar xvzf PCKIDRetrievalTool.tar.gz \
+                --strip-components=1 \
+                -C PCKIDRetrievalTool
+            ```
+
+        === "SUSE Linux Enterprise Server 15 SP7"
+
+            ``` { .text }
+            sudo zypper install -y wget
+            wget -O PCKIDRetrievalTool.tar.gz \
+                https://download.01.org/intel-sgx/latest/dcap-latest/linux/distro/suse15.7-server/PCKIDRetrievalTool_v1.27.101.1.tar.gz
             mkdir -p PCKIDRetrievalTool
             tar xvzf PCKIDRetrievalTool.tar.gz \
                 --strip-components=1 \
@@ -454,7 +486,13 @@ Detailed steps to use this registration method:
             sudo PCKIDRetrievalTool -f host_$(hostnamectl --static).csv
             ```
 
-        === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
+        === "SUSE Linux Enterprise Server 16.0"
+
+            ``` { .text }
+            sudo PCKIDRetrievalTool -f host_$(hostnamectl --static).csv
+            ```
+
+        === "SUSE Linux Enterprise Server 15 SP7"
 
             ``` { .text }
             sudo PCKIDRetrievalTool -f host_$(hostnamectl --static).csv
@@ -476,7 +514,14 @@ Detailed steps to use this registration method:
             sudo LD_LIBRARY_PATH=. ./PCKIDRetrievalTool -f host_$(hostnamectl --static).csv
             ```
 
-        === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
+        === "SUSE Linux Enterprise Server 16.0"
+
+            ``` { .text }
+            cd PCKIDRetrievalTool
+            sudo LD_LIBRARY_PATH=. ./PCKIDRetrievalTool -f host_$(hostnamectl --static).csv
+            ```
+
+        === "SUSE Linux Enterprise Server 15 SP7"
 
             ``` { .text }
             cd PCKIDRetrievalTool
@@ -486,7 +531,7 @@ Detailed steps to use this registration method:
     On successful execution of the PCKCIDRT, you'll see output similar to the following:
 
     ``` { .text }
-    Intel(R) Software Guard Extensions PCK Cert ID Retrieval Tool Version 1.26.100.1
+    Intel(R) Software Guard Extensions PCK Cert ID Retrieval Tool Version 1.27.101.1
 
     Registration status has been set to completed status.
     <hostname>.csv has been generated successfully!
@@ -520,7 +565,14 @@ Detailed steps to use this registration method:
         sudo apt-get install -y csvtool
         sudo bash -c "csvtool col 6 host_$(hostnamectl --static).csv | xxd -r -p > host_$(hostnamectl --static)_pm.bin"
         ```
-    === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
+    === "SUSE Linux Enterprise Server 16.0"
+
+        ``` { .text }
+        sudo zypper install -y ocaml-csv
+        sudo bash -c "csvtool col 6 host_$(hostnamectl --static).csv | xxd -r -p > host_$(hostnamectl --static)_pm.bin"
+        ```
+
+    === "SUSE Linux Enterprise Server 15 SP7"
 
         ``` { .text }
         sudo zypper install -y ocaml-csv
@@ -561,7 +613,16 @@ Detailed steps to use this registration method:
             -X POST "https://api.trustedservices.intel.com/sgx/registration/v1/platform" \
             -H "Content-Type: application/octet-stream"
             ```
-        === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
+        === "SUSE Linux Enterprise Server 16.0"
+
+            ``` { .text }
+            curl -i \
+            --data-binary @host_$(hostnamectl --static)_pm.bin \
+            -X POST "https://api.trustedservices.intel.com/sgx/registration/v1/platform" \
+            -H "Content-Type: application/octet-stream"
+            ```
+
+        === "SUSE Linux Enterprise Server 15 SP7"
 
             ``` { .text }
             curl -i \
@@ -593,7 +654,16 @@ Detailed steps to use this registration method:
             -X POST "https://api.trustedservices.intel.com/sgx/registration/v1/platform" \
             -H "Content-Type: application/octet-stream"
             ```
-        === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
+        === "SUSE Linux Enterprise Server 16.0"
+
+            ``` { .text }
+            curl -i \
+            --data-binary @host_<hostname>_pm.bin \
+            -X POST "https://api.trustedservices.intel.com/sgx/registration/v1/platform" \
+            -H "Content-Type: application/octet-stream"
+            ```
+
+        === "SUSE Linux Enterprise Server 15 SP7"
 
             ``` { .text }
             curl -i \
@@ -685,7 +755,17 @@ Detailed steps to use this registration method:
                 -proxy_type YOUR_PROXY_TYPE \
                 -use_secure_cert true
             ```
-        === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
+        === "SUSE Linux Enterprise Server 16.0"
+
+            ``` { .text }
+            sudo PCKIDRetrievalTool \
+                -url https://YOUR_PCCS_URL:YOUR_PCCS_PORT \
+                -user_token YOUR_USER_TOKEN \
+                -proxy_type YOUR_PROXY_TYPE \
+                -use_secure_cert true
+            ```
+
+        === "SUSE Linux Enterprise Server 15 SP7"
 
             ``` { .text }
             sudo PCKIDRetrievalTool \
@@ -714,7 +794,17 @@ Detailed steps to use this registration method:
                 -proxy_type YOUR_PROXY_TYPE \
                 -use_secure_cert true
             ```
-        === "openSUSE Leap 15.6 or SUSE Linux Enterprise Server 15-SP6"
+        === "SUSE Linux Enterprise Server 16.0"
+
+            ``` { .text }
+            sudo ./PCKIDRetrievalTool \
+                -url https://YOUR_PCCS_URL:YOUR_PCCS_PORT \
+                -user_token YOUR_USER_TOKEN \
+                -proxy_type YOUR_PROXY_TYPE \
+                -use_secure_cert true
+            ```
+
+        === "SUSE Linux Enterprise Server 15 SP7"
 
             ``` { .text }
             sudo ./PCKIDRetrievalTool \
