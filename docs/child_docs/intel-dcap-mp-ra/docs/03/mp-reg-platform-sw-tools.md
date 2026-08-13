@@ -190,26 +190,26 @@ By default, the MPA does not automatically run at boot.
 The MPA writes an error code to the ErrorCode field of the SgxRegistrationServerStatus UEFI variable when it completes.
 These are the possible ErrorCode values produced by the MPA (the MPA error codes always have the most significant bit of the ErrorCode field):
 
-| Error Name                                | Error Code | Description |
-| ------------------------------------------|--------|-------------|
-| `MPA_SUCCESS`                             | (0x00) | Completed without any errors |
-| `MPA_AG_UNEXPECTED_ERROR`                 | (0x80) | Unexpected internal error |
-| `MPA_AG_OUT_OF_MEMORY`                    | (0x81) | Out-of-memory error |
-| `MPA_AG_NETWORK_ERROR`                    | (0x82) | Proxy detection or network communication error |
-| `MPA_AG_INVALID_PARAMETER`                | (0x83) | Invalid parameter in input |
-| `MPA_AG_INTERNAL_SERVER_ERROR`            | (0x84) | Internal server error occurred |
-| `MPA_AG_SERVER_TIMEOUT`                   | (0x85) | Server communication timeout |
-| `MPA_AG_BIOS_PROTOCOL_ERROR`              | (0x86) | BIOS UEFI protocol error |
-| `MPA_AG_UNAUTHORIZED_ERROR`               | (0x87) | The client is unauthorized to access the registration server |
-| `MPA_RS_INVALID_REQUEST_SYNTAX`           | (0xA0) | Server could not understand request due to malformed syntax |
-| `MPA_RS_PM_INVALID_REGISTRATION_SERVER`   | (0xA1) | Server rejected request because it is intended for different registration server (Registration Server Authentication Key (RSAK) mismatch) |
-| `MPA_RS_INVALID_OR_REVOKED_PACKAGE`       | (0xA2) | Server rejected request due to invalid or revoked CPU package |
-| `MPA_RS_PACKAGE_NOT_FOUND`                | (0xA3) | Server could not recognize at least one of the CPU packages |
-| `MPA_RS_PM_INCOMPATIBLE_PACKAGE`          | (0xA4) | Server detected at least one of the CPU packages is incompatible  rest of the CPU packages on the platform |
-| `MPA_RS_PM_INVALID_PLATFORM_MANIFEST`     | (0xA5) | Server could not process the platform manifest structure |
-| `MPA_RS_AD_PLATFORM_NOT_FOUND`            | (0xA6) | Server rejected add package request because the platform has not been registered |
-| `MPA_RS_AD_INVALID_ADD_REQUEST`           | (0xA7) | Server could not process the add package structure |
-| `MPA_RS_UNKOWN_ERROR`                     | (0xA8) | Server rejected request for unknown reason (Probably means MPA to be updated with newly defined server response errors) |
+| Error Name | Error Code | Description |
+| --- | --- | --- |
+| `MPA_SUCCESS` | (0x00) | Completed without any errors |
+| `MPA_AG_UNEXPECTED_ERROR` | (0x80) | Unexpected internal error |
+| `MPA_AG_OUT_OF_MEMORY` | (0x81) | Out-of-memory error |
+| `MPA_AG_NETWORK_ERROR` | (0x82) | Proxy detection or network communication error |
+| `MPA_AG_INVALID_PARAMETER` | (0x83) | Invalid parameter in input |
+| `MPA_AG_INTERNAL_SERVER_ERROR` | (0x84) | Internal server error occurred |
+| `MPA_AG_SERVER_TIMEOUT` | (0x85) | Server communication timeout |
+| `MPA_AG_BIOS_PROTOCOL_ERROR` | (0x86) | BIOS UEFI protocol error |
+| `MPA_AG_UNAUTHORIZED_ERROR` | (0x87) | The client is unauthorized to access the registration server |
+| `MPA_RS_INVALID_REQUEST_SYNTAX` | (0xA0) | Server could not understand request due to malformed syntax |
+| `MPA_RS_PM_INVALID_REGISTRATION_SERVER` | (0xA1) | Server rejected request because it is intended for different registration server (Registration Server Authentication Key (RSAK) mismatch) |
+| `MPA_RS_INVALID_OR_REVOKED_PACKAGE` | (0xA2) | Server rejected request due to invalid or revoked CPU package |
+| `MPA_RS_PACKAGE_NOT_FOUND` | (0xA3) | Server could not recognize at least one of the CPU packages |
+| `MPA_RS_PM_INCOMPATIBLE_PACKAGE` | (0xA4) | Server detected at least one of the CPU packages is incompatible with the rest of the CPU packages on the platform |
+| `MPA_RS_PM_INVALID_PLATFORM_MANIFEST` | (0xA5) | Server could not process the platform manifest structure |
+| `MPA_RS_AD_PLATFORM_NOT_FOUND` | (0xA6) | Server rejected add package request because the platform has not been registered |
+| `MPA_RS_AD_INVALID_ADD_REQUEST` | (0xA7) | Server could not process the add package structure |
+| `MPA_RS_UNKOWN_ERROR` | (0xA8) | Server rejected request for unknown reason (Probably means MPA to be updated with newly defined server response errors) |
 
 <!-- // cspell:ignore UNKOWN -->
 

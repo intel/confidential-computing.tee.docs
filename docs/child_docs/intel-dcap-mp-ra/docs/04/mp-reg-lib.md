@@ -39,7 +39,7 @@ MpResult mp_uefi_init(
 | Parameter | Description |
 |---|---|
 | `path [In]` | Linux absolute path to the UEFI variables directory. For Linux, if the value is `NULL`, the default UEFI path of /sys/firmware/efi/efivars/ is used. For Windows, this parameter is ignored. |
-| `logLevel [In]` | Set the logging level. Logging messages default to stdout. You can create an auxiliary logging function and link with the MP UEFI Library to change the output location. .<br /><ul><li>Linux: `void log_message_aux(LogLevel level, const char *format, va_list argptr)`</li><li>Windows: `void uefi_log_message_aux(LogLevel glog_level, LogLevel level, const char* format, ...)` </li></ul>  |
+| `logLevel [In]` | Set the logging level. Logging messages default to stdout. You can create an auxiliary logging function and link with the MP UEFI Library to change the output location.<br /><ul><li>Linux: `void log_message_aux(LogLevel level, const char *format, va_list argptr)`</li><li>Windows: `void uefi_log_message_aux(LogLevel glog_level, LogLevel level, const char* format, ...)`</li></ul> |
 <!-- markdownlint-enable MD033 -->
 
 ### Return Values

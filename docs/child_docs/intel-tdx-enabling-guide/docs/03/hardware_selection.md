@@ -1,5 +1,5 @@
 ---
-description: To use Intel® TDX, specific hardware requirements must be met. This includes the CPU seclection and the DIMM population.
+description: To use Intel® TDX, specific hardware requirements must be met. This includes the CPU selection and the DIMM population.
 keywords: enabling guide, Intel TDX, Trust Domain Extension, Confidential Computing, hardware setup, hardware selection
 ---
 <!---

@@ -30,11 +30,11 @@ SgxRegistrationServerResponse
 <!-- markdownlint-enable MD033 -->
 
 <!-- markdownlint-disable MD033 -->
-| Name                              | Size -| Type       | Description  |
-|-----------------------------------|-------|------------|--------------|
-| `Version`                         | 2     | LE Integer | `1`          |
-| `Size`                            | 2     | LE Integer | Size in bytes of data below |
-| `Platform Member Ship Certs[8]`   | `8 * sizeof(PLATFORM_MEMBERSHIP_CERT)` | Mix | Array of platform memberships certs returned by the registration server. <br />Empty array elements are all `0x00`s. <br />BIOS clears the data once it has read it |
+| Name | Size - | Type | Description |
+| --- | --- | --- | --- |
+| `Version` | 2 | LE Integer | `1` |
+| `Size` | 2 | LE Integer | Size in bytes of data below |
+| `Platform Membership Certs[8]` | `8 * sizeof(PLATFORM_MEMBERSHIP_CERT)` | Mix | Array of platform membership certs returned by the registration server. <br />Empty array elements are all `0x00`s. <br />BIOS clears the data once it has read it |
 
 /// table-caption
 SgxRegistrationServerResponse Fields
