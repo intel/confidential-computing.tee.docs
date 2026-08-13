@@ -37,7 +37,7 @@ MpResult mp_network_init(
 
 <!-- markdownlint-disable MD033 -->
 | Parameter | Description |
-|---|---|
+| --- | --- |
 | `server_address [In]` | Server URL that exposes the REST APIs. |
 | `subscription_key [In]` | Some REST APIs may require a subscription key.<br /> Currently, only the add package API requires a subscription key. |
 | `proxy [In]` | Desired proxy configurations of the platform communicating to the registration service. |
@@ -48,7 +48,7 @@ MpResult mp_network_init(
 
 <!-- markdownlint-disable MD033 -->
 | Parameter | Description |
-|---|---|
+| --- | --- |
 | `MP_SUCCESS` | Successfully initialized the network library. |
 | `MP_INVALID_PARAMETER` | <ul><li>Either the `server_address`, `subscription_key` or the `proxy` parameter is `NULL`</li> <li>The size of the URL string is too long or the URL is an invalid value.</li></ul> |
 | `MP_REDUNDANT_OPERATION` | The MP Network library was already initialized. |
@@ -80,7 +80,7 @@ MpResult mp_send_binary_request(
 ### Parameters
 
 | Parameter | Description |
-|---|---|
+| --- | --- |
 | `request_type [In]` | The type of request to be sent. Currently, only the platform manifest and the add package request types are supported. |
 | `request [In]` | Request buffer to send to the service. |
 | `request_size [In]` | Size in bytes of the `request` buffer. |
@@ -94,7 +94,7 @@ MpResult mp_send_binary_request(
 
 <!-- markdownlint-disable MD033 -->
 | Parameter | Description |
-|---|---|
+| --- | --- |
 | `MP_SUCCESS` | Successfully sent the request. |
 | `MP_INVALID_PARAMETER` | <ul><li>Either the `request`, `response_size`, `status_code` or the `error_code` parameter is `NULL`.</li> <li> The `response` parameter is not `NULL`, but the `response_size` value is `0`.</li> <li>The `request_size` value is `0`.</li> <li>The `request_type` value is not supported.</li> <li>The `request_type` is an add package, but the network library was not initialized with a valid sized subscription key.</li></ul> |
 | `MP_NETWORK_ERROR` | Failed to set up the network connection, proxy or other failure sending request to the server. |
@@ -127,7 +127,7 @@ MpResult mp_uefi_terminate();
 ### Return Values
 
 | Parameter | Description |
-|---|---|
+| --- | --- |
 | `MP_SUCCESS` | Successfully terminated the MP Network library. |
 | `MP_REDUNDANT_OPERATION` | The MP Network library was not initialized or has been terminated. |
 

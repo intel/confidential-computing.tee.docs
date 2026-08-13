@@ -131,11 +131,11 @@ Provided by the Intel® SGX Registration Service upon subscribing.
 
         <!-- markdownlint-disable MD033 -->
 
-        | Proxy Type                                     | Linux Value                          | Windows Value |
-        | ---------------------------------------------- | ------------------------------------ | -------------- |
-        | Use the configuration in your operating system | default                              | 0 |
-        | Direct access to the internet                  | direct                               | 1 |
-        | Set the proxy URL directly:<br />&emsp;- Supports authenticated proxy.<br />&emsp;- Proxy URL uses standard format:  `user:password@proxy:port`| manual                               | 2 |
+| Proxy Type | Linux Value | Windows Value |
+| --- | --- | --- |
+| Use the configuration in your operating system | default | 0 |
+| Direct access to the internet | direct | 1 |
+| Set the proxy URL directly:<br />&emsp;- Supports authenticated proxy.<br />&emsp;- Proxy URL uses standard format:  `user:password@proxy:port` | manual | 2 |
         <!-- markdownlint-enable MD033 -->
 
     - Config Location:
@@ -148,13 +148,13 @@ Provided by the Intel® SGX Registration Service upon subscribing.
 - Log Level
     - Values:
 
-        | Logging Level              | Linux Value        | Windows Value |
-        | ---------------------------| -------------------| ----------------------- |
-        | None                       | none               | 0 |
-        | Error   | error              | 1 |
-        | Warning                    | warn               | 2 |
-        | Info (default value) | info               | 3 |
-        | Debug                    | debug               | 4 |
+| Logging Level | Linux Value | Windows Value |
+| --- | --- | --- |
+| None | none | 0 |
+| Error | error | 1 |
+| Warning | warn | 2 |
+| Info (default value) | info | 3 |
+| Debug | debug | 4 |
 
     - Config Location:
         - Linux: `/etc/mpa_registration.conf`
@@ -267,19 +267,19 @@ The PCK Cert ID Retrieval Tool has two major operating modes:
 Valid Command line Parameters:
 
 <!-- markdownlint-disable MD033 MD056 -->
-| Command Line Parameter        | Description |
-| ----------------------------- | ----------- |
-| `-f <filename>`                   | Output the platform ID information to the `filename`. The output is a comma-separated value (CSV) file with base-16 encoding. |
-| `-url <cache_server_address>`     | Reference PCCS's URL.<br />Only needed when using the network to communicate to the PCCS. |
-| `-user_token <token_string>`      | User token to access the PCCS.<br />Only needed when using the network to communicate to the PCCS. |
-| `-proxy_type <proxy_type>`        | Proxy setting when accessing the PCCS.<br />Only needed when using the network to communicate to the PCCS.<br />Available options: `direct`, `default`, and `manual` |
-| `-proxy_url <proxy_server_address>`| Proxy server address.<br /> Only needed when using the network to communicate to the PCCS. |
+| Command Line Parameter | Description |
+| --- | --- |
+| `-f <filename>` | Output the platform ID information to the `filename`. The output is a comma-separated value (CSV) file with base-16 encoding. |
+| `-url <cache_server_address>` | Reference PCCS's URL.<br />Only needed when using the network to communicate to the PCCS. |
+| `-user_token <token_string>` | User token to access the PCCS.<br />Only needed when using the network to communicate to the PCCS. |
+| `-proxy_type <proxy_type>` | Proxy setting when accessing the PCCS.<br />Only needed when using the network to communicate to the PCCS.<br />Available options: `direct`, `default`, and `manual` |
+| `-proxy_url <proxy_server_address>` | Proxy server address.<br /> Only needed when using the network to communicate to the PCCS. |
 | `-use_secure_cert <[true | false]>` | Accept secure/insecure https cert.<br /> Only needed when using the network to communicate to the PCCS.<br /> Default value is true |
 | `-tcb_update_type <standard, early, all>` | Update type for tcb material.<br /> Only needed when using the network to communicate to the PCCS, and the PCCS was configured in REQ mode.<br /> Default value is standard. |
-| `-platform_id <platform_id>`      | When provided, no enclaves are loaded. You need to provide a unique platform id that can be used to identify the platform at run-time. |
-| `-?`                                | Show command help                |
-| `-h`                                | Show command help                |
-| `-help`                             | Show command help                |
+| `-platform_id <platform_id>` | When provided, no enclaves are loaded. You need to provide a unique platform id that can be used to identify the platform at run-time. |
+| `-?` | Show command help |
+| `-h` | Show command help |
+| `-help` | Show command help |
 <!-- markdownlint-enable MD033 -->
 
 #### Outputting to a CSV File
@@ -331,16 +331,16 @@ The DCAP release for multi-package platforms also includes a management tool to 
 Like the PCK Cert ID Retrieval Tool, it links with the [SGX Multi-Package UEFI Variables Access Library][uefivaralib].
 
 <!-- markdownlint-disable MD033 -->
-| Command Line Parameter         | Description |
-|------------------------------------|---------------------------------- |
+| Command Line Parameter | Description |
+| --- | --- |
 | `-get_platform_manifest <file_name>` | Reads the [`SgxRegistrationServerRequest`][request] UEFI variable to get the platform manifest when present. It outputs the platform manifest in binary form to the file specified in `<file_name>`.<br /> *Note: if UEFI variable is in read-only mode, this command could NOT change the [`SgxRegistrationStatus`][status]' status.* |
-| `-get_key_blobs <file_name>`       | Reads [`SgxRegistrationPackageInfo`][packageinfo] UEFI variable to get the key blobs when present. It outputs the key blobs in binary form to the file specified in `<file_name>`.<br /> *Note: if UEFI variable is in read-only mode, this command could NOT change the [`SgxRegistrationStatus`][status]' status.* |
+| `-get_key_blobs <file_name>` | Reads [`SgxRegistrationPackageInfo`][packageinfo] UEFI variable to get the key blobs when present. It outputs the key blobs in binary form to the file specified in `<file_name>`.<br /> *Note: if UEFI variable is in read-only mode, this command could NOT change the [`SgxRegistrationStatus`][status]' status.* |
 | `-set_server_info <file_name> <hex_flags> <URL>` | Used to change the registration authority service. <br />`<file_name>` contains the self-signed [`SgxRegistrationServerID`][serverid] from the registration authority service. <br /> `<hex_flags>` indicates the value of `Flags` in [`SgxRegistrationConfiguration`][configuration] UEFI variable. <br />`<URL>` the URL of the registration authority service.<br /> *Note: if UEFI variable is in read-only mode, this command could NOT work.* |
-| `-get_registration_status`           | Reports whether it is completed or in progress. This is the reporting the value of the `SgxRegistrationComplete` flag in the [`SgxRegistrationStatus`][status] UEFI variable.<br /> *Note: if UEFI variable is in read-only mode, maybe this command could NOT give one correct registration status.* |
-| `-get_last_registration_error_code`  | Reports the registration error code. It is the value of the `Status.ErrorCode` field in the [`SgxRegistrationStatus`][status] UEFI variable. The error code can be from the BIOS or from the MPA.<br /> *Note: if UEFI variable is in read-only mode, maybe this command could NOT give one correct registration status.* |
-| `-get_sgx_status`                    | Reports the [status of SGX](#sgx-status). |
-| `-v`                                 | Produce verbose output.         |
-| `-h`                                 | Show command help.              |
+| `-get_registration_status` | Reports whether it is completed or in progress. This is the reporting the value of the `SgxRegistrationComplete` flag in the [`SgxRegistrationStatus`][status] UEFI variable.<br /> *Note: if UEFI variable is in read-only mode, maybe this command could NOT give one correct registration status.* |
+| `-get_last_registration_error_code` | Reports the registration error code. It is the value of the `Status.ErrorCode` field in the [`SgxRegistrationStatus`][status] UEFI variable. The error code can be from the BIOS or from the MPA.<br /> *Note: if UEFI variable is in read-only mode, maybe this command could NOT give one correct registration status.* |
+| `-get_sgx_status` | Reports the [status of SGX](#sgx-status). |
+| `-v` | Produce verbose output. |
+| `-h` | Show command help. |
 <!-- markdownlint-enable MD033 -->
 
 ### Changing the Registration Authority Service
@@ -380,60 +380,60 @@ Software should not overwrite the ErrorCode if BIOS writes a non-zero value.
 The software error codes generated by the MPA are defined in [MPA Error Codes][errorcodes].
 The BIOS error codes are defined as follows:
 
-| Error Name                                    | Error Code |
-|-----------------------------------------------|------|
-| `RS_PREMEM_OTHER`                             | 0x10 |
-| `RS_PREMEM_NOMEM`                             | 0x11 |
-| `RS_PREMEM_SYS_NOT_CAPABLE`                   | 0x12 |
-| `RS_PREMEM_NO_VALID_PRMRR`                    | 0x13 |
-| `RS_PREMEM_HW_NOT_CAPABLE`                    | 0x14 |
-| `RS_PREMEM_TME_DISABLED`                      | 0x15 |
-| `RS_PREMEM_SGX_DISABLED`                      | 0x16 |
-| `RS_PREMEM_INVALID_PRRMR_SIZE`                | 0x17 |
-| `RS_PREMEM_PRMRR_NOT_SECURED`                 | 0x18 |
-| `RS_PREMEM_MEM_TOPOLOGY_ERR`                  | 0x19 |
-| `RS_POSTMEM_OTHER`                            | 0x20 |
-| `RS_POSTMEM_NOMEM`                            | 0x21 |
-| `RS_POSTMEM_SYSHOST_NOTFOUND`                 | 0x22 |
-| `RS_POSTMEM_MMAP_HOST_NOTFOUND`               | 0x23 |
-| `RS_POSTMEM_VSPPI_NOTFOUND`                   | 0x24 |
-| `RS_POSTMEM_MRCHCSPPI_NOTFOUND`               | 0x25 |
-| `RS_POSTMEM_SVN_ERR`                          | 0x26 |
-| `RS_POSTMEM_REGVARS_ERR`                      | 0x27 |
-| `RS_POSTMEM_KEYBLOBS_RES_ERR`                 | 0x28 |
-| `RS_POSTMEM_PRID_UNLOCK_ERR`                  | 0x29 |
-| `RS_POSTMEM_DETERMINE_BOOT_ERR`               | 0x2A |
-| `RS_POSTMEM_FIRSTBOOT_ERR`                    | 0x2B |
-| `RS_POSTMEM_WARMRESET_ERR`                    | 0x2C |
-| `RS_LATEINIT_OTHER`                           | 0x30 |
-| `RS_LATEINIT_TRIGCALLBACK_ERR`                | 0x31 |
-| `RS_LATEINIT_HOBLIST_NOTFOUND`                | 0x32 |
-| `RS_LATEINIT_MPSVC_ERR`                       | 0x33 |
-| `RS_LATEINIT_INITDATAHOB_RES`                 | 0x34 |
-| `RS_LATEINIT_UPDTCAPAB_ERR`                   | 0x35 |
-| `RS_LATEINIT_UPDTPRMRR_ERR`                   | 0x36 |
-| `RS_LATEINIT_CRDIMM_ERR`                      | 0x37 |
-| `RS_LATEINIT_UPDTLEWR_ERR`                    | 0x38 |
-| `RS_LATEINIT_SYS_NOT_CAPABLE`                 | 0x39 |
-| `RS_LATEINIT_SGX_DISABLED`                    | 0x3A |
-| `RS_LATEINIT_FACTORY_RESET_ERR`               | 0x3B |
-| `RS_LATEINIT_NVSAREA_ERR`                     | 0x3C |
-| `RS_LATEINIT_GET_NVVAR_ERR`                   | 0x3D |
-| `RS_LATEINIT_EXPOSE_PROTO_ERR`                | 0x3E |
-| `RS_LATEINIT_LOCKVARS_ERR`                    | 0x3F |
-| `RS_LATEINIT_VAR_ROTO_ERR`                    | 0x40 |
-| `RS_LATEINIT_CALLBACK_OTHER`                  | 0x50 |
-| `RS_LATEINIT_CALLBACK_NOMEM`                  | 0x51 |
-| `RS_LATEINIT_CALLBACK_BIOSPARAM_ERR`          | 0x52 |
-| `RS_LATEINIT_CALLBACK_MICROCODE_LAUNCH_ERR`   | 0x53 |
-| `RS_LATEINIT_CALLBACK_UPDT_TIMESTMP_ERR`      | 0x54 |
-| `RS_LATEINIT_CALLBACK_UPDT_PKG_INFO_ERR`      | 0x55 |
-| `RS_LATEINIT_CALLBACK_LAUNCHCTRL_ERR`         | 0x56 |
-| `RS_LATEINIT_CALLBACK_UPDT_KEYBLOBS_ERR`      | 0x57 |
-| `RS_LATEINIT_CALLBACK_TCBRECOVERY_ERR`        | 0x58 |
-| `RS_LATEINIT_CALLBACK_STORPLATMANIF_ERR`      | 0x59 |
-| `RS_LATEINIT_CALLBACK_LEGACYVARS_ERR`         | 0x5A |
-| `RS_LATEINIT_CALLBACK_REGSTATE_VAR_ERR`       | 0x5B |
+| Error Name | Error Code |
+| --- | --- |
+| `RS_PREMEM_OTHER` | 0x10 |
+| `RS_PREMEM_NOMEM` | 0x11 |
+| `RS_PREMEM_SYS_NOT_CAPABLE` | 0x12 |
+| `RS_PREMEM_NO_VALID_PRMRR` | 0x13 |
+| `RS_PREMEM_HW_NOT_CAPABLE` | 0x14 |
+| `RS_PREMEM_TME_DISABLED` | 0x15 |
+| `RS_PREMEM_SGX_DISABLED` | 0x16 |
+| `RS_PREMEM_INVALID_PRRMR_SIZE` | 0x17 |
+| `RS_PREMEM_PRMRR_NOT_SECURED` | 0x18 |
+| `RS_PREMEM_MEM_TOPOLOGY_ERR` | 0x19 |
+| `RS_POSTMEM_OTHER` | 0x20 |
+| `RS_POSTMEM_NOMEM` | 0x21 |
+| `RS_POSTMEM_SYSHOST_NOTFOUND` | 0x22 |
+| `RS_POSTMEM_MMAP_HOST_NOTFOUND` | 0x23 |
+| `RS_POSTMEM_VSPPI_NOTFOUND` | 0x24 |
+| `RS_POSTMEM_MRCHCSPPI_NOTFOUND` | 0x25 |
+| `RS_POSTMEM_SVN_ERR` | 0x26 |
+| `RS_POSTMEM_REGVARS_ERR` | 0x27 |
+| `RS_POSTMEM_KEYBLOBS_RES_ERR` | 0x28 |
+| `RS_POSTMEM_PRID_UNLOCK_ERR` | 0x29 |
+| `RS_POSTMEM_DETERMINE_BOOT_ERR` | 0x2A |
+| `RS_POSTMEM_FIRSTBOOT_ERR` | 0x2B |
+| `RS_POSTMEM_WARMRESET_ERR` | 0x2C |
+| `RS_LATEINIT_OTHER` | 0x30 |
+| `RS_LATEINIT_TRIGCALLBACK_ERR` | 0x31 |
+| `RS_LATEINIT_HOBLIST_NOTFOUND` | 0x32 |
+| `RS_LATEINIT_MPSVC_ERR` | 0x33 |
+| `RS_LATEINIT_INITDATAHOB_RES` | 0x34 |
+| `RS_LATEINIT_UPDTCAPAB_ERR` | 0x35 |
+| `RS_LATEINIT_UPDTPRMRR_ERR` | 0x36 |
+| `RS_LATEINIT_CRDIMM_ERR` | 0x37 |
+| `RS_LATEINIT_UPDTLEWR_ERR` | 0x38 |
+| `RS_LATEINIT_SYS_NOT_CAPABLE` | 0x39 |
+| `RS_LATEINIT_SGX_DISABLED` | 0x3A |
+| `RS_LATEINIT_FACTORY_RESET_ERR` | 0x3B |
+| `RS_LATEINIT_NVSAREA_ERR` | 0x3C |
+| `RS_LATEINIT_GET_NVVAR_ERR` | 0x3D |
+| `RS_LATEINIT_EXPOSE_PROTO_ERR` | 0x3E |
+| `RS_LATEINIT_LOCKVARS_ERR` | 0x3F |
+| `RS_LATEINIT_VAR_ROTO_ERR` | 0x40 |
+| `RS_LATEINIT_CALLBACK_OTHER` | 0x50 |
+| `RS_LATEINIT_CALLBACK_NOMEM` | 0x51 |
+| `RS_LATEINIT_CALLBACK_BIOSPARAM_ERR` | 0x52 |
+| `RS_LATEINIT_CALLBACK_MICROCODE_LAUNCH_ERR` | 0x53 |
+| `RS_LATEINIT_CALLBACK_UPDT_TIMESTMP_ERR` | 0x54 |
+| `RS_LATEINIT_CALLBACK_UPDT_PKG_INFO_ERR` | 0x55 |
+| `RS_LATEINIT_CALLBACK_LAUNCHCTRL_ERR` | 0x56 |
+| `RS_LATEINIT_CALLBACK_UPDT_KEYBLOBS_ERR` | 0x57 |
+| `RS_LATEINIT_CALLBACK_TCBRECOVERY_ERR` | 0x58 |
+| `RS_LATEINIT_CALLBACK_STORPLATMANIF_ERR` | 0x59 |
+| `RS_LATEINIT_CALLBACK_LEGACYVARS_ERR` | 0x5A |
+| `RS_LATEINIT_CALLBACK_REGSTATE_VAR_ERR` | 0x5B |
 
 
 ### SGX Status

@@ -37,7 +37,7 @@ MpResult mp_uefi_init(
 
 <!-- markdownlint-disable MD033 -->
 | Parameter | Description |
-|---|---|
+| --- | --- |
 | `path [In]` | Linux absolute path to the UEFI variables directory. For Linux, if the value is `NULL`, the default UEFI path of /sys/firmware/efi/efivars/ is used. For Windows, this parameter is ignored. |
 | `logLevel [In]` | Set the logging level. Logging messages default to stdout. You can create an auxiliary logging function and link with the MP UEFI Library to change the output location.<br /><ul><li>Linux: `void log_message_aux(LogLevel level, const char *format, va_list argptr)`</li><li>Windows: `void uefi_log_message_aux(LogLevel glog_level, LogLevel level, const char* format, ...)`</li></ul> |
 <!-- markdownlint-enable MD033 -->
@@ -45,7 +45,7 @@ MpResult mp_uefi_init(
 ### Return Values
 
 | Parameter | Description |
-|---|---|
+| --- | --- |
 | `MP_SUCCESS` | The MP UEFI library successfully initialized. |
 | `MP_REDUNDANT_OPERATION` | The MP UEFI library was already initialized. |
 | `MP_MEM_ERROR` | Failed to initialize the MP UEFI library. |
@@ -71,14 +71,14 @@ MpResult mp_uefi_get_request_type(
 ### Parameters
 
 | Parameter | Description |
-|---|---|
+| --- | --- |
 | `type [Out]` | Holds the pending request type or `MP_REQ_NONE`. |
 
 
 ### Return Values
 
 | Parameter | Description |
-|---|---|
+| --- | --- |
 | `MP_SUCCESS` | The API either found the [`SgxRegistrationServerRequest`][request] UEFI variable and `type` contains the request type or the API could not find the [`SgxRegistrationServerRequest`][request] UEFI variable and `type` contains `MP_REQ_NONE`. |
 | `MP_INVALID_PARAMETER` | The parameter type is `NULL`. |
 | `MP_UEFI_INTERNAL_ERROR` | The request structure header in the [`SgxRegistrationServerRequest`][request] UEFI variable has an invalid version, invalid size, or unrecognized GUID. |
@@ -107,7 +107,7 @@ MpResult mp_uefi_get_request(
 
 <!-- markdownlint-disable MD033 -->
 | Parameter | Description |
-|---|---|
+| --- | --- |
 | `request [Out]` | Holds the request buffer to be populated. When this value is `NULL` but `request_size` is not `NULL`, the API will return the size of the request in the [`SgxRegistrationServerRequest`][request] UEFI variable in `request_size`. |
 | `request_size [In/Out]` | <ul><li> If `request` is not `NULL`, it contains the size in bytes of buffer pointed to by `request`. Upon a successful execution, the API sets it to the number of bytes written to `request`.</li><li>If `request` is `NULL` or the inputted `request_size` is too small to contain the request (return value is `MP_USER_INSUFFICIENT_MEM`), the API sets it to the number of bytes required to contain the `request` data.</li><li>Must not be `NULL`.</li></ul> |
 <!-- markdownlint-enable MD033 -->
@@ -115,7 +115,7 @@ MpResult mp_uefi_get_request(
 ### Return Values
 
 | Parameter | Description |
-|---|---|
+| --- | --- |
 | `MP_SUCCESS` | Successfully read the contents of the [`SgxRegistrationServerRequest`][request] UEFI variable if `request` is not `NULL` or `request_size` contains the required buffer size when `request` is `NULL`. |
 | `MP_INVALID_PARAMETER` | The parameter `request_size` is `NULL` |
 | `MP_NO_PENDING_DATA` | The API could not find the [`SgxRegistrationServerRequest`][request] UEFI variable. |
@@ -148,7 +148,7 @@ MpResult mp_uefi_set_server_response(
 ### Parameters
 
 | Parameter | Description |
-|---|---|
+| --- | --- |
 | `response [In]` | Contains the response from the registration authority service. |
 | `response_size [In]` | Size of response buffer in bytes. |
 
@@ -156,7 +156,7 @@ MpResult mp_uefi_set_server_response(
 ### Return Values
 
 | Parameter | Description |
-|---|---|
+| --- | --- |
 | `MP_SUCCESS` | Successfully wrote the inputted data to  [SgxRegistrationServerResponse][serverresponse] UEFI variable. |
 | `MP_INVALID_PARAMETER` | Either `response` or `response_size` is `NULL`. |
 | `MP_UEFI_INTERNAL_ERROR` | Error encountered when writing to the UEFI variable. |
@@ -188,7 +188,7 @@ MpResult mp_uefi_get_key_blobs(
 
 <!-- markdownlint-disable MD033 -->
 | Parameter | Description |
-|---|---|
+| --- | --- |
 | `blobs [Out]` | Holds the package info buffer to be populated. When this value is `NULL` but `blobs_size` is not `NULL`, the API returns the size of the data in the [`SgxRegistrationPackageInfo`][packageinfo] UEFI variable in `blobs_size`. |
 | `blobs_size [In/Out]` | <ul><li>If `blobs` is not `NULL`, it contains the size in bytes of the buffer pointed to by `blobs`. Upon a successful execution, the API sets it to the number of bytes written to the `blobs` buffer. </li><li>If `blobs` is `NULL` or the inputted `blobs_size` is too small to contain the package info data (return value is `MP_USER_INSUFFICIENT_MEM`), the API sets it to the number of bytes required to contain the package info data. </li><li>Must not be `NULL`.</li></ul> |
 <!-- markdownlint-enable MD033 -->
@@ -196,7 +196,7 @@ MpResult mp_uefi_get_key_blobs(
 ### Return Values
 
 | Parameter | Description |
-|---|---|
+| --- | --- |
 | `MP_SUCCESS` | Successfully read the contents of the [`SgxRegistrationPackageInfo`][packageinfo] UEFI variable if `blobs` is not `NULL` or `blobs_size` contains the required buffer size when `blobs` is `NULL`. |
 | `MP_INVALID_PARAMETER` | The parameter `blobs_size` is `NULL`. |
 | `MP_UEFI_INTERNAL_ERROR` | The request structure header in the [`SgxRegistrationPackageInfo`][packageinfo] UEFI variable has an invalid version or invalid size. |
@@ -225,7 +225,7 @@ MpResult mp_uefi_get_registration_status(
 ### Parameters
 
 | Parameter | Description |
-|---|---|
+| --- | --- |
 | `status [Out]` | Holds the registration status. Must not be `NULL`. |
 
 
@@ -233,7 +233,7 @@ MpResult mp_uefi_get_registration_status(
 
 
 | Parameter | Description |
-|---|---|
+| --- | --- |
 | `MP_SUCCESS` | Successfully read the [`SgxRegistrationStatus`][status] UEFI variable. |
 | `MP_INVALID_PARAMETER` | The parameter `status` is `NULL`. |
 | `MP_UEFI_INTERNAL_ERROR` | The request structure header in the [`SgxRegistrationStatus`][status] UEFI variable has an invalid version, invalid size or the variable was not found. |
@@ -264,14 +264,14 @@ MpResult mp_uefi_set_registration_status(
 ### Parameters
 
 | Parameter | Description |
-|---|---|
+| --- | --- |
 | `status [In]` | Holds the desired registration status. |
 
 
 ### Return Values
 
 | Parameter | Description |
-|---|---|
+| --- | --- |
 | `MP_SUCCESS` | Successfully wrote the inputted data to the [`SgxRegistrationStatus`][status] UEFI variable. |
 | `MP_INVALID_PARAMETER` | The parameter `status` is `NULL`. |
 | `MP_UEFI_INTERNAL_ERROR` | Encountered an error while writing the [`SgxRegistrationStatus`][status] UEFI variable. Check logs for more information. |
@@ -302,7 +302,7 @@ MpResult mp_uefi_get_registration_server_info(
 
 <!-- markdownlint-disable MD033 -->
 | Parameter | Description |
-|---|---|
+| --- | --- |
 | `flags [Out]` | Holds the retrieved registration flags in the [`SgxRegistrationConfiguration`][configuration] UEFI variable. |
 | `server_address [Out]` | Holds the registration server address. |
 | `server_id [Out]` | Address of `server_id` buffer to be populated ([`SgxRegistrationServerID`][serverid]). |
@@ -312,7 +312,7 @@ MpResult mp_uefi_get_registration_server_info(
 ### Return Values
 
 | Parameter | Description |
-|---|---|
+| --- | --- |
 | `MP_SUCCESS` | Successfully read the contents of the [`SgxRegistrationConfiguration`][configuration] UEFI variable. |
 | `MP_INVALID_PARAMETER` | Either `flags` or `response_size` is `NULL`. The version of the [SgxRegistrationServerInfo][serverinfo] in the [`SgxRegistrationConfiguration`][configuration] UEFI variable is not supported. |
 | `MP_USER_INSUFFICIENT_MEM` | The size of the server id read exceeds the size of the inputted `server_id`. |
@@ -346,7 +346,7 @@ MpResult mp_uefi_set_registration_server_info(
 ### Parameters
 
 | Parameter | Description |
-|---|---|
+| --- | --- |
 | `flags [In]` | Holds the registration flags to write to the [`SgxRegistrationConfiguration`][configuration] UEFI variable. |
 | `server_address [In]` | Holds the registration server address. |
 | `server_id [In]` | Address of [`SgxRegistrationServerID`][serverid] buffer to be written. |
@@ -356,7 +356,7 @@ MpResult mp_uefi_set_registration_server_info(
 ### Return Values
 
 | Parameter | Description |
-|---|---|
+| --- | --- |
 | `MP_SUCCESS` | Successfully wrote the inputted data to the [`SgxRegistrationConfiguration`][configuration] UEFI variable. |
 | `MP_INVALID_PARAMETER` | The `server_id` parameter is `NULL`, the size of the URL string is too long, or the URL is an invalid value. |
 | `MP_UEFI_INTERNAL_ERROR` | The request structure header in the [`SgxRegistrationConfiguration`][configuration] UEFI variable has an invalid version, or the variable was not found. |
@@ -383,14 +383,14 @@ MpResult mp_uefi_terminate();
 ### Parameters
 
 | Parameter | Description |
-|---|---|
+| --- | --- |
 | N\A | N\A |
 
 
 ### Return Values
 
 | Parameter | Description |
-|---|---|
+| --- | --- |
 | `MP_SUCCESS` | Successfully terminated the MP UEFI library. |
 | `MP_REDUNDANT_OPERATION` | The MP UEFI library was not initialized or has been terminated. |
 

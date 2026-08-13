@@ -76,36 +76,36 @@ Each package and its dependencies are listed in alphabetical order in [](#tab_pa
 
 <!-- markdownlint-disable MD033 -->
 
-| **Package Name**                 | **Type**  | **Function**                                                    | **Direct SGX Package Dependency(s)**                                                                        | **Developer Files**                                     |
-|----------------------------------|-----------|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|---------------------------------------------------------|
-| **libsgx-ae-pce**                | AE        | PCE Enclave                                                     | None                                                                                                        | EDL provided in release package                         |
-| **libsgx-ae-qe3**                | AE        | ECDSA Quoting Enclave                                           | None                                                                                                        | EDL provided in release package                         |
-| **libsgx-ae-qve**                | AE        | ECDSA Quote Verification Enclave                                | None                                                                                                        | EDL provided in release package                         |
-| **libsgx-ae-id-enclave**         | AE        | ID Enclave                                                      | None                                                                                                        | EDL provided in release package                         |
-| **libsgx-ae-tdqe**               | AE        | TDX Quoting Enclave                                             | None                                                                                                        | EDL provided in release package                         |
-| **libsgx-aesm-ecdsa-plugin**     | Plug-in   | Plug-in to provide ECDSA Quotes                                 | `libsgx-qe3-logic`<br />`libsgx-aesm-pce-plugin`<br />`sgx-aesm-service`                                    |                                                         |
-| **libsgx-aesm-pce-plugin**       | Plug-in   | Plug-in to provide PCE Signing                                  | `libsgx-pce-logic`<br />`libsgx-ae-pce`<br />`sgx-aesm-service`                                             |                                                         |
-| **libsgx-aesm-quote-ex-plugin**  | Plug-in   | Plug-in to provide universal quoting                            | `libsgx-aesm-ecdsa-plugin`<br />`sgx-aesm-service`                                                          |                                                         |
-| **libsgx-dcap-default-qpl**      | Lib       | Default Quote Provider Library (QPL)                            | None                                                                                                        | `libsgx-dcap-default-qpl-dev`                           |
-| **libsgx-dcap-default-qpl-dev**  | Dev Files | Developer Files for Default Quote Provider Library              | `libsgx-dcap-default-qpl`                                                                                   |                                                         |
-| **libsgx-dcap-ql**               | Lib       | Provides ECDSA Quotes                                           | `libsgx-pce-logic`<br />`libsgx-qe3-logic`<br />`libsgx-quote-ex`(opt.)<br />`libsgx-dcap-quote-verify`(opt.) | `libsgx-dcap-ql-dev`                                    |
-| **libsgx-dcap-ql-dev**           | Dev Files | Developer Files for `libsgx-dcap-ql`                            | `libsgx-headers`<br />`libsgx-dcap-ql`                                                                      |                                                         |
-| **libsgx-dcap-quote-verify**     | Lib       | Quote Verification Library                                      | `libsgx-urts`(opt.)<br />`libsgx-ae-qve`(opt.)                                                              | `libsgx-dcap-quote-verify-dev`                          |
-| **libsgx-dcap-quote-verify-dev** | Dev Files | Developer files for Quote Verification Library                  | `libsgx-headers`<br />`libsgx-dcap-quote-verify`                                                            |                                                         |
-| **libsgx-pce-logic**             | Lib       | Provides PCE logic wrapper                                      | `libsgx-urts`<br />`libsgx-ae-pce`                                                                          |                                                         |
-| **libsgx-qe3-logic**             | Lib       | Provides ECDSA QE logic wrapper                                 | `libsgx-urts`<br />`libsgx-ae-qe3`<br />`libsgx-ae-id-enclave`                                                    |                                                         |
-| **libsgx-tdx-logic**             | Lib       | Provides TD QE logic wrapper                                    | `libsgx-urts`<br />`libsgx-pce-logic`<br />`libsgx-ae-tdqe`<br />`libsgx-ae-id-enclave`                     | `libsgx-tdx-logic-dev`                                  |
-| **libsgx-tdx-logic-dev**         | Dev Files | Developer Files for TD QE logic wrapper Library                 | `libsgx-tdx-logic`                                                                                          |                                                         |
-| **libsgx-enclave-common**        | Lib       | Library that presents common interface for loading SGX enclaves |                                                                                                             | `libsgx-enclave-common-dev`                             |
-| **libsgx-enclave-common-dev**    | Dev File  | Developer files for Enclave Common                              | `libsgx-headers`<br />`libsgx-enclave-common`                                                               |                                                         |
-| **libsgx-quote-ex**              | Lib       | Provides agnostic quote generation                              | `libsgx-aesm-quote-ex-plugin` (opt.)                                                                        | `libsgx-quote-ex-dev`                                   |
-| **libsgx-quote-ex-dev**          | Dev Files | Developer files for `libsgx-quote-ex`                           | `libsgx-headers`                                                                                            |                                                         |
-| **libsgx-urts**                  | Lib       | Provides uRTS features to load/manage Intel® SGX Enclaves       | `libsgx-enclave-common`                                                                                     | Header files provided in SDK: `sgx_linux_x64_sdk_*.bin` |
-| **sgx-aesm-service**             | Service   | AESM Service that runs AESM plug-ins                            | None                                                                                                        | None                                                    |
-| **tdx-qgs**                      | Service   | TD Quoting Generation Service                                   | `libsgx-tdx-logic`                                                                                          |                                                         |
-| **sgx-dcap-pccs**                | Service   | Provisioning Certificate Caching Service                        | None                                                                                                        |                                                         |
-| **libtdx-attest**                | Lib       | Trust Domain Extensions Attestation library                     | None                                                                                                        | `libtdx-attest-dev`                                     |
-| **libtdx-attest-dev**            | Dev Files | Developer files for `libtdx-attest`                             | `libtdx-attest`                                                                                             |                                                         |
+| **Package Name** | **Type** | **Function** | **Direct SGX Package Dependency(s)** | **Developer Files** |
+| --- | --- | --- | --- | --- |
+| **libsgx-ae-pce** | AE | PCE Enclave | None | EDL provided in release package |
+| **libsgx-ae-qe3** | AE | ECDSA Quoting Enclave | None | EDL provided in release package |
+| **libsgx-ae-qve** | AE | ECDSA Quote Verification Enclave | None | EDL provided in release package |
+| **libsgx-ae-id-enclave** | AE | ID Enclave | None | EDL provided in release package |
+| **libsgx-ae-tdqe** | AE | TDX Quoting Enclave | None | EDL provided in release package |
+| **libsgx-aesm-ecdsa-plugin** | Plug-in | Plug-in to provide ECDSA Quotes | `libsgx-qe3-logic`<br />`libsgx-aesm-pce-plugin`<br />`sgx-aesm-service` | |
+| **libsgx-aesm-pce-plugin** | Plug-in | Plug-in to provide PCE Signing | `libsgx-pce-logic`<br />`libsgx-ae-pce`<br />`sgx-aesm-service` | |
+| **libsgx-aesm-quote-ex-plugin** | Plug-in | Plug-in to provide universal quoting | `libsgx-aesm-ecdsa-plugin`<br />`sgx-aesm-service` | |
+| **libsgx-dcap-default-qpl** | Lib | Default Quote Provider Library (QPL) | None | `libsgx-dcap-default-qpl-dev` |
+| **libsgx-dcap-default-qpl-dev** | Dev Files | Developer Files for Default Quote Provider Library | `libsgx-dcap-default-qpl` | |
+| **libsgx-dcap-ql** | Lib | Provides ECDSA Quotes | `libsgx-pce-logic`<br />`libsgx-qe3-logic`<br />`libsgx-quote-ex`(opt.)<br />`libsgx-dcap-quote-verify`(opt.) | `libsgx-dcap-ql-dev` |
+| **libsgx-dcap-ql-dev** | Dev Files | Developer Files for `libsgx-dcap-ql` | `libsgx-headers`<br />`libsgx-dcap-ql` | |
+| **libsgx-dcap-quote-verify** | Lib | Quote Verification Library | `libsgx-urts`(opt.)<br />`libsgx-ae-qve`(opt.) | `libsgx-dcap-quote-verify-dev` |
+| **libsgx-dcap-quote-verify-dev** | Dev Files | Developer files for Quote Verification Library | `libsgx-headers`<br />`libsgx-dcap-quote-verify` | |
+| **libsgx-pce-logic** | Lib | Provides PCE logic wrapper | `libsgx-urts`<br />`libsgx-ae-pce` | |
+| **libsgx-qe3-logic** | Lib | Provides ECDSA QE logic wrapper | `libsgx-urts`<br />`libsgx-ae-qe3`<br />`libsgx-ae-id-enclave` | |
+| **libsgx-tdx-logic** | Lib | Provides TD QE logic wrapper | `libsgx-urts`<br />`libsgx-pce-logic`<br />`libsgx-ae-tdqe`<br />`libsgx-ae-id-enclave` | `libsgx-tdx-logic-dev` |
+| **libsgx-tdx-logic-dev** | Dev Files | Developer Files for TD QE logic wrapper Library | `libsgx-tdx-logic` | |
+| **libsgx-enclave-common** | Lib | Library that presents common interface for loading SGX enclaves | | `libsgx-enclave-common-dev` |
+| **libsgx-enclave-common-dev** | Dev File | Developer files for Enclave Common | `libsgx-headers`<br />`libsgx-enclave-common` | |
+| **libsgx-quote-ex** | Lib | Provides agnostic quote generation | `libsgx-aesm-quote-ex-plugin` (opt.) | `libsgx-quote-ex-dev` |
+| **libsgx-quote-ex-dev** | Dev Files | Developer files for `libsgx-quote-ex` | `libsgx-headers` | |
+| **libsgx-urts** | Lib | Provides uRTS features to load/manage Intel® SGX Enclaves | `libsgx-enclave-common` | Header files provided in SDK: `sgx_linux_x64_sdk_*.bin` |
+| **sgx-aesm-service** | Service | AESM Service that runs AESM plug-ins | None | None |
+| **tdx-qgs** | Service | TD Quoting Generation Service | `libsgx-tdx-logic` | |
+| **sgx-dcap-pccs** | Service | Provisioning Certificate Caching Service | None | |
+| **libtdx-attest** | Lib | Trust Domain Extensions Attestation library | None | `libtdx-attest-dev` |
+| **libtdx-attest-dev** | Dev Files | Developer files for `libtdx-attest` | `libtdx-attest` | |
 <!-- markdownlint-enable MD033 -->
 
 /// table-caption

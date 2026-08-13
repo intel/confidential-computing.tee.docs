@@ -27,11 +27,11 @@ To restore the key blobs, software can create/write to this UEFI variable so BIO
 This variable is writeable only if SGX is disabled.
 
 <!-- markdownlint-disable MD033 -->
-|               |    |
-|---------------|----|
-| `GUID`        | `ac406deb-ab92-42d6-aff7-0d78e0826c68` |
-| `Size`        | `8 * sizeof(KEY_BLOB)` |
-| `Attributes`  |  <ul><li>`Read-only` when SGX is enabled.</li><li>`Read-Write` when SGX is disabled.</li></ul> |
+| | |
+| --- | --- |
+| `GUID` | `ac406deb-ab92-42d6-aff7-0d78e0826c68` |
+| `Size` | `8 * sizeof(KEY_BLOB)` |
+| `Attributes` | <ul><li>`Read-only` when SGX is enabled.</li><li>`Read-Write` when SGX is disabled.</li></ul> |
 | `Description` | This variable is created by BIOS using data it received from microcode. It can be created and written to by software when SGX is disabled. |
 | `Fields` | See table SgxRegistrationPackageInfo Fields |
 
@@ -41,10 +41,10 @@ SgxRegistrationPackageInfo
 <!-- markdownlint-enable MD033 -->
 
 <!-- markdownlint-disable MD033 -->
-| Name          | Size  | Type        | Description        |
-|---------------|-------|-------------|--------------------|
-| `Version`     | 2     | LE Integer |  `1` |
-| `Size`        | 2     | LE Integer | Size in bytes of data below |
+| Name | Size | Type | Description |
+| --- | --- | --- | --- |
+| `Version` | 2 | LE Integer | `1` |
+| `Size` | 2 | LE Integer | Size in bytes of data below |
 | `KEY_BLOB[8]` | `8 * sizeof(KEY_BLOB)` | Mix | Array of `KEY_BLOB` generated or modified by the microcode loader. <br />Empty array elements are all `0x00`s. |
 
 /// table-caption

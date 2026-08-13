@@ -51,6 +51,7 @@ The guide was tested on the following hardware:
 - 5th Gen Intel® Xeon® Scalable processors
 - 6th Gen Intel® Xeon® Scalable processors
 
+
 ## Further reading
 
 For more information on the projects mentioned in this guide, refer to the following resources:

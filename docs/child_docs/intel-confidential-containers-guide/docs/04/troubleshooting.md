@@ -30,6 +30,7 @@ Below kind of errors with containerd's plugin (Nydus Snapshotter) will be indica
 ``` { .text }
 failed to create containerd container: create snapshot: missing parent \"k8s.io/2/sha256:961e...\" bucket: not found
 ```
+
 ``` { .text }
 failed to create containerd container: error unpacking image: failed to extract layer sha256:<hash1>: failed to get reader from content store: content digest sha256:<hash2>: not found
 ```
@@ -85,6 +86,7 @@ To resolve the issue, try the following procedure:
     ``` { .bash }
     kubectl apply -f <pod yaml>
     ```
+
 
 ## Attestation Failure
 

@@ -24,8 +24,8 @@ Software uses this flag to determine if direct or indirect registration is enabl
 The flag can be modified using the BIOS UI's 'SGX Auto MP Registration' knob.
 
 <!-- markdownlint-disable MD033 -->
-|    |    |
-|----|----|
+| | |
+| --- | --- |
 | `GUID` | `18b3bc81-e210-42b9-9ec8-2c5a7d4d89b6` |
 | `Size` | 1514 |
 | `Attributes` | <ul><li>`Read-only` when SGX is enabled.</li><li>`Read-Write` when SGX is disabled.</li></ul> |
@@ -38,12 +38,12 @@ SgxRegistrationConfiguration
 <!-- markdownlint-enable MD033 -->
 
 <!-- markdownlint-disable MD033 -->
-| Name                  | Size  | Type          | Description   |
-|-----------------------|-------|---------------|---------------|
-| `Version`             | 2     | LE Integer    | 1             |
-| `Size`                | 2     | LE Integer    | Size in bytes of data below|
-| `Flags`               | 2     | LE Integer    | `BIT 0`:&nbsp;&nbsp;&nbsp;&nbsp;RS Encrypted Keys<br />&nbsp;&nbsp;&nbsp;&nbsp;`0`: Registration Server saves platform keys<br />&nbsp;&nbsp;&nbsp;&nbsp;`1`: Registration Server does not save platform keys<br />`Bits 1:15`:&nbsp;&nbsp;&nbsp;&nbsp;Reserved MBZ |
-| `SgxRegServerInfo`    | 1514  | Mix           | As defined in MP SGX_REGISTRATION_SERVER_INFO |
+| Name | Size | Type | Description |
+| --- | --- | --- | --- |
+| `Version` | 2 | LE Integer | 1 |
+| `Size` | 2 | LE Integer | Size in bytes of data below |
+| `Flags` | 2 | LE Integer | `BIT 0`:&nbsp;&nbsp;&nbsp;&nbsp;RS Encrypted Keys<br />&nbsp;&nbsp;&nbsp;&nbsp;`0`: Registration Server saves platform keys<br />&nbsp;&nbsp;&nbsp;&nbsp;`1`: Registration Server does not save platform keys<br />`Bits 1:15`:&nbsp;&nbsp;&nbsp;&nbsp;Reserved MBZ |
+| `SgxRegServerInfo` | 1514 | Mix | As defined in MP SGX_REGISTRATION_SERVER_INFO |
 
 /// table-caption
 SgxRegistrationConfiguration Fields
@@ -58,12 +58,12 @@ SgxRegistrationConfiguration Fields
 
 The Header is the first field of multi-package data structures that is shared between components.
 
-| Name        | Size | Type        | Description        |
-|-------------|----- |-------------|--------------------|
-| `GUID`        | 16   |  Byte Array | GUID uniquely identifying the data structure. |
-| `SIZE`        | 2    | LE Integer  | Data structure size excluding the size of this header. |
-| `VERSION`     | 2    | LE Integer  | Structure version. |
-| `RESERVED`    | 12   | N/A         | Reserved: This field is `0`. |
+| Name | Size | Type | Description |
+| --- | --- | --- | --- |
+| `GUID` | 16 | Byte Array | GUID uniquely identifying the data structure. |
+| `SIZE` | 2 | LE Integer | Data structure size excluding the size of this header. |
+| `VERSION` | 2 | LE Integer | Structure version. |
+| `RESERVED` | 12 | N/A | Reserved: This field is `0`. |
 
 
 ## PubKey
@@ -71,10 +71,10 @@ The Header is the first field of multi-package data structures that is shared be
 This structure represents an RSA3072 public key.
 It does not contain a HEADER since it is never used as an "upper-layer" structure.
 
-| Name        | Size | Type        | Description        |
-|-------------|----- |-------------|--------------------|
-| `MODULUS`     | 384  | LE Integer  | RSA key pair modulus (N) |
-| `PUBEXP`      | 4    | LE Integer  | RSA public exponent (E) |
+| Name | Size | Type | Description |
+| --- | --- | --- | --- |
+| `MODULUS` | 384 | LE Integer | RSA key pair modulus (N) |
+| `PUBEXP` | 4 | LE Integer | RSA public exponent (E) |
 
 
 ## SGX Registration Server ID
@@ -86,22 +86,22 @@ The structure includes two 3072-bit RSA keys.
 The Registration Server Authorization Key (RSAK) is used to sign `PLATFORM_MEMBERSHIP_CERTS` and this structure.
 The Registration Service Encryption Key (RSEK) is used by microcode for encrypting the platform keys in the platform manifest.
 
-| Name        | Size | Type        | Description        |
-|-------------|----- |-------------|--------------------|
-| `Header`    | 32  | Mix | GUID: `31A12AFE-0720-4EBC-B64E-C4B3C7F8BC0F` Version: 1 |
-| `RSNAME`    | 32    | Byte Array | Registration Server self-selected public ID. Frequently the hash of the server’s domain name or something to this effect |
-| `RSAK`      | PubKey (388)    | Mix | Registration Server’s RSA Authorization Key. |
-| `RSEK`      | PubKey (388)    | Mix | Registration Server’s RSA public key used to encrypt platform keys. |
-| `Signature` | 384    | LE Integer  | This entire structure is self-signed using the Registration Server’s RSAK. |
+| Name | Size | Type | Description |
+| --- | --- | --- | --- |
+| `Header` | 32 | Mix | GUID: `31A12AFE-0720-4EBC-B64E-C4B3C7F8BC0F` Version: 1 |
+| `RSNAME` | 32 | Byte Array | Registration Server self-selected public ID. Frequently the hash of the server’s domain name or something to this effect |
+| `RSAK` | PubKey (388) | Mix | Registration Server’s RSA Authorization Key. |
+| `RSEK` | PubKey (388) | Mix | Registration Server’s RSA public key used to encrypt platform keys. |
+| `Signature` | 384 | LE Integer | This entire structure is self-signed using the Registration Server’s RSAK. |
 
 
 ## SGX Registration Server Info
 
 This structure links the registration authority service URL with the signed `REGISTRATION_SERVER_ID` structure.
 
-| Name                      | Size  | Type          | Description        |
-|---------------------------|-------|---------------|--------------------|
-| `Header`                  | 32    | Mix           | GUID: `212FE183-6B1A-42A1-A7A9-DA3AB6B7BD02` Version: 1 |
-| `URL_SIZE`                | 2     | LE Integer    | Number of bytes in the URL. |
-| `URL`                     | 256   | Byte Array    | ASCII representation of the URL name. Does not contain `\0` ``NULL`` terminator. |
+| Name | Size | Type | Description |
+| --- | --- | --- | --- |
+| `Header` | 32 | Mix | GUID: `212FE183-6B1A-42A1-A7A9-DA3AB6B7BD02` Version: 1 |
+| `URL_SIZE` | 2 | LE Integer | Number of bytes in the URL. |
+| `URL` | 256 | Byte Array | ASCII representation of the URL name. Does not contain `\0` ``NULL`` terminator. |
 | `SgxRegistrationServerID` | `sizeof (SgxRegistrationServerID)` | Mix | Registration authority services’s RSA public keys and RSNAME |

@@ -31,18 +31,18 @@ Multi-Package Server Overview
 ## Terminology
 
 | Term | Description |
-|-|-|
+| - | - |
 | Intel® SGX DCAP | Intel® Software Guard Extensions Data Center Attestation Primitives |
 | Registration Authority Service | The Registration Authority Service is the foundation for provisioning and attesting multi-package platforms. The PCK Certificate Provisioning Service & attestation verifiers rely on the assertion of the Registration Server that this platform is trustworthy. Intel hosts Intel® Registration Service for this purpose. |
-| Registration Service Authentication Key (RSAK)  | Key that the registration authority service uses to sign authorizations to add new packages to the platform and its self-signed Registration Server ID structure. |
-| Registration Service Encryption Key (RSEK)  | The registration authority service’s 3072-bit RSA key used to encrypt/decrypt the platform keys.   |
-| Registration Service Name (RSNAME)  | Self-selected public ID of the Registration Authority Service. Frequently the hash of the service domain name. |
+| Registration Service Authentication Key (RSAK) | Key that the registration authority service uses to sign authorizations to add new packages to the platform and its self-signed Registration Server ID structure. |
+| Registration Service Encryption Key (RSEK) | The registration authority service’s 3072-bit RSA key used to encrypt/decrypt the platform keys. |
+| Registration Service Name (RSNAME) | Self-selected public ID of the Registration Authority Service. Frequently the hash of the service domain name. |
 | Security Version Number (SVN) | Version number that indicates when security relevant updates have occurred. New versions can have increased functional versions without incrementing the SVN. |
-| Platform Key  | This 128-bit key is the foundation of the provisioning key derivations in a processor. Multi-package platforms negotiate platform keys in the field. They are delivered to the registration authority service encrypted with the RSAK. They are stored by each CPU package on the platform in the sealed and encrypted key blobs using its respective unique hardware key. SGX Sealing Keys use the platform key in conjunction with another value that is unique to the platform instance. The platform key alone is not enough to unseal enclave-sealed user data. |
+| Platform Key | This 128-bit key is the foundation of the provisioning key derivations in a processor. Multi-package platforms negotiate platform keys in the field. They are delivered to the registration authority service encrypted with the RSAK. They are stored by each CPU package on the platform in the sealed and encrypted key blobs using its respective unique hardware key. SGX Sealing Keys use the platform key in conjunction with another value that is unique to the platform instance. The platform key alone is not enough to unseal enclave-sealed user data. |
 | Hardware Key | This is the unique key that is available to the each SGX-capable CPU package. It is derived directly from fuses and used to derive PRK signatures and key blob sealing keys. |
 | Key Blob | Data Structure that stores the platform keys for each CPU device on the platform. Each device uses a unique sealing key to encrypt the platform keys in the key blob. Used by BIOS to determine the state of the platform keys. |
 | Platform Manifest (PM) | The platform manifest allows the registration authority service to evaluate whether the platform and its components CPU packages are suitable for being certified as an SGX platform. It contains the shared platform keys that are encrypted using the Registration Server’s Encryption Key (RSEK). |
-| Provisioning Registration ID (PRID) | Unique 128-bit ID for each CPU package that is used for registration.   |
+| Provisioning Registration ID (PRID) | Unique 128-bit ID for each CPU package that is used for registration. |
 | Platform Registration Key (PRK) | Unique 3072-bit RSA key pair for each processor package that is used for Initial Platform Establishment, TCB Recoveries and Add Package boot flows. This key is TCB-specific. It is used to sign the platform manifests. It is used in the protocol for establishing protected sessions between processors. It is derived from the HW key. |
 | Provisioning Certification Enclave (PCE) | Intel® SGX architectural enclave that uses a Provisioning Certification Key (PCK) to sign Report structures for Quoting Enclaves. These signed Reports contain the ReportData indicating that attestation keys or provisioning protocol messages are created on genuine hardware. |
 | Platform Provisioning ID (PPID) | Provisioning ID for a platform instance. PPID is not TCB dependent. The PCE generates the PPID. |
@@ -51,7 +51,7 @@ Multi-Package Server Overview
 | Platform Security Version Numbers (PSVN) | The set of SVNs for all components in the Intel® SGX provisioning Trusted Computing Base (TCB) including the PCE’s SVN. |
 | Provisioning Certification Key (PCK) | Signing key that is available to Provisioning Certification Enclave for signing certificate-like QE Report structures. The key is unique to the processor package or platform instance, the HW TCB, and the PCE version (PSVN). |
 | Provisioning Certification Key Certificate (PCK Cert) | The x.509 Certificate chain that is signed and distributed by the Registration Service for every SGX enabled multi-package platform. It matches the private key generated by the Provisioning Certification Enclave (PCE). |
-| Intel® SGX Registration Service | Intel hosts a registration authority service called the Intel® SGX Registration Service. The PCK Certificate Provisioning Service & attestation verifiers rely on the Intel® SGX Registration Server’s assertion that this platform is trustworthy.   |
+| Intel® SGX Registration Service | Intel hosts a registration authority service called the Intel® SGX Registration Service. The PCK Certificate Provisioning Service & attestation verifiers rely on the Intel® SGX Registration Server’s assertion that this platform is trustworthy. |
 | Intel® SGX Provisioning TCB | The Trusted Computing Base of Intel® SGX provisioning. Include the platform HW TCB and the PCE’s SVN. |
 | PCEID | Identifies the version of the PCE that is used to generate the PPID and PCK signing key. |
 | SGX Quote | Data structure that is used to provide evidence to an off-platform entity that an application enclave runs with Intel® SGX protections on a trusted Intel® SGX-enabled platform. |

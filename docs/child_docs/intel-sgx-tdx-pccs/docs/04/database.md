@@ -99,8 +99,8 @@ PCCS Database Schema Definition
 
 | **ca(PK)** @class="w021p" | **root_cert_id** @class="w017p" | **intmd_cert_id** @class="w020p" | **Description** @class="w042p" |
 | --- | --- | --- | --- |
-| PROCESSOR | 1 | 2 |  |
-| PLATFORM | 1 | 4 |  |
+| PROCESSOR | 1 | 2 | |
+| PLATFORM | 1 | 4 | |
 
 ::end-spantable::
 
