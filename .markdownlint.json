@@ -7,7 +7,6 @@
         "style": "dash"
     },
     "MD005": true,
-    "MD006": true,
     "MD007": {
         "indent": 4,
         "start_indented": false
@@ -90,9 +89,9 @@
         "html_elements": true,
         "names": [
             "JavaScript",
-            "HTML"
-            ]
-        },
+            "Confidential Computing"
+        ]
+    },
     "MD045": true,
     "MD046": false,
     "MD047": true,
@@ -103,8 +102,7 @@
         "style": "asterisk"
     },
     "MD050": {
-        "style":
-        "asterisk"
+        "style": "asterisk"
     },
     "MD051": true,
     "MD052": {
@@ -124,5 +122,18 @@
     "MD055": {
         "style": "leading_and_trailing"
     },
-    "MD056": true
+    "MD056": true,
+    "MD058": true,
+    "MD059": {
+        "prohibited_texts": [
+            "click here",
+            "here",
+            "link",
+            "more"
+        ]
+    },
+    "MD060": {
+        "aligned_delimiter": false,
+        "style": "compact"
+    }
 }
