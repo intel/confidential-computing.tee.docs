@@ -170,8 +170,7 @@ MpResult mp_uefi_set_server_response(
 
 This API reads data from the [`SgxRegistrationPackageInfo`][packageinfo] UEFI variable.
 Currently, BIOS uses this variable to provide software with the key blobs generated for each CPU package.
-The platform owner needs to enable a BIOS configuration (`SGX Package Info In-band Access`)
-before it provides this information.
+The platform owner needs to enable a BIOS configuration (`SGX Package Info In-band Access`) before it provides this information.
 This data is not provided to the software by default.
 
 
@@ -210,8 +209,7 @@ MpResult mp_uefi_get_key_blobs(
 
 ### Description
 
-This API reads the [`SgxRegistrationStatus`][status]
-UEFI variable and returns the registration, package info, and error code information.
+This API reads the [`SgxRegistrationStatus`][status] UEFI variable and returns the registration, package info, and error code information.
 
 
 ### Syntax

@@ -10,7 +10,8 @@ SPDX-License-Identifier: CC-BY-4.0
 # Introduction
 
 Kubernetes is a popular open-source platform for automating deployment, scaling, and managing containerized applications (pods).
-The Confidential Containers (CoCo) open-source project aims to establish a standardized approach to Confidential Computing within Kubernetes pods. It utilizes the power of TEE, like Intel® TDX, to deploy secure containerized applications without requiring in-depth understanding of the Confidential Computing technology.
+The Confidential Containers (CoCo) open-source project aims to establish a standardized approach to Confidential Computing within Kubernetes pods.
+It utilizes the power of TEE, like Intel® TDX, to deploy secure containerized applications without requiring in-depth understanding of the Confidential Computing technology.
 
 
 ## Intended audience

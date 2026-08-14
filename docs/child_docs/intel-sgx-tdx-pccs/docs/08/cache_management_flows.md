@@ -380,8 +380,8 @@ The following steps describe how to import platform data from a v2 PCCS to a v3 
 
 An administrator may want to import platform data from a v2 PCCS after he/she has set up a v3 PCCS.
 To ensure the certificate and collateral data is up to date, we suggest the administrator first retrieves the cached platforms list from v2 PCCS using the [PCCS Admin Tool](../07/pccs_admin_tool.md).
-Then, the administrator should use the [`fetch` operation](../09/pcs_client_tool.md#fetch) of the [PCS Client Tool](../09/pcs_client_tool.md) to retrieve platform collateral from PCS service.
- and finally use [`put` operation](../07/pccs_admin_tool.md#put) to upload the data to V3 PCCS service.
+Then, the administrator should use the [`fetch` operation](../09/pcs_client_tool.md#fetch) of the [PCS Client Tool](../09/pcs_client_tool.md) to retrieve platform collateral from the PCS service.
+Finally, use the [`put` operation](../07/pccs_admin_tool.md#put) to upload the data to the V3 PCCS service.
 
 1. Use the [PCCS Admin Tool](../07/pccs_admin_tool.md) to retrieve the cached platform IDs from the **v2** PCCS.[^pccsadmin-packaging-variants]
 

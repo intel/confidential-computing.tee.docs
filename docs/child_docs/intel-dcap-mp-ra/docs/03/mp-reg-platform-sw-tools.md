@@ -219,7 +219,9 @@ These are the possible ErrorCode values produced by the MPA (the MPA error codes
 The PCK Cert ID Retrieval Tool is an executable that collects the platform information that is necessary for retrieving PCK Certs from the Intel® SGX Provisioning Certificate Service (PCS).
 The DCAP releases for single-package platforms already include the PCK Cert ID Retrieval Tool, but it has been expanded to include support for multi-package platforms.
 
-The main expansion to the tool is its ability to retrieve the platform manifest from the [`SgxRegistrationServerRequest`][request] UEFI variable. By retrieving the platform manifest, this tool supports [Indirection Registration][indirectreg] better by allowing to store the platform manifest and use it later for retrieving PCK Certificates. The registration authority service does not need to persistently store the platform keys when the platform owner maintains a copy of the platform manifest for retrieving PCK Certificates.
+The main expansion to the tool is its ability to retrieve the platform manifest from the [`SgxRegistrationServerRequest`][request] UEFI variable.
+By retrieving the platform manifest, this tool supports [Indirection Registration][indirectreg] better by allowing to store the platform manifest and use it later for retrieving PCK Certificates.
+The registration authority service does not need to persistently store the platform keys when the platform owner maintains a copy of the platform manifest for retrieving PCK Certificates.
 
 Unlike the PCK Cert ID Retrieval Tool support for single package platforms, the tool needs to run in the host VM or on bare metal to get access to the UEFI variables.
 The SGX UEFI variables are not exposed to guest VMs.
@@ -364,8 +366,7 @@ BIOS provides a mechanism for retrieving the key blobs.
 Platform owners may want to maintain a copy of the key blobs in case they need to be restored after they are deleted from BIOS persistent store (e.g. the FLASH was erased or SGX was reset).
 The [SgrRegistrationPackageInfo][packageinfo] UEFI variable provides the key blobs.
 By default, BIOS does not present the key blobs to the software.
-The platform owner needs to 'opt-in' using the BIOS configuration setting (`SGX Package Info In-band Access`)
-before BIOS provides the key blobs.
+The platform owner needs to 'opt-in' using the BIOS configuration setting (`SGX Package Info In-band Access`) before BIOS provides the key blobs.
 
 
 ### Registration Error Codes

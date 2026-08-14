@@ -290,9 +290,11 @@ To provide a TD Quoting service on an Intel TDX-enabled host, you should use the
 
 ### Platform uses PCCS-based Collateral Caching
 
-ECDSA-based quote generation and quote verification require collateral provided by Intel® PCS. This collateral should be cached within the infrastructure using a collateral caching service.
+ECDSA-based quote generation and quote verification require collateral provided by Intel® PCS.
+This collateral should be cached within the infrastructure using a collateral caching service.
 
-Intel provides a reference Provisioning Certificate Caching Service (PCCS) in package `sgx-dcap-pccs`. In addition, it provides a reference library, the Quote Provider Library (QPL), in package `libsgx-dcap-default-qpl`, which is used by `libsgx-dcap-ql` and `libsgx-aesm-ecdsa-plugin` to obtain collateral from the PCCS.
+Intel provides a reference Provisioning Certificate Caching Service (PCCS) in package `sgx-dcap-pccs`.
+In addition, it provides a reference library, the Quote Provider Library (QPL), in package `libsgx-dcap-default-qpl`, which is used by `libsgx-dcap-ql` and `libsgx-aesm-ecdsa-plugin` to obtain collateral from the PCCS.
 
 - Package: `sgx-dcap-pccs` and `libsgx-dcap-default-qpl`
 - Comments:
