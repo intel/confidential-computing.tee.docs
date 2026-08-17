@@ -11,6 +11,9 @@ aside.md-banner {
     --md-accent-fg-color:         #0095CA;
     --md-primary-fg-color--light: #15BCEF;
     --md-primary-fg-color--dark:  #00377C;
+    --md-footer-bg-color: var(--md-default-bg-color);
+    --md-footer-fg-color: var(--md-typeset-a-color);
+    --md-footer-bg-color--dark: #4f4f4f;
     --cell-green: #D6E3BC;
     --cell-blue:  #B6DDE8;
     --cell-red:   #E5B8B7;
@@ -22,6 +25,8 @@ aside.md-banner {
     --md-accent-fg-color:         #548FAD;
     --md-primary-fg-color--light: #183544;
     --md-primary-fg-color--dark:  #548FAD;
+    --md-footer-bg-color: var(--md-default-bg-color);
+    --md-footer-fg-color: var(--md-typeset-a-color);
     --cell-green: #5d762b;
     --cell-blue:  #254a55;
     --cell-red:   #5c2221;
