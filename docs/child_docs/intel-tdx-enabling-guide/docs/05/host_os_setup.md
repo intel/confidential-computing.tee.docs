@@ -51,6 +51,48 @@ To install the Intel TDX host OS kernel with KVM support, as well as the QEMU an
 If not done before, reboot the system into the BIOS setup menu and perform the [necessary Intel TDX enablement steps](../04/hardware_setup.md#enable-intel-tdx-in-bios).
 
 
+### Check OS kernel version
+
+In process of time, kernel becomes outdated. With new version comes new features and fixes. To check and manage installed version, can be manually executed the following commands:
+
+Check kernel version
+
+    ``` { .bash }
+    uname -r
+    ```
+
+Select kernel version to be installed
+
+=== "Ubuntu 24.04"
+
+    ``` { .bash }
+    export KERNEL_VERSION=6.17.0-35-generic
+    sudo sh -c 'apt update && apt install --allow-downgrades linux-image-$KERNEL_VERSION linux-headers-$KERNEL_VERSION'
+    ```
+
+Check currently saved boot entry in GRUB
+
+    ``` { .bash }
+    grub-editenv list | sed -e "s/.*gnulinux-//g" -e "s/-generic.*//g" -e "s/-intel.*//g"
+    ```
+
+If freshly installed kernel differs from saved boot entry in GRUB
+
+    ``` { .bash }
+    read -r -p "Should be changed saved entry? <y/N>: " answer
+    case $answer in
+    	[Yy]* ) SUBMENU=`sudo grep submenu /boot/grub/grub.cfg  | sed -e "s/.*menuentry_id_option '//g" -e "s/' {//"` 
+                MENUENTRY=`sudo grep menuentry /boot/grub/grub.cfg  | grep ${KERNEL_VERSION} | grep advanced | sed -e "s/.*menuentry_id_option '//g" -e "s/' {//g"`
+			    echo "Boot Id from /boot/grub/grub.cfg"
+			    echo "saved_entry=${SUBMENU}>${MENUENTRY}"
+                sudo grub-editenv - set saved_entry="${SUBMENU}>${MENUENTRY}"
+			    echo "Double check - boot Id from grub-editenv list"
+			    sudo grub-editenv list ;;
+	    [Nn]* ) ;;
+    esac
+    ```
+
+
 ### Check Intel TDX enablement
 
 To check the status of your Intel TDX configuration, you can manually execute the following commands:
