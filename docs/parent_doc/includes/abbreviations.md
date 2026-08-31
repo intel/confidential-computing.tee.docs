@@ -46,7 +46,7 @@ SPDX-License-Identifier: CC-BY-4.0
 *[QE]: Quoting Enclave
 *[QGS]: Quote Generation Service
 *[QL]: Quoting Library
-*[QPL]: Quote Provider Library
+*[QPL]: Quote collateral Provider Library
 *[OS]: Operating System
 *[OSes]: Operating Systems
 *[QVS]: Quote Verification Service
@@ -59,12 +59,14 @@ SPDX-License-Identifier: CC-BY-4.0
 *[SEAMRR]: SEAM Range Register
 *[SI]: System Integrator
 *[SIs]: System Integrators
+*[SLES]: SUSE Linux Enterprise Server
 *[SVN]: Security Version Number
 *[TCB]: Trusted Compute Base
 *[TCB-R]: TCB-Recovery
 *[TCB-Rs]: TCB-Recoveries
 *[TD]: Trust Domain
 *[TDs]: Trust Domains
+*[TDQE]: TD Quoting Enclave
 *[TEE]: Trusted Execution Environment
 *[TXT]: Trusted Execution Technology
 *[VM]: Virtual Machine

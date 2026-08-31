@@ -285,7 +285,7 @@ To provide a TD Quoting service on an Intel TDX-enabled host, you should use the
     - `tdx-qgs` requires `libsgx-tdx-logic` as a hard dependency.
     - It also requires a Quote Provider Library (QPL) at runtime to retrieve platform information.
     - It is up to the system administrator to install Intel's QPL `libsgx-dcap-default-qpl` or their own version.
-    - The [Setup Quote Generation Service (QGS)](/intel-tdx-enabling-guide/05/host_os_setup/#setup-quote-generation-service-qgs) section of the [Intel TDX Enabling Guide](/intel-tdx-enabling-guide/01/introduction/) shows how to setup the QGS in the host OS.
+    - The [Set up Quote Generation Service (QGS)](/intel-tdx-enabling-guide/05/host_os_setup/#setup-quote-generation-service-qgs) section of the [Intel TDX Enabling Guide](/intel-tdx-enabling-guide/01/introduction/) shows how to setup the QGS in the host OS.
 
 
 ### Platform uses PCCS-based Collateral Caching

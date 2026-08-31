@@ -12,5 +12,4 @@ nav:
   - Guest OS Setup: 06/guest_os_setup.md
   - Trust Domain at Runtime: 07/trust_domain_at_runtime.md
 not_in_nav: |
-  02/tcb_recoveries.md
   misc/notices_and_disclaimers.md
