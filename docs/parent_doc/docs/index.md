@@ -46,6 +46,10 @@ Detailed instructions on how to contribute, including guidelines for submitting 
 
     This guide provides a set of instructions for installing Intel SGX software components.
 
+- [:octicons-arrow-right-24: **Transition Paths for Intel® SGX Applications to Intel® TDX**](/intel-sgx-transition-path/01/introduction/)
+
+    This guide outlines possible migration paths for moving Intel SGX applications to an Intel TDX environment, including Confidential Containers (CoCo).
+
 </div>
 
 

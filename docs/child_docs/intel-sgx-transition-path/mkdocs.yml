@@ -1,0 +1,15 @@
+INHERIT: ../../mkdocs_base.yml
+
+site_name: Transition Paths for Intel® SGX Applications to Intel® TDX
+
+edit_uri: edit/main/docs/child_docs/intel-sgx-transition-path/docs/
+watch:
+  - includes
+nav:
+  - Introduction: 01/introduction.md
+  - Main Intel SGX Application Architectures: 02/main_intel_sgx_application_architectures.md
+  - Transitioning Applications Based on a Library OS: 03/libos_transition_options.md
+  - Transitioning Applications Based on the Intel SGX SDK: 04/sgx_sdk_transition_options.md
+  - References and Technologies to Watch: 05/references_and_technologies_watch.md
+not_in_nav: |
+  misc/notices_and_disclaimers.md
