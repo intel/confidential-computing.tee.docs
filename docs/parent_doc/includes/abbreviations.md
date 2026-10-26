@@ -17,6 +17,7 @@ SPDX-License-Identifier: CC-BY-4.0
 *[DIMMs]: Dual Inline Memory Modules
 *[EPT]: Extended Page Table
 *[GPA]: Guest Physical Address
+*[HMAC]: Hash-based Message Authentication Code
 *[IBV]: Independent BIOS Vendor
 *[IMC]: Integrated Memory Controller
 *[IMCs]: Integrated Memory Controllers

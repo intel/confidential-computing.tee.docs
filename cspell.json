@@ -68,6 +68,7 @@
         "groupinstall",
         "growpart",
         "hexdump",
+        "HMAC",
         "HOBLIST",
         "hostfwd",
         "inblob",
