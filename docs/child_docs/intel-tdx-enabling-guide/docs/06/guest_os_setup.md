@@ -141,7 +141,7 @@ Use the following instructions for your distribution of choice:
 
     === "CentOS Stream 10"
         ``` { .bash }
-        wget https://cloud.centos.org/centos/10-stream/x86_64/images/CentOS-Stream-GenericCloud-x86_64-10-latest.x86_64.qcow2 \
+        wget https://cloud.centos.org/centos/10-stream/x86_64/images/CentOS-Stream-GenericCloud-10-latest.x86_64.qcow2 \
            -O centos.qcow2
         virt-customize -a \
             centos.qcow2 \
@@ -168,7 +168,7 @@ Use the following instructions for your distribution of choice:
         To create a RHEL guest image, manually create a cloud ISO image.
         This guide uses a CentOS Stream 10 prebuilt cloud image:
         ``` { .bash }
-        wget https://cloud.centos.org/centos/10-stream/x86_64/images/CentOS-Stream-GenericCloud-x86_64-10-latest.x86_64.qcow2 \
+        wget https://cloud.centos.org/centos/10-stream/x86_64/images/CentOS-Stream-GenericCloud-10-latest.x86_64.qcow2 \
            -O centos.qcow2
         virt-customize -a \
             centos.qcow2 \
