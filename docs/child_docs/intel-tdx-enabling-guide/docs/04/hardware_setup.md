@@ -83,6 +83,98 @@ Explanation of BIOS settings:
 | SGX PRM/PRMRR Size | Defines the size of the Processor Reserved Memory (PRM), which is used by Intel SGX to hold enclaves and related protected data structures. A minimum SGX PRM is required to run the Quote Generation Service (QGS) on the host OS (or inside a dedicated VM). |
 
 
+## Deploy Specific Intel TDX Loader Version
+
+Once you [install a BIOS with Intel TDX support](#install-intel-tdx-enabled-bios), it will include an Intel TDX Module and a corresponding Intel TDX Loader.
+The Intel TDX Loader is responsible to only load Intel-signed Intel TDX Module versions.
+To get other versions of the Intel TDX Loader, you have two options:
+
+1. Update Intel TDX Loader via BIOS update.
+2. Update Intel TDX Loader via binary deployment.
+
+In the following subsections, we provide more details on these two update variants.
+Independent of the used variant, please consider the following details:
+
+- Different platforms might require different Intel TDX Loader binaries.
+- With both of these Intel TDX Loader update variants, a system reboot is required.
+    Accordingly, all running VMs or TDs have to be stopped before updating.
+
+
+=== "Update Intel TDX Loader via BIOS update"
+
+    Steps:
+
+    1. Reach out to your OEM/ODM or Independent BIOS Vendor (IBV) to ask for a BIOS containing another version of the Intel TDX Loader.
+    2. Once available, retrieve the BIOS update.
+    3. Flash the BIOS update according to the instructions of the BIOS provider.
+
+
+=== "Update Intel TDX Loader via Binary Deployment"
+
+    Steps:
+
+    1. Download the Intel TDX Loader binary:
+
+        - Navigate to the [releases page of the Intel TDX Loader](https://github.com/intel/confidential-computing.tdx.tdx-loader/releases).
+        - Download the archive `intel_tdx_loader.tar.gz` from the release you want to use.
+
+        !!! note
+            Make sure to download the correct Intel TDX Loader for your particular CPU.
+            The increasing version numbers do not necessarily indicate the latest for your particular CPU model.
+            Instead, carefully read the "supported platforms" section of the release note.
+
+    2. Unpack the downloaded archive:
+
+        ``` { .bash }
+        tar -xvzf intel_tdx_loader.tar.gz
+        ```
+
+    3. If not done before, create an EFI directory:
+
+        ``` { .bash }
+        sudo mkdir -p /boot/efi/EFI/TDX/
+        ```
+
+    4. Copy the Intel TDX Loader binary to the EFI directory created in step 3:
+
+        ``` { .bash }
+        sudo cp TDX-Loader/intel_tdx_loader.bin \
+            /boot/efi/EFI/TDX/TDX-SEAM_SEAMLDR.bin
+        ```
+
+        !!! Note
+               The name of the binary in the EFI directory has to be `TDX-SEAM_SEAMLDR.bin`.
+
+        !!! Note
+            The downloaded archive might contain multiple binaries.
+            In this case, the file name specifies the supported platform.
+            For example:
+
+            ``` { text }
+            intel_tdx_loader_srf.bin
+            intel_tdx_loader_gnr.bin
+            ```
+
+            In the example, `srf` refers to Intel® Xeon® 6 processor with E-cores (formerly codenamed Sierra Forest) and `gnr` refers to Intel® Xeon® 6 processor with P-cores (formerly codenamed Granite Rapids).
+            Make sure to copy the correct one for your particular CPU.
+
+    5. Check that the copied file is present in `/boot/efi/EFI/TDX/` with a current date:
+
+        ``` { .bash }
+        sudo ls -ls /boot/efi/EFI/TDX/
+        ```
+
+    6. Reboot your machine.
+
+    ??? info "How to reproduce an Intel TDX Loader binary?"
+        Every [Intel TDX Loader release](https://github.com/intel/confidential-computing.tdx.tdx-loader/releases) comes with corresponding build instructions.
+        Please follow these build instructions.
+
+    ??? info "How to run an Intel TDX Loader build from source?"
+        You cannot run an Intel TDX Loader build from source, because only binaries officially released and signed by Intel are allowed to run.
+        Intel does not provide an environment to use Intel TDX with non-signed binaries.
+
+
 ## Deploy Specific Intel TDX Module Version
 
 Once you [install a BIOS with Intel TDX support](#install-intel-tdx-enabled-bios), it will include an Intel TDX Module and a corresponding Intel TDX Loader.
@@ -95,68 +187,71 @@ In the following subsections, we provide more details on these two update varian
 Independent of the used variant, please consider the following details:
 
 - Different platforms might require different Intel TDX Module binaries.
-- With the both of these Intel TDX Module update variants, a system reboot is required.
+- With both of these Intel TDX Module update variants, a system reboot is required.
     Accordingly, all running VMs or TDs have to be stopped before updating.
 - Installing a specific Intel TDX Module version will make use of the Intel TDX Loader already present in the system BIOS even if updating via binary deployment.
 
 
-### Update Intel TDX Module via BIOS update
+=== "Update Intel TDX Module via BIOS update"
 
-Steps:
+    Steps:
 
-- Reach out to your OEM/ODM or Independent BIOS Vendor (IBV) to ask for a BIOS containing another version of the Intel TDX Module.
-- Once available, retrieve the BIOS update.
-- Flash BIOS update according the instructions of the BIOS provider.
-
-
-### Update Intel TDX Module via Binary Deployment
-
-Steps:
-
-1. Download the Intel TDX Module binary:
-
-To download a specific version of an Intel TDX Module and a corresponding signature structure, navigate to the [releases page of the Intel TDX Module](https://github.com/intel/confidential-computing.tdx.tdx-module/releases).
-Download the archive `intel_tdx_module.tar.gz` from the release you want to use.
-
-!!! note
-
-    Make sure to download the correct Intel TDX Module for your particular CPU.
-    The increasing version numbers do not necessarily indicate the latest for your particular CPU model.
+    1. Reach out to your OEM/ODM or Independent BIOS Vendor (IBV) to ask for a BIOS containing another version of the Intel TDX Module.
+    2. Once available, retrieve the BIOS update.
+    3. Flash BIOS update according the instructions of the BIOS provider.
 
 
-2. Unpack the downloaded archive:
+=== "Update Intel TDX Module via Binary Deployment"
 
-    ``` { .bash }
-    tar -xvzf intel_tdx_module.tar.gz
-    ```
+    Steps:
 
-3. If not done before, create an EFI directory:
+    1. Download the Intel TDX Module binary:
 
-    ``` { .bash }
-    sudo mkdir -p /boot/efi/EFI/TDX/
-    ```
+        - Navigate to the [releases page of the Intel TDX Module](https://github.com/intel/confidential-computing.tdx.tdx-loader/releases).
+        - Download the archive `intel_tdx_module.tar.gz` from the release you want to use, which contains an Intel TDX Module and a corresponding signature structure.
 
-4. Copy the Intel TDX Module binary and the corresponding signature structure to the EFI directly created in step 3.
+        !!! note
 
-    ``` { .bash }
-    sudo cp TDX-Module/intel_tdx_module.so \
-        /boot/efi/EFI/TDX/TDX-SEAM.so
-    sudo cp TDX-Module/intel_tdx_module.so.sigstruct \
-        /boot/efi/EFI/TDX/TDX-SEAM.so.sigstruct
-    ```
+            Make sure to download the correct Intel TDX Module for your particular CPU.
+            The increasing version numbers do not necessarily indicate the latest for your particular CPU model.
+            Instead, carefully read the "supported platforms" section of the release notes.
 
-5. Check that the copied files are present in `/boot/efi/EFI/TDX/` with a current date:
+    2. Unpack the downloaded archive:
 
-    ``` { .bash }
-    sudo ls -ls /boot/efi/EFI/TDX/
-    ```
+        ``` { .bash }
+        tar -xvzf intel_tdx_module.tar.gz
+        ```
 
-6. Reboot your machine.
+    3. If not done before, create an EFI directory:
 
-??? info "How to reproduce an Intel TDX Module binary?"
-    Every [Intel TDX Module release](https://github.com/intel/confidential-computing.tdx.tdx-module/releases) comes with corresponding build instructions.
-    Please follow these build instructions.
+        ``` { .bash }
+        sudo mkdir -p /boot/efi/EFI/TDX/
+        ```
 
-??? info "How to run an Intel TDX Module build from source?"
-    You cannot run an Intel TDX Module build from source, because only binaries officially released and signed by Intel are allowed to run.
-    Intel does not provide an environment to use Intel TDX with non-signed binaries.
+    4. Copy the Intel TDX Module binary and the corresponding signature structure to the EFI directory created in step 3.
+
+        ``` { .bash }
+        sudo cp TDX-Module/intel_tdx_module.so \
+            /boot/efi/EFI/TDX/TDX-SEAM.so
+        sudo cp TDX-Module/intel_tdx_module.so.sigstruct \
+            /boot/efi/EFI/TDX/TDX-SEAM.so.sigstruct
+        ```
+
+        !!! Note
+               The name of the binaries in the EFI directory have to be `TDX-SEAM.so` and `TDX-SEAM.so.sigstruct`.
+
+    5. Check that the copied files are present in `/boot/efi/EFI/TDX/` with a current date:
+
+        ``` { .bash }
+        sudo ls -ls /boot/efi/EFI/TDX/
+        ```
+
+    6. Reboot your machine.
+
+    ??? info "How to reproduce an Intel TDX Module binary?"
+        Every [Intel TDX Module release](https://github.com/intel/confidential-computing.tdx.tdx-module/releases) comes with corresponding build instructions.
+        Please follow these build instructions.
+
+    ??? info "How to run an Intel TDX Module build from source?"
+        You cannot run an Intel TDX Module build from source, because only binaries officially released and signed by Intel are allowed to run.
+        Intel does not provide an environment to use Intel TDX with non-signed binaries.
