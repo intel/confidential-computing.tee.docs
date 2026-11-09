@@ -107,7 +107,10 @@ Use the following instructions for your distribution of choice:
         The `libvirt` group grants access to manage the system libvirt daemon, which can configure VMs with host resources and should be treated as root-equivalent.
         Add only trusted users to these groups.
 
-    For the above new group additions to take effect, log out and back in again.
+    !!! warning "Log out and back in before continuing"
+
+        The new group memberships take effect only after you log out and back in.
+        Until then, your session retains its previous permissions, which can prevent access to KVM or the QGS socket.
 
 3. Create an SSH key pair to allow SSH access to the TD after it is launched:
 
